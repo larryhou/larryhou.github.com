@@ -5,11 +5,22 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>larryhou</title>
+  <title>BitmapData.draw() 和 DisplayObject.blendMode - larryhou</title>
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="做iOS移动应用很多开发者会喜欢抓网络发包、回包来联调服务端借口以及定位其他网络问题。如果在Windows系统可以使用fiddler来做iOS的远程代理，只要fiddler所在系统与iOS设备同时连上同一个局域网即可。但是在OSX系统上没有fiddler，相信做iOS开发用windows系统的不多 &hellip;">
+  <meta name="description" content="BitmapData.draw()如果遇到DisplayObject.blendMode有时候效果会异常，这里有个陷阱&#8230;oops simple exmaple 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+var container:Sprite = new [some &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +29,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://larryhou.github.com/">
+  <link rel="canonical" href="http://larryhou.github.com/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -59,151 +70,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/05/remote-debug-with-charles-proxy/">使用charles远程调试iOS移动应用</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-05T16:38:00+08:00" pubdate data-updated="true">Nov 5<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/11/05/remote-debug-with-charles-proxy/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>做iOS移动应用很多开发者会喜欢抓网络发包、回包来联调服务端借口以及定位其他网络问题。如果在Windows系统可以使用fiddler来做iOS的远程代理，只要fiddler所在系统与iOS设备同时连上同一个局域网即可。但是在OSX系统上没有fiddler，相信做iOS开发用windows系统的不多，其实不要纠结：其实跨平台http抓包工具charles也可以做远程代理，也就是说iOS也可以通过charles来调试，charles调试的相关技术都可以对iOS适用。</p>
-
-<p>那怎么才能实现charles做iOS的远程代理呢？先看charles官网的文档。</p>
-
-<blockquote><p>USING CHARLES FROM AN IPHONE</p><p>To use Charles as your HTTP proxy on your iPhone you must manually configure the HTTP Proxy settings on your WiFi network in your iPhone&#8217;s Settings.</p><p>Go to the Settings app, tap Wi-Fi, find the network you are connected to and then tap the blue disclosure arrow to configure the network. Scroll down to the HTTP Proxy setting, tap Manual. Enter the IP address of your computer running Charles in the Server field, and the port Charles is running on in the Port field (usually 8888). Leave Authentication set to Off.</p><p>All of your web traffic from your iPhone will now be sent via Charles. You should see a prompt in Charles when you first make a connection from the iPhone, asking you to allow the traffic.</p><p>Remember to disable the HTTP Proxy in your Settings when you stop using Charles, otherwise you&#8217;ll get confusing network failures in your applications!</p><footer><strong>charlesproxy.com</strong> <cite><a href='http://www.charlesproxy.com/documentation/faqs/using-charles-from-an-iphone/'>Remote Debug iOS APP With Charles</a></cite></footer></blockquote>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/11/05/remote-debug-with-charles-proxy/">♨more »</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/05/applescript-xun-huan/">AppleScript：循环</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-05T01:07:00+08:00" pubdate data-updated="true">Nov 5<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/11/05/applescript-xun-huan/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>AppleScript是一个比较接近自然语言脚本语言，习惯了传统编程的程序猿一时还真难以适应这种表达和思考方式，不过了解其中的规律后，你就会发现AppleScript其实是一种非常容易、非常生活化的编程语言。在这篇文章里面着重介绍循环控制指令。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/11/05/applescript-xun-huan/">♨more »</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/26/install-git-with-macport/">Install Git With Macport</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-26T16:27:00+08:00" pubdate data-updated="true">Oct 26<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/26/install-git-with-macport/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的<code>git-svn</code>不见了，这里是用<code>macport</code>安装的脚本，以备下次重装又要google半天&#8230;</p>
-
-<figure class='code'><figcaption><span>install git with svn</span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port install git-core +svn +doc +bash_completion +gitweb</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">BitmapData.draw() 和 DisplayObject.blendMode</a></h1>
+      <h1 class="entry-title">BitmapData.draw() 和 DisplayObject.blendMode</h1>
     
     
       <p class="meta">
@@ -221,14 +93,14 @@
 
 <time datetime="2012-10-25T00:00:00+08:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&#8230;oops</p>
+<div class="entry-content"><p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&#8230;oops</p>
 
 <figure class='code'><figcaption><span>simple exmaple  </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -258,22 +130,16 @@
 
 <p>如上面这段代码，看起来没有什么问题，但是如果把<code>data</code>通过<code>Bitmap</code>显示出来，就会发现效果有些诡异，这是因为<code>BitmapData</code>在<code>draw</code>的时候，会自动忽略<code>childA.blendMode</code>属性，除非把<code>childA</code>的父级容器设置为<code>container.blendMode = BlendMode.LAYER</code>。</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">ActionScript Syntax Highlight in Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
+
+      
 
 
 
@@ -285,34 +151,49 @@
   
 
 
-<time datetime="2012-10-22T00:00:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/#disqus_thread">Comments</a>
-        
-      </p>
+<time datetime="2012-10-25T00:00:00+08:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+      
+
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  
+  
+  
+  <wb:share-button type="button" size="big" relateuid="1775482650" ></wb:share-button>
+  <a href="javascript:;" id="share_btn_qq"><img src="http://mat1.gtimg.com/app/opent/images/websites/share/b32.png" border="0" alt="转播到腾讯微博"></a>
+  <script>
+  _share_tencent_weibo({
+  	"appkey":"801257161"	/*你从腾讯微博开放平台获得的appkey*/
+  	,"btn":document.getElementById("share_btn_qq")	/*一键转播按钮*/
+  	,"qshareable":false	/*不绑定Q-Share功能*/
+  	,"assname":"larryhou"	/*转播后收听的微博帐号*/
+  });
+  </script>
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/22/ActionScript-Syntax-Highlight/" title="Previous Post: ActionScript Syntax Highlight in Octopress">&laquo; ActionScript Syntax Highlight in Octopress</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/10/26/install-git-with-macport/" title="Next Post: Install git with macport">Install git with macport &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-  <div class="entry-content"><p>Here is a <code>bezier</code> utils method in ActionScript.</p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">♨more »</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -350,6 +231,7 @@
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -364,7 +246,10 @@
       var disqus_shortname = 'larryhou';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.com/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/';
+        var disqus_url = 'http://larryhou.github.com/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
