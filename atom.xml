@@ -4,7 +4,7 @@
   <title><![CDATA[larryhou]]></title>
   <link href="http://larryhou.github.com/atom.xml" rel="self"/>
   <link href="http://larryhou.github.com/"/>
-  <updated>2012-11-09T23:46:17+08:00</updated>
+  <updated>2012-11-10T00:24:38+08:00</updated>
   <id>http://larryhou.github.com/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用INDIRECT函数引用Excel单元格]]></title>
+    <link href="http://larryhou.github.com/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/"/>
+    <updated>2012-11-09T23:58:00+08:00</updated>
+    <id>http://larryhou.github.com/blog/2012/11/09/make-reference-to-excel-cell-with-indirect</id>
+    <content type="html"><![CDATA[<p>如果需要动态引用Excel单元格的时候，INDIRECT函数可以帮上大忙，为什么这么说？它的传参是一个字符串，比如引用第一列第二行的数据可以用<code>=INDIRECT("A2")</code>，这样有什么好处呢？作比较复杂的数据操作的时候行列可能都是动态计算出来的，这个时候结合<code>ADDRESS(row, column)</code>方法算出行列对应的地址名称传参到INDIRECT（也即<code>=INDIRECT(ADDRESS(row, column))</code>）就可以很方便地引用任意单元格。</p>
+
+<p>有时候为了方便可能会引用其他表单的数值，假设另外一个表单的名称叫<strong>sheet</strong>，那么引用另外一个表单的单元格可以使用<code>=INDIRECT("sheet!A2")</code>来引用<strong>sheet</strong>表单的第二行第一列的单元格。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用Excel导出XML格式文件]]></title>
