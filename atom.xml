@@ -4,7 +4,7 @@
   <title><![CDATA[larryhou]]></title>
   <link href="http://larryhou.github.com/atom.xml" rel="self"/>
   <link href="http://larryhou.github.com/"/>
-  <updated>2012-11-09T23:43:26+08:00</updated>
+  <updated>2012-11-09T23:46:17+08:00</updated>
   <id>http://larryhou.github.com/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -18,7 +18,7 @@
     <link href="http://larryhou.github.com/blog/2012/11/08/export-xml-from-excel/"/>
     <updated>2012-11-08T10:08:00+08:00</updated>
     <id>http://larryhou.github.com/blog/2012/11/08/export-xml-from-excel</id>
-    <content type="html"><![CDATA[<p>生成XML的方式有很多：如果你是程序员，那么你可以通过变成快速生成你想要的XML格式；如果你是其他用户，你可能会使用记事本等文本编辑工具来手动写XML。这些都不是问题，但是数据量很大的时候，如果你不是程序猿会不会郁闷？本文介绍了一种方法不借助编程也可以高效、快速地生成XML配置文件。在看这篇文章之前，我先假定了你们都会用微软Office工具Excel，其实不会问题也不是很大:-D</p>
+    <content type="html"><![CDATA[<p>生成XML的方式有很多：如果你是程序员，那么你可以通过变成快速生成你想要的XML格式；如果你是其他用户，你可能会使用记事本等文本编辑工具来手动写XML。这些都不是问题，但是数据量很大的时候，如果你不是程序猿会不会郁闷？<!--more-->本文介绍了一种方法不借助编程也可以高效、快速地生成XML配置文件。在看这篇文章之前，我先假定了你们都会用微软Office工具Excel，其实不会问题也不是很大:-D</p>
 
 <p>假设现在有个任务，要生成一个班的学生XML配置，这个配置包含学生的学号、姓名、性别、年龄、出生年月信息，那么现在有两种XML格式可以选择：</p>
 
