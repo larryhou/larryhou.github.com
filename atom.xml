@@ -4,7 +4,7 @@
   <title><![CDATA[larryhou]]></title>
   <link href="http://larryhou.github.com/atom.xml" rel="self"/>
   <link href="http://larryhou.github.com/"/>
-  <updated>2012-11-10T23:58:51+08:00</updated>
+  <updated>2012-11-11T18:14:10+08:00</updated>
   <id>http://larryhou.github.com/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -12,6 +12,233 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在WIN系统使用AS3版protobuf]]></title>
+    <link href="http://larryhou.github.com/blog/2012/11/11/as3proto-win/"/>
+    <updated>2012-11-11T17:39:00+08:00</updated>
+    <id>http://larryhou.github.com/blog/2012/11/11/as3proto-win</id>
+    <content type="html"><![CDATA[<p>本文介绍了在WIN系统布置AS3版protobuf运行环境的方法，在阅读本文之前需要先下载<a href="https://github.com/larryhou/as3proto-osx" title="Actionscript3.0版protobuf">AS3版protobuf源码</a>。<!--more--></p>
+
+<h2>安装<a href="http://mingw.org/wiki/Getting_Started" title="http://mingw.org/wiki/Getting_Started">MinGW</a></h2>
+
+<ul>
+<li>下载<a href="http://sourceforge.net/projects/mingw/files/Installer/mingw-get-inst/" title="http://sourceforge.net/projects/mingw/files/Installer/mingw-get-inst/">mingw-get installer</a>最新版本，保持默认配置一路“Next”直至安装完成</li>
+<li>把安装目录C:\MinGW\bin添加PATH环境变量，注销电脑重新进入系统</li>
+<li>打开命令提示符运行</li>
+</ul>
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>mingw-get install gcc g++ mingw32-make msys-base
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>初始化MSYS shell并启动</li>
+</ul>
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd </span>C:<span class="se">\M</span>SYS<span class="se">\1</span>.0
+</span><span class='line'>      
+</span><span class='line'>rem 启动MSYS shell
+</span><span class='line'>msys.bat
+</span><span class='line'>      
+</span><span class='line'>rem 初始化MSYS shell，第一次启动时运行
+</span><span class='line'>/postinstall/pi.sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>编译安装 protobuf 命令行</h2>
+
+<ul>
+<li>CD到源码目录</li>
+</ul>
+
+
+<p>如果源码在D:/as3proto-osx/sdk/project目录，需要使用</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> /d/as3proto-osx/sdk/project
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>编译安装protobuf</li>
+</ul>
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>./configure --prefix<span class="o">=</span>/mingw
+</span><span class='line'>      
+</span><span class='line'>make      
+</span><span class='line'>make check        
+</span><span class='line'>make install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>检查是否安成功</li>
+</ul>
+
+
+<p>打开命令提示符，输入</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>protoc --help
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装成功后应该出现如下信息，包含&#8211;as3_out参数</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>Usage: protoc <span class="o">[</span>OPTION<span class="o">]</span> PROTO_FILES
+</span><span class='line'>Parse PROTO_FILES and generate output based on the options given:
+</span><span class='line'>-IPATH, --proto_path<span class="o">=</span>PATH   Specify the directory in which to search <span class="k">for</span>
+</span><span class='line'><span class="k">                          </span>imports.  May be specified multiple <span class="nb">times</span>;
+</span><span class='line'>                          directories will be searched in order.  If not
+</span><span class='line'>                          given, the current working directory is used.
+</span><span class='line'>--version                   Show version info and exit.
+</span><span class='line'>-h, --help                  Show this text and exit.
+</span><span class='line'>--encode<span class="o">=</span>MESSAGE_TYPE       Read a text-format message of the given <span class="nb">type</span>
+</span><span class='line'><span class="nb">                          </span>from standard input and write it in binary
+</span><span class='line'>                          to standard output.  The message <span class="nb">type </span>must
+</span><span class='line'>                          be defined in PROTO_FILES or their imports.
+</span><span class='line'>--decode<span class="o">=</span>MESSAGE_TYPE       Read a binary message of the given <span class="nb">type </span>from
+</span><span class='line'>                          standard input and write it in text format
+</span><span class='line'>                          to standard output.  The message <span class="nb">type </span>must
+</span><span class='line'>                          be defined in PROTO_FILES or their imports.
+</span><span class='line'>--decode_raw                Read an arbitrary protocol message from
+</span><span class='line'>                          standard input and write the raw tagalue
+</span><span class='line'>                          pairs in text format to standard output.  No
+</span><span class='line'>                          PROTO_FILES should be given when using this
+</span><span class='line'>                          flag.
+</span><span class='line'>-oFILE,                     Writes a FileDescriptorSet <span class="o">(</span>a protocol buffer,
+</span><span class='line'>--descriptor_set_out<span class="o">=</span>FILE defined in descriptor.proto<span class="o">)</span> containing all of
+</span><span class='line'>                          the input files to FILE.
+</span><span class='line'>--include_imports           When using --descriptor_set_out, also include
+</span><span class='line'>                          all dependencies of the input files in the
+</span><span class='line'>                          <span class="nb">set</span>, so that the <span class="nb">set </span>is self-contained.
+</span><span class='line'>--error_format<span class="o">=</span>FORMAT       Set the format in which to print errors.
+</span><span class='line'>                          FORMAT may be <span class="s1">&#39;gcc&#39;</span> <span class="o">(</span>the default<span class="o">)</span> or <span class="s1">&#39;msvs&#39;</span>
+</span><span class='line'>                          <span class="o">(</span>Microsoft Visual Studio format<span class="o">)</span>.
+</span><span class='line'>--plugin<span class="o">=</span>EXECUTABLE         Specifies a plugin executable to use.
+</span><span class='line'>                          Normally, protoc searches the PATH <span class="k">for</span>
+</span><span class='line'><span class="k">                          </span>plugins, but you may specify additional
+</span><span class='line'>                          executables not in the path using this flag.
+</span><span class='line'>                          Additionally, EXECUTABLE may be of the form
+</span><span class='line'>                          <span class="nv">NAME</span><span class="o">=</span>PATH, in which <span class="k">case </span>the given plugin name
+</span><span class='line'>                          is mapped to the given executable even <span class="k">if</span>
+</span><span class='line'><span class="k">                          </span>the executable<span class="err">&#39;</span>s own name differs.
+</span><span class='line'>--as3_out<span class="o">=</span>OUT_DIR           Generate ActionScript <span class="nb">source </span>file.
+</span><span class='line'>--cpp_out<span class="o">=</span>OUT_DIR           Generate C++ header and source.
+</span><span class='line'>--java_out<span class="o">=</span>OUT_DIR          Generate Java <span class="nb">source </span>file.
+</span><span class='line'>--python_out<span class="o">=</span>OUT_DIR        Generate Python <span class="nb">source </span>file.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>使用 protobuf 生成AS3代码</h2>
+
+<ul>
+<li>直接使用命令行</li>
+</ul>
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>protoc --proto_path<span class="o">=[</span>proto path<span class="o">]</span> --as3_out<span class="o">=[</span>folder <span class="k">for </span>as3 saving<span class="o">]</span> <span class="o">[</span>proto file<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>使用 protobuf.bat 生成    <br/>
+进入sdk目录，打开setup.bat文件，初始化一下配置
+
+<ul>
+<li>把PROTO_DIR修改为*.proto文件的存储目录</li>
+<li>把OUTPUT_DIR修改为生成AS3代码的输出目录</li>
+</ul>
+</li>
+</ul>
+
+
+<p>其实在默认配置下，直接运行protobuf.bat输入hello既可以在OUTPUT_DIR目录生成实例代码</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>----------------------------
+</span><span class='line'>Type proto file name:
+</span><span class='line'>hello
+</span><span class='line'>
+</span><span class='line'>... ... ...
+</span><span class='line'>
+</span><span class='line'>D:<span class="se">\C</span>++<span class="se">\a</span>s3proto-osx<span class="se">\s</span>dk&gt;protoc --proto_path<span class="o">=</span><span class="s2">&quot;..\proto&quot;</span> --as3_out<span class="o">=</span><span class="s2">&quot;..\output&quot;</span> <span class="s2">&quot;..\proto\hello.proto&quot;</span>
+</span><span class='line'>
+</span><span class='line'>DONE! Press any key to process another proto file...
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[在OSX系统使用AS3版protobuf]]></title>
