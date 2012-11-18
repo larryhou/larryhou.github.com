@@ -9,9 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="我的MAC硬盘分了三个分区，我把其中两个删掉了，然后扩大主分区的可用空间，结果出错： Mac分区失败 (未能修改分区图，因为文件系统验证失败） Google了一下这种情况还蛮普遍的，解决方法也很简单： 重启系统，按住⌘+s进入MAC命令行模式
-输入fsck -f回车
-输入reboot回车 &hellip;">
+  <meta name="description" content="最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过AppleScript要比它强大很多，对系统的融合更加深入。如果结合Calendar还可以做一些定时计划任务，非常的方便。 现在我写了一个遍历文件夹脚本，写了很久， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +61,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-18T23:11:00+08:00" pubdate data-updated="true">Nov 18<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/11/18/list-folder-recursively/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过<code>AppleScript</code>要比它强大很多，对系统的融合更加深入。如果结合<code>Calendar</code>还可以做一些定时计划任务，非常的方便。</p>
+
+<p>现在我写了一个遍历文件夹脚本，写了很久，不过也熟悉好多命令以及编写脚本的流程，收获还是蛮大的。在写这个脚本的时候，走了很多弯路，因为我觉得文件夹操作只需要<code>Finder.app</code>就可以，但总是出现各种问题，一度想到放弃，不过最后研究<code>AppleScript</code>自带的脚本示例发现要用<code>System Events</code>，到现在还不知道为什么要这么写，因为<code>AppleScript Dictionary</code>帮助文档已经写得很清楚了&#8230;oops</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/18/list-folder-recursively/">阅读全文&#8230;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -482,50 +525,9 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">ActionScript Syntax Highlight in Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-22T00:00:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Here is a <code>bezier</code> utils method in ActionScript.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">阅读全文&#8230;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">博客归档</a>
     
@@ -536,6 +538,10 @@
     <section>
   <h1>近期动态</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/11/13/disk-partion-fail-with-mac/">MAC分区失败解决方法</a>
@@ -551,10 +557,6 @@
     
       <li class="post">
         <a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">使用INDIRECT函数引用Excel单元格</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/08/export-xml-from-excel/">使用Excel导出XML格式文件</a>
       </li>
     
   </ul>

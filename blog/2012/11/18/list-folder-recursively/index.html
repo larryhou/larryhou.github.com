@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>使用AppleScript递归遍历文件夹 - larryhou</title>
+  <meta name="author" content="larryhou">
+
+  
+  <meta name="description" content="最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过AppleScript要比它强大很多，对系统的融合更加深入。如果结合Calendar还可以做一些定时计划任务，非常的方便。 现在我写了一个遍历文件夹脚本，写了很久， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://larryhou.github.com/blog/2012/11/18/list-folder-recursively/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="" rel="alternate" title="larryhou" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=" type="text/javascript" charset="utf-8"></script>
+<script src="http://mat1.gtimg.com/app/opent/js/qshare_min.js"></script>
+
+  
+
+</head>
+
+<body    class="collapse-sidebar" >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <!--<li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>-->
+  
+</ul>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">博客归档</a></li>
+  <li><a href="/blog/about">简介</a></li>
+</ul>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1>larryhou</h1>
+  
+    <h2>Actionscript Programer & Objective-C Developer</h2>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">使用AppleScript递归遍历文件夹</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-18T23:11:00+08:00" pubdate data-updated="true">Nov 18<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过<code>AppleScript</code>要比它强大很多，对系统的融合更加深入。如果结合<code>Calendar</code>还可以做一些定时计划任务，非常的方便。</p>
+
+<p>现在我写了一个遍历文件夹脚本，写了很久，不过也熟悉好多命令以及编写脚本的流程，收获还是蛮大的。在写这个脚本的时候，走了很多弯路，因为我觉得文件夹操作只需要<code>Finder.app</code>就可以，但总是出现各种问题，一度想到放弃，不过最后研究<code>AppleScript</code>自带的脚本示例发现要用<code>System Events</code>，到现在还不知道为什么要这么写，因为<code>AppleScript Dictionary</code>帮助文档已经写得很清楚了&#8230;oops</p>
+
+<!--more-->
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="c">-- folder for processing</span>
+</span><span class='line'><span class="k">set</span> <span class="err">_root</span> <span class="k">to</span> <span class="nb">choose folder</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c">-- saving name</span>
+</span><span class='line'><span class="k">set</span> <span class="err">_name</span> <span class="k">to</span> <span class="s2">&quot;movie&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">-- saving on desktop with given name above</span>
+</span><span class='line'><span class="k">set</span> <span class="err">_desktop</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="na">path</span> <span class="k">of</span> <span class="p">(</span><span class="nb">path to</span> <span class="nv">desktop</span><span class="p">)</span>
+</span><span class='line'><span class="k">set</span> <span class="err">_output</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="p">(</span><span class="err">_desktop</span> <span class="o">&amp;</span> <span class="s2">&quot;/&quot;</span> <span class="o">&amp;</span> <span class="err">_name</span> <span class="o">&amp;</span> <span class="nv">timestamp</span><span class="p">()</span> <span class="o">&amp;</span> <span class="s2">&quot;.txt&quot;</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">-- filter kernel</span>
+</span><span class='line'><span class="c">-- if return true, will be kept, or discarded</span>
+</span><span class='line'><span class="k">on</span> <span class="nv">processFile</span><span class="p">(</span><span class="err">_file</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_size</span> <span class="k">to</span> <span class="na">size</span> <span class="k">of</span> <span class="err">_file</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c">--keep file larger than 500MB</span>
+</span><span class='line'>      <span class="no">return</span> <span class="err">_size</span> <span class="o">≥</span> <span class="mi">500</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">tell</span>
+</span><span class='line'><span class="k">end</span> <span class="nv">processFile</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">-- script entry</span>
+</span><span class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_list</span> <span class="k">to</span> <span class="p">(</span><span class="nb">list folder</span> <span class="err">_root</span> <span class="nv">without</span> <span class="nv">invisibles</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_path</span> <span class="k">to</span> <span class="na">path</span> <span class="k">of</span> <span class="err">_root</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="p">(</span><span class="k">my</span> <span class="nv">lookForFiles</span><span class="p">(</span><span class="err">_path</span><span class="p">,</span> <span class="err">_list</span><span class="p">))</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">try</span>
+</span><span class='line'>      <span class="c">-- open file access if possible</span>
+</span><span class='line'>      <span class="nb">open for access</span> <span class="err">_output</span> <span class="nv">with</span> <span class="nb">write</span> <span class="nv">permission</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">try</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nb">set eof</span> <span class="err">_output</span> <span class="k">to</span> <span class="mi">0</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c">-- set list joining text to return</span>
+</span><span class='line'>  <span class="k">set</span> <span class="no">AppleScript</span>&#39;s <span class="no">text item delimiters</span> <span class="k">to</span> <span class="p">{</span><span class="nb">ASCII character</span> <span class="mi">13</span><span class="p">}</span>
+</span><span class='line'>  <span class="nb">write</span> <span class="p">(</span><span class="err">_result</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="k">to</span> <span class="err">_output</span> <span class="k">as</span> «<span class="nb">class utf8</span>» <span class="c">-- save to UTF-8 encoding file</span>
+</span><span class='line'>  <span class="k">set</span> <span class="no">AppleScript</span>&#39;s <span class="no">text item delimiters</span> <span class="k">to</span> <span class="p">{</span><span class="s2">&quot;&quot;</span><span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nb">close access</span> <span class="err">_output</span>
+</span><span class='line'>  
+</span><span class='line'><span class="k">end</span> <span class="k">tell</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">-- search files recursively</span>
+</span><span class='line'><span class="k">on</span> <span class="nv">lookForFiles</span><span class="p">(</span><span class="nv">prefix</span><span class="p">,</span> <span class="nv">names</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
+</span><span class='line'>      <span class="k">repeat</span> <span class="nv">with</span> <span class="nv">var</span> <span class="k">in</span> <span class="nv">names</span>
+</span><span class='line'>          <span class="k">set</span> <span class="err">_item</span> <span class="k">to</span> <span class="p">(</span><span class="nv">alias</span> <span class="p">(</span><span class="nv">prefix</span> <span class="o">&amp;</span> <span class="nv">var</span> <span class="k">as </span><span class="nc">text</span><span class="p">))</span>
+</span><span class='line'>          <span class="k">if</span> <span class="nv">kind</span> <span class="k">of</span> <span class="err">_item</span> <span class="ow">is</span> <span class="s2">&quot;文件夹&quot;</span> <span class="k">then</span>
+</span><span class='line'>              <span class="k">set</span> <span class="err">_path</span> <span class="k">to</span> <span class="na">path</span> <span class="k">of</span> <span class="err">_item</span>
+</span><span class='line'>              <span class="k">set</span> <span class="err">_list</span> <span class="k">to</span> <span class="nb">list folder</span> <span class="err">_item</span> <span class="nv">without</span> <span class="nv">invisibles</span>
+</span><span class='line'>              
+</span><span class='line'>              <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="p">(</span><span class="k">my</span> <span class="nv">lookForFiles</span><span class="p">(</span><span class="err">_path</span><span class="p">,</span> <span class="err">_list</span><span class="p">))</span>
+</span><span class='line'>          <span class="k">else</span>
+</span><span class='line'>              <span class="k">if</span> <span class="k">my</span> <span class="nv">processFile</span><span class="p">(</span><span class="err">_item</span><span class="p">)</span> <span class="k">then</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">POSIX</span> <span class="na">path</span> <span class="k">of</span> <span class="err">_item</span><span class="p">)</span>
+</span><span class='line'>              <span class="k">end</span> <span class="k">if</span>
+</span><span class='line'>          <span class="k">end</span> <span class="k">if</span>
+</span><span class='line'>          
+</span><span class='line'>      <span class="k">end</span> <span class="k">repeat</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">tell</span>
+</span><span class='line'>  <span class="no">return</span> <span class="err">_result</span>
+</span><span class='line'><span class="k">end</span> <span class="nv">lookForFiles</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">on</span> <span class="nv">timestamp</span><span class="p">()</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_date</span> <span class="k">to</span> <span class="nb">current date</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">year</span> <span class="k">of</span> <span class="err">_date</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="p">(</span><span class="k">my</span> <span class="nv">substr</span><span class="p">((</span><span class="nb">month</span> <span class="k">of</span> <span class="err">_date</span> <span class="k">as </span><span class="nc">text</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="nv">padding</span><span class="p">(</span><span class="nb">day</span> <span class="k">of</span> <span class="err">_date</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="nv">padding</span><span class="p">(</span><span class="nv">hours</span> <span class="k">of</span> <span class="err">_date</span><span class="p">)</span>
+</span><span class='line'>  <span class="c">--set _result to _result &amp; padding(minutes of _date)</span>
+</span><span class='line'>  <span class="c">--set _result to _result &amp; padding((time of _date) mod 60)</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="no">return</span> <span class="err">_result</span> <span class="k">as </span><span class="nc">text</span>
+</span><span class='line'><span class="k">end</span> <span class="nv">timestamp</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">on</span> <span class="nv">padding</span><span class="p">(</span><span class="err">_data</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_str</span> <span class="k">to</span> <span class="p">(</span><span class="err">_data</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">repeat</span>
+</span><span class='line'>      <span class="k">if</span> <span class="nv">length</span> <span class="k">of</span> <span class="err">_str</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="k">then</span>
+</span><span class='line'>          <span class="k">set</span> <span class="err">_str</span> <span class="k">to</span> <span class="p">(</span><span class="s2">&quot;0&quot;</span> <span class="o">&amp;</span> <span class="err">_str</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>          <span class="k">exit</span> <span class="k">repeat</span>
+</span><span class='line'>      <span class="k">end</span> <span class="k">if</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">repeat</span>
+</span><span class='line'>  <span class="no">return</span> <span class="err">_str</span>
+</span><span class='line'><span class="k">end</span> <span class="nv">padding</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">-- get substring from text string</span>
+</span><span class='line'><span class="k">on</span> <span class="nv">substr</span><span class="p">(</span><span class="err">_str</span><span class="p">,</span> <span class="err">_offset</span><span class="p">,</span> <span class="err">_length</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_strlen</span> <span class="k">to</span> <span class="nv">length</span> <span class="k">of</span> <span class="err">_str</span>
+</span><span class='line'>  <span class="k">if</span> <span class="err">_length</span> <span class="o">&gt;</span> <span class="err">_strlen</span> <span class="k">then</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_length</span> <span class="k">to</span> <span class="err">_strlen</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">if</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">if</span> <span class="err">_offset</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="k">then</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_offset</span> <span class="k">to</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">if</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="no">return</span> <span class="nb">text</span> <span class="err">_offset</span> <span class="nb">thru</span> <span class="p">(</span><span class="err">_offset</span> <span class="o">+</span> <span class="err">_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">of</span> <span class="err">_str</span>
+</span><span class='line'><span class="k">end</span> <span class="nv">substr</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-18T23:11:00+08:00" pubdate data-updated="true">Nov 18<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <wb:share-button type="button" size="big" relateuid="1775482650" ></wb:share-button>
+  <a href="javascript:;" id="share_btn_qq"><img src="http://mat1.gtimg.com/app/opent/images/websites/share/b32.png" border="0" alt="转播到腾讯微博"></a>
+  <script>
+  _share_tencent_weibo({
+  	"appkey":"801257161"	/*你从腾讯微博开放平台获得的appkey*/
+  	,"btn":document.getElementById("share_btn_qq")	/*一键转播按钮*/
+  	,"qshareable":false	/*不绑定Q-Share功能*/
+  	,"assname":"larryhou"	/*转播后收听的微博帐号*/
+  });
+  </script>
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/13/disk-partion-fail-with-mac/" title="Previous Post: MAC分区失败解决方法">&laquo; MAC分区失败解决方法</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>网友评论</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>近期动态</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/13/disk-partion-fail-with-mac/">MAC分区失败解决方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/11/as3proto-win/">在WIN系统使用AS3版protobuf</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/10/as3proto-osx/">在OSX系统使用AS3版protobuf</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">使用INDIRECT函数引用Excel单元格</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - larryhou -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'larryhou';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.com/blog/2012/11/18/list-folder-recursively/';
+        var disqus_url = 'http://larryhou.github.com/blog/2012/11/18/list-folder-recursively/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
