@@ -9,7 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过AppleScript要比它强大很多，对系统的融合更加深入。如果结合Calendar还可以做一些定时计划任务，非常的方便。 现在我写了一个遍历文件夹脚本，写了很久， &hellip;">
+  <meta name="description" content="最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过AppleScript要比它强大很多，对系统的融合更加深入。如果结合Calendar还可以做一些定时计划任务，非常的方便。 现在我写了一个监视共享目录的脚本，它会把最近30天、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,7 +91,7 @@
 
 <div class="entry-content"><p>最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过<code>AppleScript</code>要比它强大很多，对系统的融合更加深入。如果结合<code>Calendar</code>还可以做一些定时计划任务，非常的方便。</p>
 
-<p>现在我写了一个遍历文件夹脚本，写了很久，不过也熟悉好多命令以及编写脚本的流程，收获还是蛮大的。在写这个脚本的时候，走了很多弯路，因为我觉得文件夹操作只需要<code>Finder.app</code>就可以，但总是出现各种问题，一度想到放弃，不过最后研究<code>AppleScript</code>自带的脚本示例发现要用<code>System Events</code>，到现在还不知道为什么要这么写，因为<code>AppleScript Dictionary</code>帮助文档已经写得很清楚了&#8230;oops</p>
+<p>现在我写了一个监视共享目录的脚本，它会把最近30天、大于500MB的影片输出一个列表，虽然写了很久，不过也熟悉好多命令以及编写脚本的流程，收获还是蛮大的。在写这个脚本的时候，走了很多弯路，因为我觉得文件夹操作只需要<code>Finder.app</code>就可以，结果出现各种问题，一度想到放弃，不过最后研究<code>AppleScript</code>自带的脚本示例发现要用<code>System Events</code>，可是到现在我也不知道为什么要这样写，因为<code>AppleScript Dictionary</code>帮助文档已经写得很清楚了&#8230;oops</p>
 
 <!--more-->
 
@@ -204,50 +204,112 @@
 <span class='line-number'>104</span>
 <span class='line-number'>105</span>
 <span class='line-number'>106</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="c">-- folder for processing</span>
-</span><span class='line'><span class="k">set</span> <span class="err">_root</span> <span class="k">to</span> <span class="nb">choose folder</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">global</span> <span class="nv">SAVE_FOLDER</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">SAVE_FOLDER</span> <span class="k">to</span> <span class="s2">&quot;movies&quot;</span>
 </span><span class='line'>
+</span><span class='line'><span class="k">global</span> <span class="nv">OUTPUT_FILE</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">OUTPUT_FILE</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="p">(</span><span class="nv">POSIX</span> <span class="na">path</span> <span class="k">of</span> <span class="p">(</span><span class="nb">path to</span> <span class="nv">desktop</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nv">SAVE_FOLDER</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'><span class="c">-- saving name</span>
-</span><span class='line'><span class="k">set</span> <span class="err">_name</span> <span class="k">to</span> <span class="s2">&quot;movie&quot;</span>
+</span><span class='line'><span class="k">global</span> <span class="nv">MOVIE_SIZE</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">MOVIE_SIZE</span> <span class="k">to</span> <span class="mi">500</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
 </span><span class='line'>
-</span><span class='line'><span class="c">-- saving on desktop with given name above</span>
-</span><span class='line'><span class="k">set</span> <span class="err">_desktop</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="na">path</span> <span class="k">of</span> <span class="p">(</span><span class="nb">path to</span> <span class="nv">desktop</span><span class="p">)</span>
-</span><span class='line'><span class="k">set</span> <span class="err">_output</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="p">(</span><span class="err">_desktop</span> <span class="o">&amp;</span> <span class="s2">&quot;/&quot;</span> <span class="o">&amp;</span> <span class="err">_name</span> <span class="o">&amp;</span> <span class="nv">timestamp</span><span class="p">()</span> <span class="o">&amp;</span> <span class="s2">&quot;.txt&quot;</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span>
+</span><span class='line'><span class="k">global</span> <span class="nv">MOVIE_FORMATS</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">MOVIE_FORMATS</span> <span class="k">to</span> <span class="p">{</span><span class="s2">&quot;mov&quot;</span><span class="p">,</span> <span class="s2">&quot;mkv&quot;</span><span class="p">,</span> <span class="s2">&quot;mp4&quot;</span><span class="p">,</span> <span class="s2">&quot;rmvb&quot;</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">exists</span> <span class="nv">OUTPUT_FILE</span><span class="p">)</span> <span class="k">then</span>
+</span><span class='line'>      <span class="nb">make</span> <span class="nb">new</span> <span class="nv">folder</span> <span class="nb">at</span> <span class="p">(</span><span class="nb">path to</span> <span class="nv">desktop</span><span class="p">)</span> <span class="nv">with</span> <span class="na">properties</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span><span class="nv">SAVE_FOLDER</span><span class="p">}</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">if</span>
+</span><span class='line'><span class="k">end</span> <span class="k">tell</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">set</span> <span class="nv">OUTPUT_FILE</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="p">((</span><span class="nv">POSIX</span> <span class="na">path</span> <span class="k">of</span> <span class="nv">OUTPUT_FILE</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s2">&quot;/&quot;</span> <span class="o">&amp;</span> <span class="nv">timestamp</span><span class="p">()</span> <span class="o">&amp;</span> <span class="s2">&quot;.txt&quot;</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">-- connet remote sharing resource</span>
+</span><span class='line'><span class="nb">mount volume</span> <span class="s2">&quot;smb://10.11.8.66/IEDmovie$&quot;</span> <span class="k">as</span> <span class="nv">user</span> <span class="na">name</span> <span class="s2">&quot;larryhou&quot;</span> <span class="nv">with</span> <span class="nv">password</span> <span class="s2">&quot;password&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">-- script entry</span>
+</span><span class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_root</span> <span class="k">to</span> <span class="nv">alias</span> <span class="p">(</span><span class="na">path</span> <span class="k">of</span> <span class="nv">disk</span> <span class="s2">&quot;IEDmovie$&quot;</span><span class="p">)</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">set</span> <span class="err">_list</span> <span class="k">to</span> <span class="p">(</span><span class="nb">list folder</span> <span class="err">_root</span> <span class="nv">without</span> <span class="nv">invisibles</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_path</span> <span class="k">to</span> <span class="na">path</span> <span class="k">of</span> <span class="err">_root</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">try</span>
+</span><span class='line'>      <span class="c">-- open file access if possible</span>
+</span><span class='line'>      <span class="nb">open for access</span> <span class="nv">OUTPUT_FILE</span> <span class="nv">with</span> <span class="nb">write</span> <span class="nv">permission</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">try</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nb">set eof</span> <span class="nv">OUTPUT_FILE</span> <span class="k">to</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="p">(</span><span class="k">my</span> <span class="nv">lookForFiles</span><span class="p">(</span><span class="err">_path</span><span class="p">,</span> <span class="err">_list</span><span class="p">))</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nb">close access</span> <span class="nv">OUTPUT_FILE</span>
+</span><span class='line'>  
+</span><span class='line'><span class="k">end</span> <span class="k">tell</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">beep</span> <span class="mi">2</span> <span class="c">-- notification of finishing task with 2 times beep</span>
+</span><span class='line'><span class="nb">display dialog</span> <span class="s2">&quot;DONE!!&quot;</span> <span class="nv">with</span> <span class="nv">icon</span> <span class="nb">stop</span> <span class="nv">giving</span> <span class="nv">up</span> <span class="nb">after</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">2</span>
 </span><span class='line'>
 </span><span class='line'><span class="c">-- filter kernel</span>
 </span><span class='line'><span class="c">-- if return true, will be kept, or discarded</span>
 </span><span class='line'><span class="k">on</span> <span class="nv">processFile</span><span class="p">(</span><span class="err">_file</span><span class="p">)</span>
 </span><span class='line'>  <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
 </span><span class='line'>      <span class="k">set</span> <span class="err">_size</span> <span class="k">to</span> <span class="na">size</span> <span class="k">of</span> <span class="err">_file</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_extension</span> <span class="k">to</span> <span class="na">name</span> <span class="nv">extension</span> <span class="k">of</span> <span class="err">_file</span>
 </span><span class='line'>      
-</span><span class='line'>      <span class="c">--keep file larger than 500MB</span>
-</span><span class='line'>      <span class="no">return</span> <span class="err">_size</span> <span class="o">≥</span> <span class="mi">500</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
+</span><span class='line'>      <span class="c">-- keep files larger than MOVIE_SIZE and with specific file extension</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_available</span> <span class="k">to</span> <span class="p">(</span><span class="err">_size</span> <span class="o">≥</span> <span class="nv">MOVIE_SIZE</span> <span class="ow">and</span> <span class="p">(</span><span class="nv">MOVIE_FORMATS</span> <span class="ow">contains</span> <span class="err">_extension</span><span class="p">))</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="k">set</span> <span class="err">_date</span> <span class="k">to</span> <span class="p">(</span><span class="nv">modification</span> <span class="nv">date</span> <span class="k">of</span> <span class="err">_file</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_current</span> <span class="k">to</span> <span class="nb">current date</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c">-- keep files modified within last month</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_available</span> <span class="k">to</span> <span class="err">_available</span> <span class="ow">and</span> <span class="p">((</span><span class="err">_current</span> <span class="o">-</span> <span class="err">_date</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">)</span> <span class="o">≤</span> <span class="mi">30</span><span class="p">)</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="no">return</span> <span class="err">_available</span>
 </span><span class='line'>  <span class="k">end</span> <span class="k">tell</span>
 </span><span class='line'><span class="k">end</span> <span class="nv">processFile</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">-- script entry</span>
-</span><span class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
-</span><span class='line'>  <span class="k">set</span> <span class="err">_list</span> <span class="k">to</span> <span class="p">(</span><span class="nb">list folder</span> <span class="err">_root</span> <span class="nv">without</span> <span class="nv">invisibles</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">set</span> <span class="err">_path</span> <span class="k">to</span> <span class="na">path</span> <span class="k">of</span> <span class="err">_root</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="p">(</span><span class="k">my</span> <span class="nv">lookForFiles</span><span class="p">(</span><span class="err">_path</span><span class="p">,</span> <span class="err">_list</span><span class="p">))</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="k">try</span>
-</span><span class='line'>      <span class="c">-- open file access if possible</span>
-</span><span class='line'>      <span class="nb">open for access</span> <span class="err">_output</span> <span class="nv">with</span> <span class="nb">write</span> <span class="nv">permission</span>
-</span><span class='line'>  <span class="k">end</span> <span class="k">try</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="nb">set eof</span> <span class="err">_output</span> <span class="k">to</span> <span class="mi">0</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="c">-- set list joining text to return</span>
-</span><span class='line'>  <span class="k">set</span> <span class="no">AppleScript</span>&#39;s <span class="no">text item delimiters</span> <span class="k">to</span> <span class="p">{</span><span class="nb">ASCII character</span> <span class="mi">13</span><span class="p">}</span>
-</span><span class='line'>  <span class="nb">write</span> <span class="p">(</span><span class="err">_result</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="k">to</span> <span class="err">_output</span> <span class="k">as</span> «<span class="nb">class utf8</span>» <span class="c">-- save to UTF-8 encoding file</span>
-</span><span class='line'>  <span class="k">set</span> <span class="no">AppleScript</span>&#39;s <span class="no">text item delimiters</span> <span class="k">to</span> <span class="p">{</span><span class="s2">&quot;&quot;</span><span class="p">}</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="nb">close access</span> <span class="err">_output</span>
-</span><span class='line'>  
-</span><span class='line'><span class="k">end</span> <span class="k">tell</span>
 </span><span class='line'>
 </span><span class='line'><span class="c">-- search files recursively</span>
 </span><span class='line'><span class="k">on</span> <span class="nv">lookForFiles</span><span class="p">(</span><span class="nv">prefix</span><span class="p">,</span> <span class="nv">names</span><span class="p">)</span>
@@ -262,7 +324,29 @@
 </span><span class='line'>              <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="p">(</span><span class="k">my</span> <span class="nv">lookForFiles</span><span class="p">(</span><span class="err">_path</span><span class="p">,</span> <span class="err">_list</span><span class="p">))</span>
 </span><span class='line'>          <span class="k">else</span>
 </span><span class='line'>              <span class="k">if</span> <span class="k">my</span> <span class="nv">processFile</span><span class="p">(</span><span class="err">_item</span><span class="p">)</span> <span class="k">then</span>
-</span><span class='line'>                  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nv">POSIX</span> <span class="na">path</span> <span class="k">of</span> <span class="err">_item</span><span class="p">)</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_itemPath</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="na">path</span> <span class="k">of</span> <span class="err">_item</span>
+</span><span class='line'>                  
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_date</span> <span class="k">to</span> <span class="nv">modification</span> <span class="nv">date</span> <span class="k">of</span> <span class="err">_item</span>
+</span><span class='line'>                  
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_info</span> <span class="k">to</span> <span class="p">(</span><span class="nb">year</span> <span class="k">of</span> <span class="err">_date</span> <span class="o">&amp;</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_info</span> <span class="k">to</span> <span class="p">(</span><span class="err">_info</span> <span class="o">&amp;</span> <span class="k">my</span> <span class="nv">substr</span><span class="p">(</span><span class="nb">month</span> <span class="k">of</span> <span class="err">_date</span> <span class="k">as </span><span class="nc">text</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_info</span> <span class="k">to</span> <span class="p">(</span><span class="err">_info</span> <span class="o">&amp;</span> <span class="k">my</span> <span class="nv">padding</span><span class="p">(</span><span class="nb">day</span> <span class="k">of</span> <span class="err">_date</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s2">&quot;: &quot;</span><span class="p">)</span>
+</span><span class='line'>                  
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_current</span> <span class="k">to</span> <span class="nb">current date</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_offset</span> <span class="k">to</span> <span class="p">(</span><span class="err">_current</span> <span class="o">-</span> <span class="err">_date</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">)</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_offset</span> <span class="k">to</span> <span class="p">(</span><span class="err">_offset</span> <span class="k">as</span> <span class="nv">integer</span><span class="p">)</span>
+</span><span class='line'>                  
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_info</span> <span class="k">to</span> <span class="err">_info</span> <span class="o">&amp;</span> <span class="k">my</span> <span class="nv">padding</span><span class="p">(</span><span class="err">_offset</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s2">&quot;: &quot;</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_info</span> <span class="k">to</span> <span class="err">_info</span> <span class="o">&amp;</span> <span class="na">name</span> <span class="k">of</span> <span class="err">_item</span> <span class="o">&amp;</span> <span class="s2">&quot;: &quot;</span>
+</span><span class='line'>                  
+</span><span class='line'>                  <span class="c">-- append file path and return</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_info</span> <span class="k">to</span> <span class="err">_info</span> <span class="o">&amp;</span> <span class="err">_itemPath</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">ASCII character</span> <span class="mi">13</span><span class="p">)</span>
+</span><span class='line'>                  
+</span><span class='line'>                  <span class="c">-- save to UTF-8 encoding file</span>
+</span><span class='line'>                  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="err">_info</span>
+</span><span class='line'>                  
+</span><span class='line'>                  <span class="nb">write</span> <span class="p">(</span><span class="err">_info</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="k">to</span> <span class="nv">OUTPUT_FILE</span> <span class="k">as</span> «<span class="nb">class utf8</span>»
+</span><span class='line'>                  
 </span><span class='line'>              <span class="k">end</span> <span class="k">if</span>
 </span><span class='line'>          <span class="k">end</span> <span class="k">if</span>
 </span><span class='line'>          
@@ -308,7 +392,7 @@
 </span><span class='line'>      <span class="k">set</span> <span class="err">_offset</span> <span class="k">to</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="k">end</span> <span class="k">if</span>
 </span><span class='line'>  
-</span><span class='line'>  <span class="no">return</span> <span class="nb">text</span> <span class="err">_offset</span> <span class="nb">thru</span> <span class="p">(</span><span class="err">_offset</span> <span class="o">+</span> <span class="err">_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">of</span> <span class="err">_str</span>
+</span><span class='line'>  <span class="no">return</span> <span class="nb">text</span> <span class="err">_offset</span> <span class="nb">thru</span> <span class="p">(</span><span class="err">_offset</span> <span class="o">+</span> <span class="err">_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">of</span> <span class="err">_str</span> <span class="k">as </span><span class="nc">text</span>
 </span><span class='line'><span class="k">end</span> <span class="nv">substr</span>
 </span></code></pre></td></tr></table></div></figure>
 
