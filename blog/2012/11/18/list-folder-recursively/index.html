@@ -398,6 +398,48 @@
 
 
 
+
+<figure class='code'><figcaption><span>list folder recursively  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">on</span> <span class="nv">recurseFolder</span><span class="p">(</span><span class="err">_folder</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_list</span> <span class="k">to</span> <span class="nb">list folder</span> <span class="err">_folder</span> <span class="nv">without</span> <span class="nv">invisibles</span>
+</span><span class='line'>  <span class="k">set</span> <span class="err">_path</span> <span class="k">to</span> <span class="err">_folder</span> <span class="k">as </span><span class="nc">string</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">repeat</span> <span class="nv">with</span> <span class="err">_name</span> <span class="k">in</span> <span class="err">_list</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_item</span> <span class="k">to</span> <span class="nv">alias</span> <span class="p">(</span><span class="err">_path</span> <span class="o">&amp;</span> <span class="err">_name</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">set</span> <span class="err">_info</span> <span class="k">to</span> <span class="nb">info for</span> <span class="err">_item</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="k">if</span> <span class="nv">folder</span> <span class="k">of</span> <span class="err">_info</span> <span class="k">then</span>
+</span><span class='line'>          <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="k">my</span> <span class="nv">recurseFolder</span><span class="p">(</span><span class="err">_item</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>          <span class="k">set</span> <span class="err">_result</span> <span class="k">to</span> <span class="err">_result</span> <span class="o">&amp;</span> <span class="nv">POSIX</span> <span class="na">path</span> <span class="k">of</span> <span class="err">_item</span>
+</span><span class='line'>      <span class="k">end</span> <span class="k">if</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">repeat</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="no">return</span> <span class="err">_result</span>
+</span><span class='line'><span class="k">end</span> <span class="nv">recurseFolder</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
 
 
