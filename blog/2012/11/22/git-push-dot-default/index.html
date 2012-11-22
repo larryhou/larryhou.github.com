@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>简介 - larryhou</title>
+  <title>GIT设置push.default - larryhou</title>
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="简介 Oct 22nd, 2012 @larryhou email: larryhou@foxmail.com Oct 22nd, 2012 _share_tencent_weibo({ "appkey":"801257161"	/*你从腾讯微博开放平台获得的appkey*/ ,"btn": &hellip;">
+  <meta name="description" content="今天使用git push命令，结果出现一堆以前没见过的东西 warning: push.default 未设置，它的默认值将会在 Git 2.0 由 &#8216;matching&#8217;修改为 &#8216;simple&#8217;。若要不再显示本信息并在其默认值改变后维持当前使用习惯， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://larryhou.github.com/blog/about/">
+  <link rel="canonical" href="http://larryhou.github.com/blog/2012/11/22/git-push-dot-default/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -60,34 +60,15 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">简介</h1>
-    <p class="meta">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-22T13:58:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time></p>
-  </header>
-  
-  <h4>@larryhou</h4>
-
-<h4>email: larryhou@foxmail.com</h4>
-
-  
-    <footer>
+    
+      <h1 class="entry-title">GIT设置push.default</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
@@ -99,11 +80,54 @@
   
 
 
-<time datetime="2012-10-22T13:58:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time>
+<time datetime="2012-11-22T14:50:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>今天使用<code>git push</code>命令，结果出现一堆以前没见过的东西</p>
+
+<blockquote><p>warning: push.default 未设置，它的默认值将会在 Git 2.0 由 &#8216;matching&#8217;<br/>修改为 &#8216;simple&#8217;。若要不再显示本信息并在其默认值改变后维持当前使用习惯，<br/>进行如下设置：</p><p>  git config &#8211;global push.default matching</p><p>若要不再显示本信息并从现在开始采用新的使用习惯，设置：</p><p>  git config &#8211;global push.default simple</p><p>参见 &#8216;git help config&#8217; 并查找 &#8216;push.default&#8217; 以获取更多信息。<br/>（&#8217;simple&#8217; 模式由 Git 1.7.11 版本引入。如果您有时要使用老版本的 Git，<br/>为保持兼容，请用 &#8216;current&#8217; 代替 &#8216;simple&#8217; 模式）</p><footer><strong>Terminal.app</strong> <cite>GIT With Version 1.8.0</cite></footer></blockquote>
+
+
+<p>尼玛，乍一看吓一跳还以为代码出错了，解决这个问题很简单，按照上面的提示在Terminal.app里面运行一下脚本</p>
+
+<blockquote><p>git config &#8211;global push.default matching</p></blockquote>
+
+<p>我在纳闷，GIT版本更新后为毛不自动设置一下.gitconfig配置呢？还要我手动操作一下，难道是想介绍GIT的这新功能？</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
+  
+
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-22T14:50:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
   
   
   
@@ -120,10 +144,21 @@
   </script>
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2012/11/21/interface-protocol-and-category/" title="Previous Post: Interface, Protocol, Category and Extension in Objective-C">&laquo; Interface, Protocol, Category and Extension in Objective-C</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>网友评论</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -174,6 +209,22 @@
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'larryhou';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.com/blog/2012/11/22/git-push-dot-default/';
+        var disqus_url = 'http://larryhou.github.com/blog/2012/11/22/git-push-dot-default/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

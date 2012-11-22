@@ -9,7 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="假如你要学习Objective-C，那么你需要搞清楚interface、protocol、category以及extension这几个概念，它们在代码的出现频率非常高，也非常有用。本文将对这几个概念一一来说明，并介绍各自的使用方法。">
+  <meta name="description" content="今天使用git push命令，结果出现一堆以前没见过的东西 warning: push.default 未设置，它的默认值将会在 Git 2.0 由 &#8216;matching&#8217;修改为 &#8216;simple&#8217;。若要不再显示本信息并在其默认值改变后维持当前使用习惯， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -61,6 +61,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-22T14:50:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
+        
+         | <a href="/blog/2012/11/22/git-push-dot-default/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天使用<code>git push</code>命令，结果出现一堆以前没见过的东西</p>
+
+<blockquote><p>warning: push.default 未设置，它的默认值将会在 Git 2.0 由 &#8216;matching&#8217;<br/>修改为 &#8216;simple&#8217;。若要不再显示本信息并在其默认值改变后维持当前使用习惯，<br/>进行如下设置：</p><p>  git config &#8211;global push.default matching</p><p>若要不再显示本信息并从现在开始采用新的使用习惯，设置：</p><p>  git config &#8211;global push.default simple</p><p>参见 &#8216;git help config&#8217; 并查找 &#8216;push.default&#8217; 以获取更多信息。<br/>（&#8217;simple&#8217; 模式由 Git 1.7.11 版本引入。如果您有时要使用老版本的 Git，<br/>为保持兼容，请用 &#8216;current&#8217; 代替 &#8216;simple&#8217; 模式）</p><footer><strong>Terminal.app</strong> <cite>GIT With Version 1.8.0</cite></footer></blockquote>
+
+
+<p>尼玛，乍一看吓一跳还以为代码出错了，解决这个问题很简单，按照上面的提示在Terminal.app里面运行一下脚本</p>
+
+<blockquote><p>git config &#8211;global push.default matching</p></blockquote>
+
+<p>我在纳闷，GIT版本更新后为毛不自动设置一下.gitconfig配置呢？还要我手动操作一下，难道是想介绍GIT的这新功能？</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -457,49 +504,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/26/install-git-with-macport/">Install Git With Macport</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-26T16:27:00+08:00" pubdate data-updated="true">Oct 26<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/26/install-git-with-macport/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的<code>git-svn</code>不见了，这里是用<code>macport</code>安装的脚本，以备下次重装又要google半天&#8230;</p>
-
-<figure class='code'><figcaption><span>install git with svn</span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port install git-core +svn +doc +bash_completion +gitweb</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -515,6 +519,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a>
       </li>
     
@@ -528,10 +536,6 @@
     
       <li class="post">
         <a href="/blog/2012/11/11/as3proto-win/">在WIN系统使用AS3版protobuf</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/10/as3proto-osx/">在OSX系统使用AS3版protobuf</a>
       </li>
     
   </ul>
