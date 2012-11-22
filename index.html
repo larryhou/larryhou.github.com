@@ -9,7 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过AppleScript要比它强大很多，对系统的融合更加深入。如果结合Calendar还可以做一些定时计划任务，非常的方便。 现在我写了一个监视共享目录的脚本，它会把最近30天、 &hellip;">
+  <meta name="description" content="假如你要学习Objective-C，那么你需要搞清楚interface、protocol、category以及extension这几个概念，它们在代码的出现频率非常高，也非常有用。本文将对这几个概念一一来说明，并介绍各自的使用方法。">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -61,6 +61,47 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-21T21:12:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2012</time>
+        
+         | <a href="/blog/2012/11/21/interface-protocol-and-category/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>假如你要学习Objective-C，那么你需要搞清楚interface、protocol、category以及extension这几个概念，它们在代码的出现频率非常高，也非常有用。本文将对这几个概念一一来说明，并介绍各自的使用方法。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/21/interface-protocol-and-category/">阅读全文&#8230;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -459,72 +500,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">BitmapData.draw() 和 DisplayObject.blendMode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-25T00:00:00+08:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&#8230;oops</p>
-
-<figure class='code'><figcaption><span>simple exmaple  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='actionscript3'><span class='line'><span class="kd">var</span> <span class="n">container</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObjectContainer</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'><span class="kd">var</span> <span class="n">childA</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'><span class="kd">var</span> <span class="n">childB</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">childA</span><span class="o">.</span><span class="na">blendMode</span> <span class="o">=</span> <span class="n">BlendMode</span><span class="o">.</span><span class="na">ADD</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childA</span><span class="o">);</span>
-</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childB</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="n">data</span><span class="p">:</span><span class="kt">BitmapData</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">BitmapData</span><span class="o">(</span><span class="n">container</span><span class="o">.</span><span class="na">width</span><span class="o">,</span> <span class="n">container</span><span class="o">.</span><span class="na">height</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">container</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>如上面这段代码，看起来没有什么问题，但是如果把<code>data</code>通过<code>Bitmap</code>显示出来，就会发现效果有些诡异，这是因为<code>BitmapData</code>在<code>draw</code>的时候，会自动忽略<code>childA.blendMode</code>属性，除非把<code>childA</code>的父级容器设置为<code>container.blendMode = BlendMode.LAYER</code>。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -540,6 +515,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a>
       </li>
     
@@ -553,10 +532,6 @@
     
       <li class="post">
         <a href="/blog/2012/11/10/as3proto-osx/">在OSX系统使用AS3版protobuf</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">使用INDIRECT函数引用Excel单元格</a>
       </li>
     
   </ul>
