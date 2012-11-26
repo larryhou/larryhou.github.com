@@ -4,7 +4,7 @@
   <title><![CDATA[larryhou]]></title>
   <link href="http://larryhou.github.com/atom.xml" rel="self"/>
   <link href="http://larryhou.github.com/"/>
-  <updated>2012-11-26T12:22:30+08:00</updated>
+  <updated>2012-11-26T21:40:22+08:00</updated>
   <id>http://larryhou.github.com/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -12,6 +12,164 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[脚本中的嵌套变量]]></title>
+    <link href="http://larryhou.github.com/blog/2012/11/26/nested-variable/"/>
+    <updated>2012-11-26T20:38:00+08:00</updated>
+    <id>http://larryhou.github.com/blog/2012/11/26/nested-variable</id>
+    <content type="html"><![CDATA[<h2>OSX系统</h2>
+
+<p>这里有一段简单脚本，</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">name1</span><span class="o">=</span>larry01
+</span><span class='line'><span class="nv">name2</span><span class="o">=</span>larry02
+</span><span class='line'><span class="nv">name3</span><span class="o">=</span>larry03
+</span><span class='line'><span class="nv">name4</span><span class="o">=</span>larry04
+</span><span class='line'><span class="nv">name5</span><span class="o">=</span>larry05
+</span><span class='line'><span class="nv">name6</span><span class="o">=</span>larry06
+</span><span class='line'><span class="nv">name7</span><span class="o">=</span>larry07
+</span><span class='line'><span class="nv">name8</span><span class="o">=</span>larry08
+</span><span class='line'><span class="nv">name9</span><span class="o">=</span>larry09
+</span><span class='line'>
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name1</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name2</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name3</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name4</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name5</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name6</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name7</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name8</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name9</span> wants to sleep.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在脚本中，我把每一个name都按照一定的规律做了一些操作，现在看来好像没什么问题。但是如果name有很多很多，这么写就很苦逼了，并且很容易出错。我们习惯让电脑做重复有规律的工作，让人从重复的劳动中解脱出来。那么这是一个很好的案例，该怎么解脱呢？看起来很简单，有代码经验的同学很容易想到使用循环来实现，这个思路是对的，name1~name9这几个有规律的字符串是很容通过脚本来实现的。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">i</span><span class="o">=</span>1
+</span><span class='line'><span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 9 <span class="o">]</span>
+</span><span class='line'><span class="k">do</span>
+</span><span class='line'><span class="k">  </span><span class="nb">echo </span>name<span class="nv">$i</span>
+</span><span class='line'>  <span class="nv">i</span><span class="o">=</span><span class="nv">$[$i</span> + 1<span class="o">]</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但是仅仅获得变量名对我们是没多大帮助的，要是这些动态计算出来的变量名能够动态计算出值来就太好了。其实我们可以通过<code>eval</code>命令来实现我们的想法，</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">name1</span><span class="o">=</span>larry01
+</span><span class='line'><span class="nv">name2</span><span class="o">=</span>larry02
+</span><span class='line'><span class="nv">name3</span><span class="o">=</span>larry03
+</span><span class='line'><span class="nv">name4</span><span class="o">=</span>larry04
+</span><span class='line'><span class="nv">name5</span><span class="o">=</span>larry05
+</span><span class='line'><span class="nv">name6</span><span class="o">=</span>larry06
+</span><span class='line'><span class="nv">name7</span><span class="o">=</span>larry07
+</span><span class='line'><span class="nv">name8</span><span class="o">=</span>larry08
+</span><span class='line'><span class="nv">name9</span><span class="o">=</span>larry09
+</span><span class='line'>
+</span><span class='line'><span class="nv">i</span><span class="o">=</span>1
+</span><span class='line'><span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 9 <span class="o">]</span>
+</span><span class='line'><span class="k">do</span>
+</span><span class='line'><span class="k">  </span><span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">eval echo</span> <span class="se">\$</span><span class="o">{</span>name<span class="nv">$i</span><span class="o">}</span><span class="k">)</span>
+</span><span class='line'>  <span class="nb">echo</span> <span class="nv">$name</span> wants to sleep.
+</span><span class='line'>  <span class="nv">i</span><span class="o">=</span><span class="nv">$[$i</span> + 1<span class="o">]</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>是不是很好玩！</p>
+
+<h2>WIN系统</h2>
+
+<p>同样的需求在WIN系统该怎么实现？<br/>
+我们可以使用DOS命令，虽然比起shell命令DOS弱爆了，但是它还是能够完成任务的。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="k">set</span> <span class="nv">name1</span><span class="o">=</span>larry<span class="m">01</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name2</span><span class="o">=</span>larry<span class="m">02</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name3</span><span class="o">=</span>larry<span class="m">03</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name4</span><span class="o">=</span>larry<span class="m">04</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name5</span><span class="o">=</span>larry<span class="m">05</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name6</span><span class="o">=</span>larry<span class="m">06</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name7</span><span class="o">=</span>larry<span class="m">07</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name8</span><span class="o">=</span>larry<span class="m">08</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name9</span><span class="o">=</span>larry<span class="m">09</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
+</span><span class='line'><span class="k">FOR</span> <span class="n">/L</span> <span class="nv">%%i</span> in (<span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">9</span>) <span class="k">do</span> <span class="k">echo</span> !name<span class="nv">%%i</span>! wants to sleep.
+</span><span class='line'><span class="k">ENDLOCAL</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看出DOS里面使用两个感叹号括住对应变量组合就可以计算出相应的变量值，但是有个前提：要先设置<code>SETLOCAL ENABLEDELAYEDEXPANSION</code>。待处理结束后再运行<code>ENDLOCAL</code>，否则后面含有感叹号的地方都不能正常显示。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[自定义Xcode代码模板：Code Snippet]]></title>
