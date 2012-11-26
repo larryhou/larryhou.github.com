@@ -4,7 +4,7 @@
   <title><![CDATA[larryhou]]></title>
   <link href="http://larryhou.github.com/atom.xml" rel="self"/>
   <link href="http://larryhou.github.com/"/>
-  <updated>2012-11-26T12:19:55+08:00</updated>
+  <updated>2012-11-26T12:22:30+08:00</updated>
   <id>http://larryhou.github.com/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -18,7 +18,7 @@
     <link href="http://larryhou.github.com/blog/2012/11/26/customize-xcode-snippet/"/>
     <updated>2012-11-26T09:40:00+08:00</updated>
     <id>http://larryhou.github.com/blog/2012/11/26/customize-xcode-snippet</id>
-    <content type="html"><![CDATA[<p>Xcode强大的代码提示功能是有目共睹的，用过都知道，可是你是否想过添加一些自定义的代码提示模板？你是否想让if默认的左括号挪到下一行？还有for、while、switch等等……如果你有这方面的需求的话，这篇文章刚好可以帮助你！</p>
+    <content type="html"><![CDATA[<p>Xcode强大的代码提示功能是有目共睹的，用过都知道，可是你是否想过添加一些自定义的代码提示模板？你是否想让if默认的左括号挪到下一行？还有for、while、switch等等……如果你有这方面的需求的话，这篇文章刚好可以帮到你！ <!--more--></p>
 
 <p>在Xcode左下角有个花括号的页签，这里面存储了很多代码提示模板，如下图</p>
 
