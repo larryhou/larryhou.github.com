@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Install git with macport - larryhou</title>
+  <title>MAN输出文本可读性增强技巧 - larryhou</title>
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的git-svn不见了，这里是用macport安装的脚本，以备下次重装又要google半天&#8230; install git with svn
-1
-sudo port install git-core +svn +doc + &hellip;">
+  <meta name="description" content="有时候在Terminal查看帮助实在是痛苦：只能显示几行，所以我就想在文本文件里面查看这些帮助（比如，TextMate），如果你使用类似man col > ~/downloads/col.txt，你会发现这简直是个悲剧，见下图 这完全不是我想要的结果，没有任何可读性，这是怎么回事儿呢？ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ sudo port install git-core +svn +doc + &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://larryhou.github.com/blog/2012/10/26/install-git-with-macport/">
+  <link rel="canonical" href="http://larryhou.github.com/blog/2012/11/29/make-man-output-readable/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -66,7 +64,7 @@ sudo port install git-core +svn +doc + &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Install Git With Macport</h1>
+      <h1 class="entry-title">MAN输出文本可读性增强技巧</h1>
     
     
       <p class="meta">
@@ -82,7 +80,7 @@ sudo port install git-core +svn +doc + &hellip;">
   
 
 
-<time datetime="2012-10-26T16:27:00+08:00" pubdate data-updated="true">Oct 26<span>th</span>, 2012</time>
+<time datetime="2012-11-29T13:38:00+08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -91,11 +89,29 @@ sudo port install git-core +svn +doc + &hellip;">
   </header>
 
 
-<div class="entry-content"><p>不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的<code>git-svn</code>不见了，这里是用<code>macport</code>安装的脚本，以备下次重装又要google半天&#8230;</p>
+<div class="entry-content"><p>有时候在Terminal查看帮助实在是痛苦：只能显示几行，所以我就想在文本文件里面查看这些帮助（比如，TextMate），如果你使用类似<code>man col > ~/downloads/col.txt</code>，你会发现这简直是个悲剧，见下图</p>
 
-<figure class='code'><figcaption><span>install git with svn</span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port install git-core +svn +doc +bash_completion +gitweb</span></code></pre></td></tr></table></div></figure>
+<p><img src="/images/make-man-output-readable/fig01.png"></p>
+
+<p>这完全不是我想要的结果，没有任何可读性，这是怎么回事儿呢？我Google到了一段文字可以解释这个问题：</p>
+
+<blockquote><p>Ever try to open a man page in TextEdit using <code>man | open -f</code>? <br/>You end up with the kind of unreadable repeated characters shown here. This all dates back to the days of dot matrix and daisy wheel printing when the only way you could produce bold type was to repeatedly print characters. <br/>Fortunately, there&#8217;s an easy way to convert man pages into simple, non-redundant text. Use the command-line utility <code>col</code> with the <code>-b</code> flag enabled. For example, <code>man col | col -b | open -f</code> will open the col man page in TextEdit without repeated characters. The <code>-b</code> flag tells col to exclude all but the last character written to any column, ignoring any backspaces and repeats.</p></blockquote>
+
+
+<p>这是一个历史遗留问题，可以追溯到使用点阵和菊花轮印刷的旧时代，那个时候为了得到粗体字体样式采用的是反复重复印刷的手段。幸运的是，有个简单的方法可以让man帮助变得简单可读、没有冗余字符，可以在man后面使用管道添加<code>col -b</code>来实现，其中<code>-b</code>标记位意思是忽略退格键以及去掉所有重复字符。比如，得到<code>col</code>的帮助可以使用<code>man col | col -b | open -f</code>，这里<code>open -f</code> 意思是使用默认文本编辑器打开，如下图</p>
+
+<p><img src="/images/make-man-output-readable/fig02.png"></p>
+
+<p>最后总结一下：</p>
+
+<ul>
+<li><p>man帮助输出到文本文件</p>
+
+<blockquote><p>man [command] | col -b > [file saving path]</p></blockquote></li>
+<li><p>man帮助直接用文本编辑器打开</p>
+
+<blockquote><p>man [command] | col -b | open -f</p></blockquote></li>
+</ul>
 
 </div>
 
@@ -119,7 +135,7 @@ sudo port install git-core +svn +doc + &hellip;">
   
 
 
-<time datetime="2012-10-26T16:27:00+08:00" pubdate data-updated="true">Oct 26<span>th</span>, 2012</time>
+<time datetime="2012-11-29T13:38:00+08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2012</time>
       
 
 
@@ -145,10 +161,8 @@ sudo port install git-core +svn +doc + &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/" title="Previous Post: BitmapData.draw() 和 DisplayObject.blendMode">&laquo; BitmapData.draw() 和 DisplayObject.blendMode</a>
+        <a class="basic-alignment left" href="/blog/2012/11/26/nested-variable/" title="Previous Post: 脚本中的嵌套变量">&laquo; 脚本中的嵌套变量</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/11/05/applescript-xun-huan/" title="Next Post: AppleScript：循环">AppleScript：循环 &raquo;</a>
       
     </p>
   </footer>
@@ -215,8 +229,8 @@ sudo port install git-core +svn +doc + &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://larryhou.github.com/blog/2012/10/26/install-git-with-macport/';
-        var disqus_url = 'http://larryhou.github.com/blog/2012/10/26/install-git-with-macport/';
+        var disqus_identifier = 'http://larryhou.github.com/blog/2012/11/29/make-man-output-readable/';
+        var disqus_url = 'http://larryhou.github.com/blog/2012/11/29/make-man-output-readable/';
         var disqus_script = 'embed.js';
       
     (function () {
