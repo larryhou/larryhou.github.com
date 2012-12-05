@@ -439,6 +439,39 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>再补充一个shell版本同功能的脚本</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">cd</span> ~/remote/movie
+</span><span class='line'>
+</span><span class='line'><span class="nv">TIMESTAMP</span><span class="o">=</span><span class="k">$(</span><span class="nb">eval </span>date <span class="s1">&#39;+%Y%m%d%h&#39;</span><span class="k">)</span>
+</span><span class='line'><span class="nv">OUTPUT</span><span class="o">=</span>~/Desktop/movies/<span class="nv">$TIMESTAMP</span>.txt
+</span><span class='line'>
+</span><span class='line'>mount_smbfs //larryhou@10.11.8.66/IEDmovie<span class="nv">$ </span>.
+</span><span class='line'>find -E . -regex <span class="s1">&#39;.*\.(mp4|rmvb|mkv)$&#39;</span> -size +300M -ctime -2d -exec ls -lhc <span class="o">{}</span> <span class="se">\;</span> | sed -E <span class="s1">&#39;s|^.+staff[^a-z0-9]*||&#39;</span> | sed -E <span class="s1">&#39;s|./([^/]+/)+([^/]+)$|\2 @&amp;|g&#39;</span> &gt; <span class="nv">$OUTPUT</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">#| sed -E &#39;s|([0-9:]+ )+||g&#39; &gt; $OUTPUT</span>
+</span><span class='line'>diskutil unmount force .
+</span><span class='line'>
+</span><span class='line'>mate <span class="nv">$OUTPUT</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
