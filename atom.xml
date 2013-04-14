@@ -4,7 +4,7 @@
   <title><![CDATA[larryhou]]></title>
   <link href="http://larryhou.github.com/atom.xml" rel="self"/>
   <link href="http://larryhou.github.com/"/>
-  <updated>2013-03-18T12:23:08+08:00</updated>
+  <updated>2013-04-14T13:04:06+08:00</updated>
   <id>http://larryhou.github.com/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -21,6 +21,17 @@
     <content type="html"><![CDATA[<p>如果你的安装光盘丢失了，怎么才能在Mac系统安装佳能工具软件呢？你可能已经在<a href="http://support-cn.canon-asia.com" title="佳能驱动与软件官网">官网</a>搜查过了，但是你会发现找不到对应的安装软件！是这样的，官网只有升级软件下载，那这岂不是很尴尬：升级软件安装的前提是先安装原版软件，但是现在又没有安装盘，死循环了！！其实这些升级软件另有玄机，里面都有安装包的，但是如果要直接运行，你可能要麻烦一下。<!--more--></p>
 
 <p>首先，去<a href="http://support-cn.canon-asia.com" title="佳能驱动与软件官网">官网</a>下载系统版本对应的最新升级包，然后逐个测试一下三种方法，直至安装成功为止；如果，尝试了三种方式还是不能安装，那么表示本博客太旧了你需要另外google一下，或者联系作者（<em>larryhou@foxmail.com</em>）更新博客！</p>
+
+<h2>DPP 3.12.52</h2>
+
+<ul>
+<li>从官网下载dpp3.12.52x.dmg</li>
+<li>双击装载镜像，复制dpp3.12.52x_updater.app到任意其他目录（比如：下载）</li>
+<li>在dpp3.12.52x_updater.app上鼠标右键，点击“显示包内容/Show Package Contents”</li>
+<li>进入Contents/Resources/目录，删除Info.datx文件</li>
+<li>返回上一级目录Contents，进入MacOS目录，双击运行OFICore</li>
+</ul>
+
 
 <h2>方法（一）</h2>
 
