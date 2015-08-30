@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>自定义Xcode代码模板：Code Snippet - larryhou</title>
+  <meta name="author" content="larryhou">
+
+  
+  <meta name="description" content="Xcode强大的代码提示功能是有目共睹的，用过都知道，可是你是否想过添加一些自定义的代码提示模板？你是否想让if默认的左括号挪到下一行？还有for、while、switch等等……如果你有这方面的需求的话，这篇文章刚好可以帮到你！ 在Xcode左下角有个花括号的页签，这里面存储了很多代码提示模板， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://larryhou.github.com/blog/2012/11/26/customize-xcode-snippet/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="" rel="alternate" title="larryhou" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=" type="text/javascript" charset="utf-8"></script>
+<script src="http://mat1.gtimg.com/app/opent/js/qshare_min.js"></script>
+
+  
+
+</head>
+
+<body    class="collapse-sidebar" >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <!--<li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>-->
+  
+</ul>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">博客归档</a></li>
+  <li><a href="/blog/about">简介</a></li>
+</ul>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1>larryhou</h1>
+  
+    <h2>Actionscript Programer & Objective-C Developer</h2>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">自定义Xcode代码模板：Code Snippet</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T09:40:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Xcode强大的代码提示功能是有目共睹的，用过都知道，可是你是否想过添加一些自定义的代码提示模板？你是否想让if默认的左括号挪到下一行？还有for、while、switch等等……如果你有这方面的需求的话，这篇文章刚好可以帮到你！ <!--more--></p>
+
+<p>在Xcode左下角有个花括号的页签，这里面存储了很多代码提示模板，如下图</p>
+
+<p><img src="/images/customize-xcode-snippet/fig01.png"><br/>
+点击列表里面任一个项目都会弹出一个说明框，里面有个<strong>Edit</strong>和<strong>Done</strong>按钮，这很容易让人产生编辑的想法，其实这是个错觉：这些内置的代码模板是不可编辑的！你看到这里可能会有点着急，因为你可能想问那if左括号是不是不能挪到下一行了？！其实，你如果用过Apple的产品，那你应该会想到Apple不会这么SB，这些都是可以编辑的！下面我们介绍编辑Xcode内置代码模板。</p>
+
+<h2>编辑Xcode内置代码模板</h2>
+
+<p>Xcode的所有代码模板是用一个plist格式xml文件描述的，这文件存储在Xcode的安装目录：</p>
+
+<blockquote><p>/Applications/Xcode.app/Contents/PlugIns/IDECodeSnippetLibrary.ideplugin/Contents/Resources/¬
+SystemCodeSnippets.codesnippets</p></blockquote>
+
+<p>可以用任意文本编辑器打开这个代码模板配置文件，这是一段if的代码模板的XML配置,</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>IDECodeSnippetVersion<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>IDECodeSnippetCompletionPrefix<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>if<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>IDECodeSnippetContents<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>if (<span class="ni">&amp;lt;</span>#condition#<span class="ni">&amp;gt;</span>) {
+</span><span class='line'><span class="ni">&amp;lt;</span>#statements#<span class="ni">&amp;gt;</span>
+</span><span class='line'>}<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>IDECodeSnippetIdentifier<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>D70E6D11-0297-4BAB-88AA-86D5D5CBBC5D<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>IDECodeSnippetLanguage<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>Xcode.SourceCodeLanguage.C<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>IDECodeSnippetSummary<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>Used for executing code only when a certain condition is true.<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>IDECodeSnippetTitle<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;string&gt;</span>If Statement<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;key&gt;</span>IDECodeSnippetCompletionScopes<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;string&gt;</span>CodeBlock<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/array&gt;</span>
+</span><span class='line'><span class="nt">&lt;/dict&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>其中IDECodeSnippetContents字段表示具体代码模板的内容，虽然Xcode不允许编辑内置的代码模板，但是Xcode允许用户自定义代码模板，并且每个模板有一个唯一标识符IDECodeSnippetIdentifier，其中if模板的唯一标记是D70E6D11-0297-4BAB-88AA-86D5D5CBBC5D，那么既然每个代码模板是唯一存在的，那么如果自定义的模板的唯一标识符与内置代码模板相同了会发生什么情况？覆盖！这是我们修改内置代码模板的关键入口，也是核心思想！</p>
+
+<p>到这里一切都变得很清晰了：我们只要自定义一个相同标识符的带模板就可以覆盖内置的代码模板。官方文档介绍了创建自定义模板的方法：在Xcode输入代码模板代码，然后拖拽到Xcode的模板栏，然后点击“<strong>Edit</strong>”就是可以做相关的修改，编辑完后点击“<strong>Done</strong>”就可以使用了，然后在下面这个目录可以找到模板配置文件。</p>
+
+<blockquote><p>~/Library/Developer/Xcode/UserData/CodeSnippets/</p></blockquote>
+
+<p>如果你用上述方法添加了一个自定义模板，那么你在这个目录可能看到类似D70E6D11-0297-4BAB-88AA-86D5D5CBBC5D.codesnippet命名的文件，其实这个文件名就是模板的唯一标识符。其实我们并不想要这样的命名方式，因为不方便维护以及分享，虽然在Xcode里面可以很方便地编辑他们。庆幸的是这个文件名是可以修改的，你可以像这样用一些有含义的字符来修改命名。<br/>
+<img src="/images/customize-xcode-snippet/fig02.png"></p>
+
+<p>但是有个问题：Xcode会自动为我们的模板分配一个唯一标识符，这样就不能达到覆盖的目的。有些同学可能想到从SystemCodeSnippets.codesnippets配置里面查找相关的标识符，然后黏贴过来，这样确实可以达到目的。不过现在我给大家推荐另外一种方法。</p>
+
+<p>首先，到SystemCodeSnippets.codesnippets里面找到你要修改的模板配置，然后复制黏贴到如下这段配置中</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!--code config here--&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plist&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后修改IDECodeSnippetVersion键值为2，暂时不确定为什么要这么修改，但是Xcode生成的自定义模板配置都是这个值，保持默认1也没多大问题，只是Xcode有时会自动用标识符替换你的自定义命名，所以用2是比较合适的。这样还没完，因为还要添加一个键值为true的字段IDECodeSnippetUserSnippet，该字段标记了模板是否为自定义的，如果是自定义的模板但是没有这个字段，你的Xcode启动后可能会崩溃&#8230;orz</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;key&gt;</span>IDECodeSnippetUserSnippet<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'><span class="nt">&lt;true/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>那么如果替换内置的if模板，那么完整的配置应该是这样的。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetCompletionPrefix<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>if<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetCompletionScopes<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;string&gt;</span>CodeBlock<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/array&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetContents<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>if (<span class="ni">&amp;lt;</span>#condition#<span class="ni">&amp;gt;</span>)
+</span><span class='line'>{
+</span><span class='line'>    <span class="ni">&amp;lt;</span>#statements#<span class="ni">&amp;gt;</span>
+</span><span class='line'>}<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetIdentifier<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>5163356F-D409-4EDA-B263-EA2E07A50B9C<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetLanguage<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>Xcode.SourceCodeLanguage.C<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetSummary<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>Used for executing code only when a certain condition is true.<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetTitle<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>If Statement<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetUserSnippet<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;true/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetVersion<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;integer&gt;</span>2<span class="nt">&lt;/integer&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/dict&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plist&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>你可能注意到类似&amp;lt;#condition#&amp;gt;这样的代码，它们是什么呢？你再写代码遇到代码提示的时候，可能遇到过蓝色泡泡一样的东西，可以用Tab键来切换，那么这个奇怪的字符就是用来添加蓝色泡泡的。因为这是XML配置，所以做了HTML转义；如果你在Xcode里面编辑模板并添加蓝色泡泡的话，直接输入&lt;#condition#>即可，##符号之间可以为任意字符。</p>
+
+<h2>隐藏代码模板提示</h2>
+
+<p>有时候你可能想要隐藏某个内置的模板，这样的需求也是可以完成的。你只需要把IDECodeSnippetCompletionPrefix字段的键值留空既可以，如果你把如下这段配置保存到模板目录，那么你的Xcode将不再弹出if语句的代码提示。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetCompletionPrefix<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetCompletionScopes<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;string&gt;</span>CodeBlock<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/array&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetContents<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>if (<span class="ni">&amp;lt;</span>#condition#<span class="ni">&amp;gt;</span>)
+</span><span class='line'>{
+</span><span class='line'>    <span class="ni">&amp;lt;</span>#statements#<span class="ni">&amp;gt;</span>
+</span><span class='line'>}<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetIdentifier<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>5163356F-D409-4EDA-B263-EA2E07A50B9C<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetLanguage<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>Xcode.SourceCodeLanguage.C<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetSummary<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>Used for executing code only when a certain condition is true.<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetTitle<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>If Statement<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetUserSnippet<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;true/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>IDECodeSnippetVersion<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;integer&gt;</span>2<span class="nt">&lt;/integer&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/dict&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plist&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在Xcode里面输入if，就不见了if statement的提示</p>
+
+<p><img src="/images/customize-xcode-snippet/fig03.png"></p>
+
+<p>是不是很酷？！</p>
+
+<p>最后总结一下自定义的注意事项：</p>
+
+<blockquote><ul>
+<li>自定义目录不能有相同标识符的模板，否则Xcode启动后会崩溃；</li>
+<li>自定义母的模板标识符可以跟系统默认模板标识符相同，可以达到覆盖效果；</li>
+<li>若要使用自定义模板覆盖系统模板，则必须有DECodeSnippetUserSnippet字段，否则Xcode启动后会崩溃;</li>
+</ul>
+</blockquote>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T09:40:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <wb:share-button type="button" size="big" relateuid="1775482650" ></wb:share-button>
+  <a href="javascript:;" id="share_btn_qq"><img src="http://mat1.gtimg.com/app/opent/images/websites/share/b32.png" border="0" alt="转播到腾讯微博"></a>
+  <script>
+  _share_tencent_weibo({
+  	"appkey":"801257161"	/*你从腾讯微博开放平台获得的appkey*/
+  	,"btn":document.getElementById("share_btn_qq")	/*一键转播按钮*/
+  	,"qshareable":false	/*不绑定Q-Share功能*/
+  	,"assname":"larryhou"	/*转播后收听的微博帐号*/
+  });
+  </script>
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/22/git-push-dot-default/" title="Previous Post: GIT设置push.default">&laquo; GIT设置push.default</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/26/nested-variable/" title="Next Post: 脚本中的嵌套变量">脚本中的嵌套变量 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>网友评论</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>近期动态</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/21/flashdevelop-cannot-show-up/">flashdevelop cannot show up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/18/install-canon-tools-on-mac/">在Mac系统安装佳能软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/nested-variable/">脚本中的嵌套变量</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/customize-xcode-snippet/">自定义Xcode代码模板：Code Snippet</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - larryhou -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'larryhou';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.com/blog/2012/11/26/customize-xcode-snippet/';
+        var disqus_url = 'http://larryhou.github.com/blog/2012/11/26/customize-xcode-snippet/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

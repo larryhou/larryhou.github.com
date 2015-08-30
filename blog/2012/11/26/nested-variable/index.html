@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>脚本中的嵌套变量 - larryhou</title>
+  <meta name="author" content="larryhou">
+
+  
+  <meta name="description" content="OSX系统 这里有一段简单脚本， 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+#!/bin/bash name1=larry01
+name2=larry02
+name3=larry03
+name4=larry04
+name5= &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://larryhou.github.com/blog/2012/11/26/nested-variable/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="" rel="alternate" title="larryhou" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=" type="text/javascript" charset="utf-8"></script>
+<script src="http://mat1.gtimg.com/app/opent/js/qshare_min.js"></script>
+
+  
+
+</head>
+
+<body    class="collapse-sidebar" >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <!--<li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>-->
+  
+</ul>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">博客归档</a></li>
+  <li><a href="/blog/about">简介</a></li>
+</ul>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1>larryhou</h1>
+  
+    <h2>Actionscript Programer & Objective-C Developer</h2>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">脚本中的嵌套变量</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T20:38:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>OSX系统</h2>
+
+<p>这里有一段简单脚本，</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">name1</span><span class="o">=</span>larry01
+</span><span class='line'><span class="nv">name2</span><span class="o">=</span>larry02
+</span><span class='line'><span class="nv">name3</span><span class="o">=</span>larry03
+</span><span class='line'><span class="nv">name4</span><span class="o">=</span>larry04
+</span><span class='line'><span class="nv">name5</span><span class="o">=</span>larry05
+</span><span class='line'><span class="nv">name6</span><span class="o">=</span>larry06
+</span><span class='line'><span class="nv">name7</span><span class="o">=</span>larry07
+</span><span class='line'><span class="nv">name8</span><span class="o">=</span>larry08
+</span><span class='line'><span class="nv">name9</span><span class="o">=</span>larry09
+</span><span class='line'>
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name1</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name2</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name3</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name4</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name5</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name6</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name7</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name8</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name9</span> wants to sleep.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在脚本中，我把每一个name都按照一定的规律做了一些操作，现在看来好像没什么问题。但是如果name有很多很多，这么写就很苦逼了，并且很容易出错。<!--more-->我们习惯让电脑做重复有规律的工作，让人从重复的劳动中解脱出来。那么这是一个很好的案例，该怎么解脱呢？看起来很简单，有代码经验的同学很容易想到使用循环来实现，这个思路是对的，name1~name9这几个有规律的字符串是很容通过脚本来实现的。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">i</span><span class="o">=</span>1
+</span><span class='line'><span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 9 <span class="o">]</span>
+</span><span class='line'><span class="k">do</span>
+</span><span class='line'><span class="k">  </span><span class="nb">echo </span>name<span class="nv">$i</span>
+</span><span class='line'>  <span class="nv">i</span><span class="o">=</span><span class="nv">$[$i</span> + 1<span class="o">]</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但是仅仅获得变量名对我们是没多大帮助的，要是这些动态计算出来的变量名能够动态计算出值来就太好了。其实我们可以通过<code>eval</code>命令来实现我们的想法，</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">name1</span><span class="o">=</span>larry01
+</span><span class='line'><span class="nv">name2</span><span class="o">=</span>larry02
+</span><span class='line'><span class="nv">name3</span><span class="o">=</span>larry03
+</span><span class='line'><span class="nv">name4</span><span class="o">=</span>larry04
+</span><span class='line'><span class="nv">name5</span><span class="o">=</span>larry05
+</span><span class='line'><span class="nv">name6</span><span class="o">=</span>larry06
+</span><span class='line'><span class="nv">name7</span><span class="o">=</span>larry07
+</span><span class='line'><span class="nv">name8</span><span class="o">=</span>larry08
+</span><span class='line'><span class="nv">name9</span><span class="o">=</span>larry09
+</span><span class='line'>
+</span><span class='line'><span class="nv">i</span><span class="o">=</span>1
+</span><span class='line'><span class="k">while</span> <span class="o">[</span> <span class="nv">$i</span> -le 9 <span class="o">]</span>
+</span><span class='line'><span class="k">do</span>
+</span><span class='line'><span class="k">  </span><span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">eval echo</span> <span class="se">\$</span><span class="o">{</span>name<span class="nv">$i</span><span class="o">}</span><span class="k">)</span>
+</span><span class='line'>  <span class="nb">echo</span> <span class="nv">$name</span> wants to sleep.
+</span><span class='line'>  <span class="nv">i</span><span class="o">=</span><span class="nv">$[$i</span> + 1<span class="o">]</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>是不是很好玩！</p>
+
+<h2>WIN系统</h2>
+
+<p>同样的需求在WIN系统该怎么实现？<br/>
+我们可以使用DOS命令，虽然比起shell命令DOS弱爆了，但是它还是能够完成任务的。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="k">set</span> <span class="nv">name1</span><span class="o">=</span>larry<span class="m">01</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name2</span><span class="o">=</span>larry<span class="m">02</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name3</span><span class="o">=</span>larry<span class="m">03</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name4</span><span class="o">=</span>larry<span class="m">04</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name5</span><span class="o">=</span>larry<span class="m">05</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name6</span><span class="o">=</span>larry<span class="m">06</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name7</span><span class="o">=</span>larry<span class="m">07</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name8</span><span class="o">=</span>larry<span class="m">08</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">name9</span><span class="o">=</span>larry<span class="m">09</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
+</span><span class='line'><span class="k">FOR</span> <span class="n">/L</span> <span class="nv">%%i</span> in (<span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">9</span>) <span class="k">do</span> <span class="k">echo</span> !name<span class="nv">%%i</span>! wants to sleep.
+</span><span class='line'><span class="k">ENDLOCAL</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看出DOS里面使用两个感叹号括住对应变量组合就可以计算出相应的变量值，但是有个前提：要先设置<code>SETLOCAL ENABLEDELAYEDEXPANSION</code>。待处理结束后再运行<code>ENDLOCAL</code>，否则后面含有感叹号的地方都不能正常显示。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T20:38:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <wb:share-button type="button" size="big" relateuid="1775482650" ></wb:share-button>
+  <a href="javascript:;" id="share_btn_qq"><img src="http://mat1.gtimg.com/app/opent/images/websites/share/b32.png" border="0" alt="转播到腾讯微博"></a>
+  <script>
+  _share_tencent_weibo({
+  	"appkey":"801257161"	/*你从腾讯微博开放平台获得的appkey*/
+  	,"btn":document.getElementById("share_btn_qq")	/*一键转播按钮*/
+  	,"qshareable":false	/*不绑定Q-Share功能*/
+  	,"assname":"larryhou"	/*转播后收听的微博帐号*/
+  });
+  </script>
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/26/customize-xcode-snippet/" title="Previous Post: 自定义Xcode代码模板：Code Snippet">&laquo; 自定义Xcode代码模板：Code Snippet</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/29/make-man-output-readable/" title="Next Post: MAN输出文本可读性增强技巧">MAN输出文本可读性增强技巧 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>网友评论</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>近期动态</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/21/flashdevelop-cannot-show-up/">flashdevelop cannot show up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/18/install-canon-tools-on-mac/">在Mac系统安装佳能软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/nested-variable/">脚本中的嵌套变量</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/customize-xcode-snippet/">自定义Xcode代码模板：Code Snippet</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - larryhou -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'larryhou';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.com/blog/2012/11/26/nested-variable/';
+        var disqus_url = 'http://larryhou.github.com/blog/2012/11/26/nested-variable/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
