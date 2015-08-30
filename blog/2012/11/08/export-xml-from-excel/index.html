@@ -1,0 +1,530 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>使用Excel导出XML格式文件 - LARRY HOU</title>
+  <meta name="author" content="larryhou">
+
+  
+  <meta name="description" content="生成XML的方式有很多：如果你是程序员，那么你可以通过变成快速生成你想要的XML格式；如果你是其他用户，你可能会使用记事本等文本编辑工具来手动写XML。这些都不是问题，但是数据量很大的时候，如果你不是程序猿会不会郁闷？本文介绍了一种方法不借助编程也可以高效、快速地生成XML配置文件。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://larryhou.github.io/blog/2012/11/08/export-xml-from-excel/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- <link href="" rel="alternate" title="LARRY HOU" type="application/atom+xml"> -->
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+
+  
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">LARRY HOU</a></h1>
+  
+    <h2>Apple Swift Programmer & Addict</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><!-- <ul class="subscription" data-subscription="rss">
+  <li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+   -->
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">全部文章</a></li>
+  <li><a href="/blog/about">联系作者</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">使用Excel导出XML格式文件</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-08T10:08:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:08 am</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>生成XML的方式有很多：如果你是程序员，那么你可以通过变成快速生成你想要的XML格式；如果你是其他用户，你可能会使用记事本等文本编辑工具来手动写XML。这些都不是问题，但是数据量很大的时候，如果你不是程序猿会不会郁闷？<!--more-->本文介绍了一种方法不借助编程也可以高效、快速地生成XML配置文件。在看这篇文章之前，我先假定了你们都会用微软Office工具Excel，其实不会问题也不是很大:-D</p>
+
+<p>假设现在有个任务，要生成一个班的学生XML配置，这个配置包含学生的学号、姓名、性别、年龄、出生年月信息，那么现在有两种XML格式可以选择：</p>
+
+<figure class='code'><figcaption><span>1.把每个学生做成一个XML节点，相关信息描述到属性字段 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;&quot;</span> <span class="na">name=</span><span class="s">&quot;&quot;</span> <span class="na">sex=</span><span class="s">&quot;&quot;</span> <span class="na">age=</span><span class="s">&quot;&quot;</span> <span class="na">birth=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>2.把每个学生的相关信息分别做成一个单独XML节点 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;student&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;id&gt;&lt;/id&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;name&gt;&lt;/name&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;sex&gt;&lt;/sex&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;age&gt;&lt;/age&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;birth&gt;&lt;/birth&gt;</span>
+</span><span class='line'><span class="nt">&lt;/student&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以很容易发现第一种描述更简洁，看起来有点小清新的感觉，我们现在就以第一种格式来介绍生成XML的方法。不过你真的很喜欢第二种方式，看到最后你惊喜地发现，我的方法也可解决你的问题。</p>
+
+<p>现在回归正题，如果用Excel去录入这些数据，大家很可能是这样来做数据，这样做很容易理解，并且容易批量拖拽处理。<img src="/images/export-xml-from-excel/fig01.png">
+到这里我们可以发现，其实Excel可以完全把我们的数据描述清楚，那么如果Excel能把这些数据转成XML岂不是很好？是的，Excel可以做这些，但是Excel不知道你想要的XML格式，所以要给Excel定一个规则让它直到我们想要什么字段、输出什么格式。现在有两种方法给Excel指定输出规则：简单XML映射、SchemaXML映射，下面分别来做介绍。</p>
+
+<h2>简单XML映射</h2>
+
+<p>对于上面的数据我们用下面这段XML来描述，然后保存为rule.xml文件。</p>
+
+<figure class='code'><figcaption><span>简单XML映射规则 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;data&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;&quot;</span> <span class="na">name=</span><span class="s">&quot;&quot;</span> <span class="na">sex=</span><span class="s">&quot;&quot;</span> <span class="na">age=</span><span class="s">&quot;&quot;</span> <span class="na">birth=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;&quot;</span> <span class="na">name=</span><span class="s">&quot;&quot;</span> <span class="na">sex=</span><span class="s">&quot;&quot;</span> <span class="na">age=</span><span class="s">&quot;&quot;</span> <span class="na">birth=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/data&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>data</code>是输出XML的根节点，<code>student</code>是单个学生信息节点，这两个字段限定了XML输出的节点名称，<code>&lt;student&gt;&lt;/student&gt;</code>数据描述了单条XML节点属性的字段名称。这样整个输出规则就定制好了，是不是非常简单？可能会疑惑为什么有两条重复的<code>student</code>数据，这里我先不透露，大家可以看完这篇文章后自己试试看看什么效果。</p>
+
+<p>接下来我们把这个XML规则导入Excel，进入“<strong>文件</strong>-><strong>选项</strong>-><strong>自定义功能区</strong>”，右边栏里面找到<strong>开发工具</strong>，确保其前面的复选框被勾上，并且确保<strong>XML</strong>前面的复选框也被勾上，如下图</p>
+
+<p><img src="/images/export-xml-from-excel/fig02.png"></p>
+
+<p>然后返回主界面，在选项卡区域找到<strong>开发工具</strong>，点击<strong>源</strong>按钮，这时Excel会出现一个左边栏，这时导入XML规则的入口操作界面，</p>
+
+<p><img src="/images/export-xml-from-excel/fig03.png"></p>
+
+<p>点击“<strong>XML 映射&hellip;</strong>-><strong>添加</strong>”，把之前保存的<strong>rule.xml</strong>文件导入进来，这时右边栏会出现一个树形的属性列表，列表字段就是<strong>rule.xml</strong>规则里面定义的字段，这些自动都是可以拖拽的：把<code>id</code>拖拽到<code>学号</code>栏，一次类推，把所有的字段都映射到Excel的数据栏。
+<img src="/images/export-xml-from-excel/fig04.png"></p>
+
+<p>这样就完成了所有的规则定义以及映射工作，接下来就是高潮来临的时刻：<strong>输出XML配置</strong>。这一步非常简单，只需要点击一个按钮“<strong>开发者工具</strong>-><strong>导出</strong>”，然后选择你要输出的文件位置保存即可。</p>
+
+<figure class='code'><figcaption><span>XML导出结果</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;data&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325035&quot;</span> <span class="na">name=</span><span class="s">&quot;name::01&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">major=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;33349&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325036&quot;</span> <span class="na">name=</span><span class="s">&quot;name::02&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">major=</span><span class="s">&quot;22&quot;</span> <span class="na">birth=</span><span class="s">&quot;33208&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325037&quot;</span> <span class="na">name=</span><span class="s">&quot;name::03&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">major=</span><span class="s">&quot;20&quot;</span> <span class="na">birth=</span><span class="s">&quot;33744&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325038&quot;</span> <span class="na">name=</span><span class="s">&quot;name::04&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">major=</span><span class="s">&quot;20&quot;</span> <span class="na">birth=</span><span class="s">&quot;33914&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325039&quot;</span> <span class="na">name=</span><span class="s">&quot;name::05&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">major=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;33398&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325040&quot;</span> <span class="na">name=</span><span class="s">&quot;name::06&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">major=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;33403&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325041&quot;</span> <span class="na">name=</span><span class="s">&quot;name::07&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">major=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;33366&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325042&quot;</span> <span class="na">name=</span><span class="s">&quot;name::08&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">major=</span><span class="s">&quot;23&quot;</span> <span class="na">birth=</span><span class="s">&quot;32712&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325043&quot;</span> <span class="na">name=</span><span class="s">&quot;name::09&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">major=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;33536&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325044&quot;</span> <span class="na">name=</span><span class="s">&quot;name::10&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">major=</span><span class="s">&quot;20&quot;</span> <span class="na">birth=</span><span class="s">&quot;33672&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325045&quot;</span> <span class="na">name=</span><span class="s">&quot;name::11&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">major=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;33397&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/data&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>整个操作是不是很简单？结果是不是很完美？！！细心的同学可能发现了出生日期导出的好像有点奇怪，其实不必诧异：这时Excel表示日期的原始数据。但是跟想象的结果好像有点出入，你是否想对输出的格式作进一步的限制？如果是，那么下一个章节是你需要关注的。</p>
+
+<h2>SchemaXML映射</h2>
+
+<p>其实我对Schema XML的了解也不太多，有一点我是可以确认的：<strong>SchemaXML是一个XML内容的规则，它描述了XML有什么样的内容，并限定了XML内容有什么格式；简单说它是一个XML的语法规范</strong>。为什么这样说呢？因为实际上我们为XML定义的没一个字段都是有其含义的，比如<strong>年龄</strong>字段只可能是一个整数，不可能是其他字符串之类的值；而<strong>出生日期</strong>就是一个日期格式，以此类推。这样你就会有点豁然开朗的感觉，是的，SchemaXML可以描述任意XML内容。到这里，我们可以用SchemaXML做Excel导出XML的规则就一点不奇怪了，应该说用它就最合适不过了！SchemaXML其实也是一个XML文件，但是写起来相对有点门槛。如果为上面的数据写一个SchemaXML规则，那么就应该类似下面这样：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;xs:schema</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;data&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;xs:complexType&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;xs:sequence&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;xs:element</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span> <span class="na">name=</span><span class="s">&quot;student&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;xs:complexType&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;sex&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;age&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;xs:attribute</span> <span class="na">name=</span><span class="s">&quot;birth&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:date&quot;</span> <span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;/xs:complexType&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;/xs:element&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/xs:sequence&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/xs:complexType&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/xs:element&gt;</span>
+</span><span class='line'><span class="nt">&lt;/xs:schema&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>具体SchemaXML里面的这些字段表示什么意思，这就超出了本文介绍的范围，有兴趣的同学可以Google一些相关资料来学习一下。除了学习资料，也可以使用现成的可视化工具来生成配置，比如OxygenXML、LiquidXML等。下面是Oxygen可视化编辑工具的界面
+<img src="/images/export-xml-from-excel/fig05.png">
+这里就不对这些工具做过多的介绍，有兴趣的同学可以下来体验下。</p>
+
+<p>把上面这段SchemaXML规则保存为<strong>rule.xsd</strong>文件，采用导入<strong>rule.xml</strong>的方式导入rule.xsd文件，导入后也会生成类似的树形字段列表，然后拖拽映射到相应的Excel数据列上，点击导出即可。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;data&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325035&quot;</span> <span class="na">name=</span><span class="s">&quot;name::01&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">age=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;1991-04-21&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325036&quot;</span> <span class="na">name=</span><span class="s">&quot;name::02&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">age=</span><span class="s">&quot;22&quot;</span> <span class="na">birth=</span><span class="s">&quot;1990-12-01&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325037&quot;</span> <span class="na">name=</span><span class="s">&quot;name::03&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">age=</span><span class="s">&quot;20&quot;</span> <span class="na">birth=</span><span class="s">&quot;1992-05-20&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325038&quot;</span> <span class="na">name=</span><span class="s">&quot;name::04&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">age=</span><span class="s">&quot;20&quot;</span> <span class="na">birth=</span><span class="s">&quot;1992-11-06&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325039&quot;</span> <span class="na">name=</span><span class="s">&quot;name::05&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">age=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;1991-06-09&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325040&quot;</span> <span class="na">name=</span><span class="s">&quot;name::06&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">age=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;1991-06-14&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325041&quot;</span> <span class="na">name=</span><span class="s">&quot;name::07&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">age=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;1991-05-08&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325042&quot;</span> <span class="na">name=</span><span class="s">&quot;name::08&quot;</span> <span class="na">sex=</span><span class="s">&quot;0&quot;</span> <span class="na">age=</span><span class="s">&quot;23&quot;</span> <span class="na">birth=</span><span class="s">&quot;1989-07-23&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325043&quot;</span> <span class="na">name=</span><span class="s">&quot;name::09&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">age=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;1991-10-25&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325044&quot;</span> <span class="na">name=</span><span class="s">&quot;name::10&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">age=</span><span class="s">&quot;20&quot;</span> <span class="na">birth=</span><span class="s">&quot;1992-03-09&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;5325045&quot;</span> <span class="na">name=</span><span class="s">&quot;name::11&quot;</span> <span class="na">sex=</span><span class="s">&quot;1&quot;</span> <span class="na">age=</span><span class="s">&quot;21&quot;</span> <span class="na">birth=</span><span class="s">&quot;1991-06-08&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/data&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这是使用SchemaXML导出的配置结果，在日期字段里面月份、日期如果是一位数字的前面会自动补0占位，看起来非常工整。</p>
+
+<h2>每个字段单独输出XML节点</h2>
+
+<p>这中方式映射与字段输出属性模式是非常类似，区别只是规则定义格式的差别，如果使用简单XML做规则，那么就应该是这样</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;data&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;id&gt;&lt;/id&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;name&gt;&lt;/name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;sex&gt;&lt;/sex&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;age&gt;&lt;/age&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;birth&gt;&lt;/birth&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/student&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;student&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;id&gt;&lt;/id&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;name&gt;&lt;/name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;sex&gt;&lt;/sex&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;age&gt;&lt;/age&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;birth&gt;&lt;/birth&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/student&gt;</span>
+</span><span class='line'><span class="nt">&lt;/data&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这里的规则与上面类似，也是重复两段<code>student</code>，这个是必须的，原理也同上面类似。</p>
+
+<p>如果使用SchemaXML，那么规则应该这样</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;xs:schema</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;data&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;xs:complexType&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;xs:sequence&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;xs:element</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span> <span class="na">name=</span><span class="s">&quot;student&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;xs:complexType&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;xs:sequence&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;sex&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;age&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;birth&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:date&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;/xs:sequence&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;/xs:complexType&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;/xs:element&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/xs:sequence&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/xs:complexType&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/xs:element&gt;</span>
+</span><span class='line'><span class="nt">&lt;/xs:schema&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>相应的Oxygen可视化模型大致如下图</p>
+
+<p><img src="/images/export-xml-from-excel/fig06.png"></p>
+
+<h2>注意事项</h2>
+
+<ul>
+<li>虽然XML、SchemaXML规则可以描述很复杂的XML内容，但是Excel只支持最多二级的XML配置导出</li>
+<li>使用XML做规则时，一定不能只使用一条数据来描述，否则生成的结果只有Excel标题栏文本，而不是数据本身</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-11-08T10:08:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:08 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/05/remote-debug-with-charles-proxy/" title="Previous Post: 使用charles远程调试iOS移动应用">&laquo; 使用charles远程调试iOS移动应用</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/" title="Next Post: 使用INDIRECT函数引用Excel单元格">使用INDIRECT函数引用Excel单元格 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/21/flashdevelop-cannot-show-up/">Flashdevelop Cannot Show Up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/18/install-canon-tools-on-mac/">在Mac系统安装佳能软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/nested-variable/">脚本中的嵌套变量</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/customize-xcode-snippet/">自定义Xcode代码模板：Code Snippet</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/13/disk-partion-fail-with-mac/">MAC分区失败解决方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/11/as3proto-win/">在WIN系统使用AS3版protobuf</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/larryhou">@larryhou</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'larryhou',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - larryhou -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'larryhou';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.io/blog/2012/11/08/export-xml-from-excel/';
+        var disqus_url = 'http://larryhou.github.io/blog/2012/11/08/export-xml-from-excel/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<!-- 
+ -->
+<!-- 
+ -->
+<!-- 
+ -->
+
+
+
+</body>
+</html>

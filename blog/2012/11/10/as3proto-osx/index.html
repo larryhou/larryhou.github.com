@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>在OSX系统使用AS3版protobuf - LARRY HOU</title>
+  <meta name="author" content="larryhou">
+
+  
+  <meta name="description" content="该项目搭建了 AS3 protobuf 所需的OSX运行环境以及AS3类库，整合了Google protobuf和protobuf-actionscript3第三方插件资源，本文来介绍一下AS3版protobuf的使用方法。 编译安装protoc命令行 在Terminal里面进入sdk/ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://larryhou.github.io/blog/2012/11/10/as3proto-osx/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- <link href="" rel="alternate" title="LARRY HOU" type="application/atom+xml"> -->
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+
+  
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">LARRY HOU</a></h1>
+  
+    <h2>Apple Swift Programmer & Addict</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><!-- <ul class="subscription" data-subscription="rss">
+  <li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+   -->
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">全部文章</a></li>
+  <li><a href="/blog/about">联系作者</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">在OSX系统使用AS3版protobuf</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-10T23:30:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:30 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="https://github.com/larryhou/as3proto-osx" title="Actionscript3.0版protobuf">该项目</a>搭建了 AS3 protobuf 所需的OSX运行环境以及AS3类库，整合了Google <a href="http://code.google.com/p/protobuf/" title="[v2.3.0] http://code.google.com/p/protobuf/">protobuf</a>和<a href="http://code.google.com/p/protobuf-actionscript3/" title="http://code.google.com/p/protobuf-actionscript3/">protobuf-actionscript3</a>第三方插件资源，本文来介绍一下AS3版protobuf的使用方法。</p>
+
+<!--more-->
+
+
+<p></p>
+
+<ul>
+<li><strong>编译安装protoc命令行</strong>   <br/>
+在Terminal里面进入sdk/project目录，运行下面脚本</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>./configure
+</span><span class='line'>  
+</span><span class='line'>make
+</span><span class='line'>make check
+</span><span class='line'>sudo make install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>检查protobuf是否安装成功</strong><br/>
+在Terminal中输入，回车</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>protoc --help
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>检查一下帮助内容是否包含&ndash;as3_out选项</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>--as3_out<span class="o">=</span>OUT_DIR           Generate ActionScript <span class="nb">source </span>file.
+</span><span class='line'>--cpp_out<span class="o">=</span>OUT_DIR           Generate C++ header and source.
+</span><span class='line'>--java_out<span class="o">=</span>OUT_DIR          Generate Java <span class="nb">source </span>file.
+</span><span class='line'>--python_out<span class="o">=</span>OUT_DIR        Generate Python <span class="nb">source </span>file.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>使用命令行生成AS3代码</strong></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>protoc --proto_path<span class="o">=</span>proto --as3_out<span class="o">=</span>output proto/hello.proto
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>使用protobuf.sh快速代码生成</strong><br/>
+打开protobuf.sh文本文件
+
+<ul>
+<li>把OUTPUT_DIR设置成AS3保存目录，支持绝对目录、相对目录</li>
+<li>把PROTO_DIR设置成*.proto文件存储目录</li>
+</ul>
+</li>
+</ul>
+
+
+<p>在Terminal里面进入protobuf.sh所在目录</p>
+
+<p>hell.proto文件内容</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='as3'><span class='line'><span class="n">message</span> <span class="n">HelloWorld</span><span class="o">{</span>
+</span><span class='line'>    <span class="n">optional</span> <span class="n">int32</span> <span class="n">code</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>    <span class="n">optional</span> <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class='line'>    <span class="n">optional</span> <span class="n">Info</span> <span class="n">info</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">message</span> <span class="n">Info</span><span class="o">{</span>
+</span><span class='line'>        <span class="n">optional</span> <span class="n">string</span> <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>运行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sh protobuf.sh
+</span><span class='line'>  
+</span><span class='line'>- - - - - - - - - - - - -
+</span><span class='line'>Type proto file name:
+</span><span class='line'>hello
+</span><span class='line'>
+</span><span class='line'>-&gt; proto/hello.proto
+</span><span class='line'>- - - - -
+</span><span class='line'>
+</span><span class='line'>DONE! Press ENTER key to <span class="k">continue</span>...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在OUTPUT_DIR目录里面就可以得到相应的AS3代码</p>
+
+<p>HelloWorld.as代码内容</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='as3'><span class='line'><span class="c1">// Generated by the protocol buffer compiler.  DO NOT EDIT!</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">package</span>  <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">import</span> <span class="nn">com.google.protobuf.</span><span class="o">*;</span>
+</span><span class='line'>  <span class="k">import</span> <span class="nn">flash.utils.</span><span class="o">*;</span>
+</span><span class='line'>  <span class="k">import</span> <span class="nn">com.hurlant.math.BigInteger</span><span class="o">;</span>
+</span><span class='line'>  <span class="k">import</span> <span class="nn">Info</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="n">HelloWorld</span> <span class="kd">extends</span> <span class="n">Message</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">function </span><span class="nf">HelloWorld</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">registerField</span><span class="o">(</span><span class="s2">&quot;code&quot;</span><span class="o">,</span><span class="s2">&quot;&quot;</span><span class="o">,</span><span class="n">Descriptor</span><span class="o">.</span><span class="na">INT32</span><span class="o">,</span><span class="n">Descriptor</span><span class="o">.</span><span class="na">LABEL_OPTIONAL</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">registerField</span><span class="o">(</span><span class="s2">&quot;name&quot;</span><span class="o">,</span><span class="s2">&quot;&quot;</span><span class="o">,</span><span class="n">Descriptor</span><span class="o">.</span><span class="na">STRING</span><span class="o">,</span><span class="n">Descriptor</span><span class="o">.</span><span class="na">LABEL_OPTIONAL</span><span class="o">,</span><span class="mi">2</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">registerField</span><span class="o">(</span><span class="s2">&quot;info&quot;</span><span class="o">,</span><span class="s2">&quot;Info&quot;</span><span class="o">,</span><span class="n">Descriptor</span><span class="o">.</span><span class="na">MESSAGE</span><span class="o">,</span><span class="n">Descriptor</span><span class="o">.</span><span class="na">LABEL_OPTIONAL</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="c1">// optional int32 code = 1;</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">var</span> <span class="n">code</span><span class="p">:</span><span class="kt">int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// optional string name = 2;</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">var</span> <span class="n">name</span><span class="p">:</span><span class="kt">String</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// optional .HelloWorld.Info info = 3;</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">var</span> <span class="n">info</span><span class="p">:</span><span class="kt">Info</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>  
+</span><span class='line'>  
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Info.as代码内容</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='as3'><span class='line'><span class="c1">// Generated by the protocol buffer compiler.  DO NOT EDIT!</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">package</span>  <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">import</span> <span class="nn">com.google.protobuf.</span><span class="o">*;</span>
+</span><span class='line'>  <span class="k">import</span> <span class="nn">flash.utils.</span><span class="o">*;</span>
+</span><span class='line'>  <span class="k">import</span> <span class="nn">com.hurlant.math.BigInteger</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="n">Info</span> <span class="kd">extends</span> <span class="n">Message</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">function </span><span class="nf">Info</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">registerField</span><span class="o">(</span><span class="s2">&quot;version&quot;</span><span class="o">,</span><span class="s2">&quot;&quot;</span><span class="o">,</span><span class="n">Descriptor</span><span class="o">.</span><span class="na">STRING</span><span class="o">,</span><span class="n">Descriptor</span><span class="o">.</span><span class="na">LABEL_OPTIONAL</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="c1">// optional string version = 1;</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">var</span> <span class="n">version</span><span class="p">:</span><span class="kt">String</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-11-10T23:30:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:30 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/" title="Previous Post: 使用INDIRECT函数引用Excel单元格">&laquo; 使用INDIRECT函数引用Excel单元格</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/11/as3proto-win/" title="Next Post: 在WIN系统使用AS3版protobuf">在WIN系统使用AS3版protobuf &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/21/flashdevelop-cannot-show-up/">Flashdevelop Cannot Show Up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/18/install-canon-tools-on-mac/">在Mac系统安装佳能软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/nested-variable/">脚本中的嵌套变量</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/customize-xcode-snippet/">自定义Xcode代码模板：Code Snippet</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/13/disk-partion-fail-with-mac/">MAC分区失败解决方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/11/as3proto-win/">在WIN系统使用AS3版protobuf</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/larryhou">@larryhou</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'larryhou',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - larryhou -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'larryhou';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.io/blog/2012/11/10/as3proto-osx/';
+        var disqus_url = 'http://larryhou.github.io/blog/2012/11/10/as3proto-osx/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<!-- 
+ -->
+<!-- 
+ -->
+<!-- 
+ -->
+
+
+
+</body>
+</html>

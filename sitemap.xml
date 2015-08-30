@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://larryhou.github.io/blog/2013/08/21/flashdevelop-cannot-show-up/</loc>
+    <lastmod>2013-08-21T10:55:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2013/03/18/install-canon-tools-on-mac/</loc>
+    <lastmod>2013-03-18T11:40:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/29/make-man-output-readable/</loc>
+    <lastmod>2012-11-29T13:38:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/26/nested-variable/</loc>
+    <lastmod>2012-11-26T20:38:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/26/customize-xcode-snippet/</loc>
+    <lastmod>2012-11-26T09:40:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/22/git-push-dot-default/</loc>
+    <lastmod>2012-11-22T14:50:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/21/interface-protocol-and-category/</loc>
+    <lastmod>2012-11-21T21:12:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/18/list-folder-recursively/</loc>
+    <lastmod>2012-11-18T23:11:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/13/disk-partion-fail-with-mac/</loc>
+    <lastmod>2012-11-13T21:27:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/11/as3proto-win/</loc>
+    <lastmod>2012-11-11T17:39:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/10/as3proto-osx/</loc>
+    <lastmod>2012-11-10T23:30:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/</loc>
+    <lastmod>2012-11-09T23:58:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/08/export-xml-from-excel/</loc>
+    <lastmod>2012-11-08T10:08:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/05/remote-debug-with-charles-proxy/</loc>
+    <lastmod>2012-11-05T16:38:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/11/05/applescript-xun-huan/</loc>
+    <lastmod>2012-11-05T01:07:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/10/26/install-git-with-macport/</loc>
+    <lastmod>2012-10-26T16:27:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/</loc>
+    <lastmod>2012-10-25T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/2012/10/22/ActionScript-Syntax-Highlight/</loc>
+    <lastmod>2012-10-22T00:00:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/blog/about/</loc>
+  </url>
+  <url>
     <loc>http://larryhou.github.io/blog/archives/</loc>
   </url>
   <url>
     <loc>http://larryhou.github.io/</loc>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/posts/2/</loc>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/posts/3/</loc>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/posts/4/</loc>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/posts/5/</loc>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/posts/6/</loc>
   </url>
 </urlset>

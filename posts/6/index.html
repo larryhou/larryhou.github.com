@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>LARRY HOU</title>
+  <meta name="author" content="larryhou">
+
+  
+  <meta name="description" content="不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的git-svn不见了，这里是用macport安装的脚本，以备下次重装又要google半天&hellip; install git with svn
+1
+sudo port install git-core +svn +doc + &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://larryhou.github.io/posts/6/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- <link href="" rel="alternate" title="LARRY HOU" type="application/atom+xml"> -->
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+
+  
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">LARRY HOU</a></h1>
+  
+    <h2>Apple Swift Programmer & Addict</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><!-- <ul class="subscription" data-subscription="rss">
+  <li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+   -->
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">全部文章</a></li>
+  <li><a href="/blog/about">联系作者</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/26/install-git-with-macport/">Install Git With Macport</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-26T16:27:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>4:27 pm</span></time>
+        
+           | <a href="/blog/2012/10/26/install-git-with-macport/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/26/install-git-with-macport/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的<code>git-svn</code>不见了，这里是用<code>macport</code>安装的脚本，以备下次重装又要google半天&hellip;</p>
+
+<figure class='code'><figcaption><span>install git with svn</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port install git-core +svn +doc +bash_completion +gitweb</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">BitmapData.draw() 和 DisplayObject.blendMode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-25T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&hellip;oops</p>
+
+<figure class='code'><figcaption><span>simple exmaple </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='actionscript3'><span class='line'><span class="kd">var</span> <span class="n">container</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObjectContainer</span> <span class="kd">class</span><span class="o">]();</span>
+</span><span class='line'><span class="kd">var</span> <span class="n">childA</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
+</span><span class='line'><span class="kd">var</span> <span class="n">childB</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">childA</span><span class="o">.</span><span class="na">blendMode</span> <span class="o">=</span> <span class="n">BlendMode</span><span class="o">.</span><span class="na">ADD</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childA</span><span class="o">);</span>
+</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childB</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="n">data</span><span class="p">:</span><span class="kt">BitmapData</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">BitmapData</span><span class="o">(</span><span class="n">container</span><span class="o">.</span><span class="na">width</span><span class="o">,</span> <span class="n">container</span><span class="o">.</span><span class="na">height</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">container</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如上面这段代码，看起来没有什么问题，但是如果把<code>data</code>通过<code>Bitmap</code>显示出来，就会发现效果有些诡异，这是因为<code>BitmapData</code>在<code>draw</code>的时候，会自动忽略<code>childA.blendMode</code>属性，除非把<code>childA</code>的父级容器设置为<code>container.blendMode = BlendMode.LAYER</code>。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">ActionScript Syntax Highlight in Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-22T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/22/ActionScript-Syntax-Highlight/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here is a <code>bezier</code> utils method in ActionScript.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">阅读更多&raquo;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a class="prev" href="/posts/5">前一页#5</a>
+    
+	<span> 第 6 / 6 页 </span>
+    
+  </div>
+  <!-- <div class="pagination">
+	  <a href="/blog/archives">Blog Archives</a>
+  </div> -->
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/21/flashdevelop-cannot-show-up/">Flashdevelop Cannot Show Up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/18/install-canon-tools-on-mac/">在Mac系统安装佳能软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/nested-variable/">脚本中的嵌套变量</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/customize-xcode-snippet/">自定义Xcode代码模板：Code Snippet</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/13/disk-partion-fail-with-mac/">MAC分区失败解决方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/11/as3proto-win/">在WIN系统使用AS3版protobuf</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/larryhou">@larryhou</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'larryhou',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - larryhou -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'larryhou';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<!-- 
+ -->
+<!-- 
+ -->
+<!-- 
+ -->
+
+
+
+</body>
+</html>
