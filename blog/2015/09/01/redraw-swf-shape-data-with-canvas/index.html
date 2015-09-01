@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Redraw SWF Shape Data With Canvas - LARRY HOU</title>
+  <meta name="author" content="larryhou">
+
+  
+  <meta name="description" content="Redraw demo with animation Redraw demo var SWFShape = { init:function(context, steps) { var shape = {} shape.context = context shape.steps = steps &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://larryhou.github.io/blog/2015/09/01/redraw-swf-shape-data-with-canvas/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- <link href="" rel="alternate" title="LARRY HOU" type="application/atom+xml"> -->
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+
+  
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1>LARRY HOU</h1>
+  
+    <h2>Apple Swift Programmer & Addict</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><!-- <ul class="subscription" data-subscription="rss">
+  <li><a href="" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+   -->
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Articles</a></li>
+  <li><a href="/blog/about">Contacts</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Redraw SWF Shape Data With Canvas</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-01T21:19:39+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:19 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h4><div><a href='/assets/redraw-shape/' target='_blank'>Redraw demo with animation</a></div></h4>
+
+<h4><div><a href='/assets/redraw-shape/demo.html' target='_blank'>Redraw demo</a></div></h4>
+
+<!-- more -->
+
+
+<div><script src='https://gist.github.com/369c8dd43509774800a5.js'></script>
+<noscript><pre><code>var SWFShape = 
+{
+    init:function(context, steps)
+    {
+        var shape = {}
+        shape.context = context
+        shape.steps = steps
+
+        shape.commands = []
+        function println(msg)
+        {
+            console.log(msg)
+            shape.commands.push(msg)
+        }
+
+        console.log(context)
+
+        var rect = {left:0, top:0, right:0, bottom:0}
+        function unionBoundsWithPoint(bounds, x, y)
+        {
+            bounds.left   = Math.min(x, bounds.left)
+            bounds.right  = Math.max(x, bounds.right)
+            bounds.top    = Math.min(y, bounds.top)
+            bounds.bottom = Math.max(y, bounds.bottom)
+        }
+
+        for (var i = 0; i &lt; steps.length; i++)
+        {
+            var method = steps[i][0]
+            var params = steps[i][1]
+            switch (method)
+            {
+                case &quot;LINE_TO&quot;:case &quot;MOVE_TO&quot;:
+                {
+                    unionBoundsWithPoint(rect, params.x, params.y)
+                    break
+                }
+
+                case &quot;CURVE_TO&quot;:
+                {
+                    unionBoundsWithPoint(rect, params.controlX, params.controlY)
+                    unionBoundsWithPoint(rect, params.anchorX, params.anchorY)
+                    break
+                }
+            }
+        }
+
+        console.log(rect)
+
+        var bounds = {x:rect.left, y:rect.top, width:rect.right - rect.left, height:rect.bottom - rect.top}
+        println(&quot;var bounds = {x:&quot; + bounds.x + &quot;, y:&quot; + bounds.y + &quot;, width:&quot; + bounds.width + &quot;, height:&quot; + bounds.height +&quot;}&quot;)
+        var canvas = context.canvas
+        println(&quot;var canvas = context.canvas&quot;)
+
+        var margin = 40
+        println(&quot;var margin = &quot; + margin)
+        var scale = Math.min((canvas.width - margin) / bounds.width, (canvas.height - margin) / bounds.height)
+        println(&quot;var scale = Math.min((canvas.width - margin) / bounds.width, (canvas.height - margin) / bounds.height)&quot;)
+        context.scale(scale, scale)
+        println(&quot;context.scale(scale, scale)&quot;)
+
+        var translateX = -(bounds.x + bounds.width  / 2) + canvas.width  / 2 / scale
+        println(&quot;var translateX = -(bounds.x + bounds.width  / 2) + canvas.width  / 2 / scale&quot;)
+        var translateY = -(bounds.y + bounds.height / 2) + canvas.height / 2 / scale
+        println(&quot;var translateY = -(bounds.y + bounds.height / 2) + canvas.height / 2 / scale&quot;)
+        context.translate(translateX, translateY)
+        println(&quot;context.translate(translateX, translateY)&quot;)
+
+        function getRGBAColor(color, alpha)
+        {
+            var b = (color &gt;&gt; 0 ) &amp; 0xFF
+            var g = (color &gt;&gt; 8 ) &amp; 0xFF
+            var r = (color &gt;&gt; 16) &amp; 0xFF
+            return &quot;rgba(&quot; + r + &quot;,&quot; + g + &quot;,&quot; + b + &quot;,&quot; + alpha + &quot;)&quot;
+        }
+
+        function createContextGradient(data)
+        {
+            var matrix = data.matrix
+            var angle = Math.atan2(matrix.b, matrix.a)
+            var scaleX = matrix.a / Math.cos(angle)
+            var scaleY = matrix.d / Math.cos(angle)
+
+            var width  = scaleX * 1638.4
+            var height = scaleY * 1638.4
+
+            var gradient
+            if (data.type == &quot;radial&quot;)
+            {
+                var endRadius = Math.max(width / 2, height / 2)
+                var startCenter = {
+                    x:  width / 2 * Math.cos(angle) * data.focalPointRatio + matrix.tx,
+                    y: height / 2 * Math.sin(angle) * data.focalPointRatio + matrix.ty
+                }
+
+                var endCenter = {x:matrix.tx, y:matrix.ty}
+                gradient = context.createRadialGradient(startCenter.x, startCenter.y, 0, endCenter.x, endCenter.y, endRadius)
+                println(&quot;gradient = context.createRadialGradient(&quot; + [startCenter.x, startCenter.y, 0, endCenter.x, endCenter.y, endRadius].join(&quot;, &quot;) + &quot;)&quot;)
+            }
+            else
+            {
+                var sp = {x:-819.2 * scaleX, y:0}
+                var startPoint = {
+                    x:sp.x * Math.cos(angle) - sp.y * Math.sin(angle) + matrix.tx,
+                    y:sp.x * Math.sin(angle) + sp.y * Math.cos(angle) + matrix.ty
+                }
+
+                var ep = {x: 819.2 * scaleX, y:0}
+                var endPoint = {
+                    x:ep.x * Math.cos(angle) - ep.y * Math.sin(angle) + matrix.tx,
+                    y:ep.x * Math.sin(angle) + ep.y * Math.cos(angle) + matrix.ty
+                }
+
+                gradient = context.createLinearGradient(startPoint.x, startPoint.y, endPoint.x, endPoint.y)
+                println(&quot;gradient = context.createLinearGradient(&quot; + [startPoint.x, startPoint.y, endPoint.x, endPoint.y].join(&quot;, &quot;) + &quot;)&quot;)
+            }
+
+            for (var i = 0; i &lt; data.colors.length; i++)
+            {
+                gradient.addColorStop(data.ratios[i] / 255, getRGBAColor(data.colors[i], data.alphas[i]))
+                println(&quot;gradient.addColorStop(&quot; + data.ratios[i] / 255 + &quot;, &#39;&quot; + getRGBAColor(data.colors[i], data.alphas[i]) + &quot;&#39;)&quot;)
+            }
+
+            return gradient
+        }
+
+        var styleState
+
+        var pathAvailable = false
+        function flushCurrentContext()
+        {
+            if (pathAvailable == false) return
+
+            switch(styleState)
+            {
+                case &quot;SOLID_STROKE&quot;:case &quot;GRADIENT_STROKE&quot;:
+                {
+                    context.stroke()
+                    println(&quot;context.stroke()&quot;)
+                    break
+                }
+
+                case &quot;SOLID_FILL&quot;:case &quot;GRADIENT_FILL&quot;:
+                {
+                    context.closePath()
+                    println(&quot;context.closePath()&quot;)
+                    context.fill()
+                    println(&quot;context.fill()&quot;)
+                    break
+                }
+            }
+
+            pathAvailable = false
+        }
+
+        shape.begin = function()
+        {
+            println(&quot;var gradient&quot;)
+        }
+
+        function drawStep(method, params)
+        {
+            switch(method)
+            {
+                case &quot;LINE_TO&quot;:
+                {
+                    context.lineTo(params.x, params.y)
+                    println(&quot;context.lineTo(&quot; + [params.x, params.y].join(&quot;, &quot;) + &quot;)&quot;)
+                    break
+                }
+
+                case &quot;MOVE_TO&quot;:
+                {
+                    context.moveTo(params.x, params.y)
+                    println(&quot;context.moveTo(&quot; + [params.x, params.y].join(&quot;, &quot;) + &quot;)&quot;)
+                    break
+                }
+
+                case &quot;CURVE_TO&quot;:
+                {
+                    context.quadraticCurveTo(params.controlX, params.controlY, params.anchorX, params.anchorY)
+                    println(&quot;context.quadraticCurveTo(&quot; + [params.controlX, params.controlY, params.anchorX, params.anchorY].join(&quot;, &quot;) + &quot;)&quot;)
+                    break
+                }
+
+                case &quot;LINE_STYLE&quot;:
+                {
+                    styleState = &quot;SOLID_STROKE&quot;
+                    context.lineCap = params.caps == &quot;none&quot;? &quot;butt&quot; : params.caps
+                    println(&quot;context.lineCap = &#39;&quot; + context.lineCap + &quot;&#39;&quot;)
+                    context.lineJoin = params.joints
+                    println(&quot;context.lineJoin = &#39;&quot; + context.lineJoin + &quot;&#39;&quot;)
+                    context.lineWidth = params.thickness
+                    println(&quot;context.lineWidth = &quot; + context.lineWidth)
+                    context.miterLimit = params.miterLimit
+                    println(&quot;context.miterLimit = &quot; + context.miterLimit)
+                    context.strokeStyle = getRGBAColor(params.color, params.alpha)
+                    println(&quot;context.strokeStyle = &#39;&quot; + getRGBAColor(params.color, params.alpha) + &quot;&#39;&quot;)
+                    context.beginPath()
+                    println(&quot;context.beginPath()&quot;)
+                    pathAvailable = true
+                    break
+                }
+
+                case &quot;LINE_GRADIENT_STYLE&quot;:
+                {
+                    styleState = &quot;GRADIENT_STROKE&quot;
+                    context.strokeStyle = createContextGradient(params)
+                    println(&quot;context.strokeStyle = gradient&quot;)
+                    context.beginPath()
+                    println(&quot;context.beginPath()&quot;)
+                    pathAvailable = true
+                    break
+                }
+
+                case &quot;BEGIN_FILL&quot;:
+                {
+                    styleState = &quot;SOLID_FILL&quot;
+                    context.fillStyle = getRGBAColor(params.color, params.alpha)
+                    println(&quot;context.fillStyle = &#39;&quot; + getRGBAColor(params.color, params.alpha) + &quot;&#39;&quot;)
+                    context.beginPath()
+                    println(&quot;context.beginPath()&quot;)
+                    pathAvailable = true
+                    break
+                }
+
+                case &quot;BEGIN_GRADIENT_FILL&quot;:
+                {
+                    styleState = &quot;GRADIENT_FILL&quot;
+                    context.fillStyle = createContextGradient(params)
+                    println(&quot;context.fillStyle = gradient&quot;)
+                    context.beginPath()
+                    println(&quot;context.beginPath()&quot;)
+                    pathAvailable = true
+                    break
+                }
+
+                case &quot;END_FILL&quot;:
+                {
+                    break
+                }
+            }
+        }
+
+        var currentIndex = 0
+        shape.drawNextRound = function()
+        {
+            var index = currentIndex
+            var complete = false
+
+            while (index &lt; steps.length)
+            {
+                var method = steps[index][0]
+                var params = steps[index][1]
+                switch(method)
+                {
+                    case &quot;LINE_STYLE&quot;:
+                    case &quot;LINE_GRADIENT_STYLE&quot;:
+                    case &quot;BEGIN_FILL&quot;:
+                    case &quot;BEGIN_GRADIENT_FILL&quot;:
+                    case &quot;END_FILL&quot;:
+                    {
+                        if (index &gt; currentIndex)
+                        {
+                            complete = true
+                            break
+                        }
+                    }
+                }
+
+                if (complete) break
+
+                drawStep(method, params)
+                index++
+                
+                // if (styleState == &quot;SOLID_STROKE&quot; || styleState == &quot;GRADIENT_STROKE&quot;)
+                // {
+                //  if (method == &quot;LINE_TO&quot; || method == &quot;CURVE_TO&quot;)
+                //  {
+                //      currentIndex = index
+                //      context.stroke()
+                //      println(&quot;context.stroke()&quot;)
+                //      return
+                //  }
+                // }
+            }
+
+            flushCurrentContext()
+            currentIndex = index
+        }
+        
+        shape.stepsAvailable = function()
+        {
+            return currentIndex &lt; steps.length
+        }
+        
+        return shape
+    }
+}</code></pre></noscript></div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-09-01T21:19:39+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:19 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment right" href="/blog/2015/09/01/china-gps-convertion/" title="Previous Post: China GPS Convertion">China GPS Convertion &raquo;</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/09/01/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/01/china-gps-convertion/">China GPS Convertion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/01/markdown-playground/">Markdown Playground</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/08/31/markdown-syntax/">Markdown Syntax</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/21/flashdevelop-cannot-show-up/">Flashdevelop Cannot Show Up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/18/install-canon-tools-on-mac/">在Mac系统安装佳能软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/nested-variable/">脚本中的嵌套变量</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/customize-xcode-snippet/">自定义Xcode代码模板：Code Snippet</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/larryhou">@larryhou</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'larryhou',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - larryhou -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'larryhou';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.io/blog/2015/09/01/redraw-swf-shape-data-with-canvas/';
+        var disqus_url = 'http://larryhou.github.io/blog/2015/09/01/redraw-swf-shape-data-with-canvas/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<!-- 
+ -->
+<!-- 
+ -->
+<!-- 
+ -->
+
+
+
+</body>
+</html>

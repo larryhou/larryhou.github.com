@@ -9,32 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="OSX系统 这里有一段简单脚本， 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-#!/bin/bash name1=larry01
-name2=larry02
-name3=larry03
-name4=larry04
-name5= &hellip;">
+  <meta name="description" content="有时候在Terminal查看帮助实在是痛苦：只能显示几行，所以我就想在文本文件里面查看这些帮助（比如，TextMate），如果你使用类似man col > ~/downloads/col.txt，你会发现这简直是个悲剧，见下图 这完全不是我想要的结果，没有任何可读性，这是怎么回事儿呢？ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +58,61 @@ name5= &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-29T13:38:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>1:38 pm</span></time>
+        
+           | <a href="/blog/2012/11/29/make-man-output-readable/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/29/make-man-output-readable/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>有时候在Terminal查看帮助实在是痛苦：只能显示几行，所以我就想在文本文件里面查看这些帮助（比如，TextMate），如果你使用类似<code>man col > ~/downloads/col.txt</code>，你会发现这简直是个悲剧，见下图</p>
+
+<p><img src="/images/make-man-output-readable/fig01.png"></p>
+
+<p>这完全不是我想要的结果，没有任何可读性，这是怎么回事儿呢？我Google到了一段文字可以解释这个问题：</p>
+
+<blockquote><p>Ever try to open a man page in TextEdit using <code>man | open -f</code>? <br/>You end up with the kind of unreadable repeated characters shown here. This all dates back to the days of dot matrix and daisy wheel printing when the only way you could produce bold type was to repeatedly print characters. <br/>Fortunately, there's an easy way to convert man pages into simple, non-redundant text. Use the command-line utility <code>col</code> with the <code>-b</code> flag enabled. For example, <code>man col | col -b | open -f</code> will open the col man page in TextEdit without repeated characters. The <code>-b</code> flag tells col to exclude all but the last character written to any column, ignoring any backspaces and repeats.</p></blockquote>
+
+
+<p>这是一个历史遗留问题，可以追溯到使用点阵和菊花轮印刷的旧时代，那个时候为了得到粗体字体样式采用的是反复重复印刷的手段。幸运的是，有个简单的方法可以让man帮助变得简单可读、没有冗余字符，可以在man后面使用管道添加<code>col -b</code>来实现，其中<code>-b</code>标记位意思是忽略退格键以及去掉所有重复字符。比如，得到<code>col</code>的帮助可以使用<code>man col | col -b | open -f</code>，这里<code>open -f</code> 意思是使用默认文本编辑器打开，如下图</p>
+
+<p><img src="/images/make-man-output-readable/fig02.png"></p>
+
+<p>最后总结一下：</p>
+
+<ul>
+<li><p>man帮助输出到文本文件</p>
+
+<blockquote><p>man [command] | col -b > [file saving path]</p></blockquote></li>
+<li><p>man帮助直接用文本编辑器打开</p>
+
+<blockquote><p>man [command] | col -b | open -f</p></blockquote></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -203,52 +233,11 @@ name5= &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-11-22T14:50:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>2:50 pm</span></time>
-        
-           | <a href="/blog/2012/11/22/git-push-dot-default/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/22/git-push-dot-default/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天使用<code>git push</code>命令，结果出现一堆以前没见过的东西</p>
-
-<blockquote><p>warning: push.default 未设置，它的默认值将会在 Git 2.0 由 'matching'<br/>修改为 'simple'。若要不再显示本信息并在其默认值改变后维持当前使用习惯，<br/>进行如下设置：</p><p>  git config --global push.default matching</p><p>若要不再显示本信息并从现在开始采用新的使用习惯，设置：</p><p>  git config --global push.default simple</p><p>参见 'git help config' 并查找 'push.default' 以获取更多信息。<br/>（'simple' 模式由 Git 1.7.11 版本引入。如果您有时要使用老版本的 Git，<br/>为保持兼容，请用 'current' 代替 'simple' 模式）</p><footer><strong>Terminal.app</strong> <cite>GIT With Version 1.8.0</cite></footer></blockquote>
-
-
-<p>尼玛，乍一看吓一跳还以为代码出错了，解决这个问题很简单，按照上面的提示在Terminal.app里面运行一下脚本</p>
-
-<blockquote><p>git config &ndash;global push.default matching</p></blockquote>
-
-<p>我在纳闷，GIT版本更新后为毛不自动设置一下.gitconfig配置呢？还要我手动操作一下，难道是想介绍GIT的这新功能？</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a class="prev" href="/posts/2">PREV #2</a>
     
-	<span> 3 / 7 </span>
+	<span> 3 / 8 </span>
     
       <a class="next" href="/posts/4">NEXT #4</a>
     
@@ -264,15 +253,19 @@ name5= &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/01/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/01/china-gps-convertion/">China GPS Convertion</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/01/markdown-playground/">Markdown Playground</a>
       </li>
     
       <li class="post">
         <a href="/blog/2015/08/31/markdown-syntax/">Markdown Syntax</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/31/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a>
       </li>
     
       <li class="post">
@@ -297,10 +290,6 @@ name5= &hellip;">
     
       <li class="post">
         <a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a>
       </li>
     
   </ul>

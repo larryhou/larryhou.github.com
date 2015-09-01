@@ -4,7 +4,7 @@
   <title><![CDATA[LARRY HOU]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2015-09-01T17:54:11+08:00</updated>
+  <updated>2015-09-01T21:20:03+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -12,6 +12,478 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Redraw SWF Shape Data With Canvas]]></title>
+    <link href="http://larryhou.github.io/blog/2015/09/01/redraw-swf-shape-data-with-canvas/"/>
+    <updated>2015-09-01T21:19:39+08:00</updated>
+    <id>http://larryhou.github.io/blog/2015/09/01/redraw-swf-shape-data-with-canvas</id>
+    <content type="html"><![CDATA[<h4><div><a href='http://larryhou.github.io/assets/redraw-shape/' target='_blank'>Redraw demo with animation</a></div></h4>
+
+<h4><div><a href='http://larryhou.github.io/assets/redraw-shape/demo.html' target='_blank'>Redraw demo</a></div></h4>
+
+<!-- more -->
+
+
+<div><script src='https://gist.github.com/369c8dd43509774800a5.js'></script>
+<noscript><pre><code>var SWFShape = 
+{
+    init:function(context, steps)
+    {
+        var shape = {}
+        shape.context = context
+        shape.steps = steps
+
+        shape.commands = []
+        function println(msg)
+        {
+            console.log(msg)
+            shape.commands.push(msg)
+        }
+
+        console.log(context)
+
+        var rect = {left:0, top:0, right:0, bottom:0}
+        function unionBoundsWithPoint(bounds, x, y)
+        {
+            bounds.left   = Math.min(x, bounds.left)
+            bounds.right  = Math.max(x, bounds.right)
+            bounds.top    = Math.min(y, bounds.top)
+            bounds.bottom = Math.max(y, bounds.bottom)
+        }
+
+        for (var i = 0; i &lt; steps.length; i++)
+        {
+            var method = steps[i][0]
+            var params = steps[i][1]
+            switch (method)
+            {
+                case &quot;LINE_TO&quot;:case &quot;MOVE_TO&quot;:
+                {
+                    unionBoundsWithPoint(rect, params.x, params.y)
+                    break
+                }
+
+                case &quot;CURVE_TO&quot;:
+                {
+                    unionBoundsWithPoint(rect, params.controlX, params.controlY)
+                    unionBoundsWithPoint(rect, params.anchorX, params.anchorY)
+                    break
+                }
+            }
+        }
+
+        console.log(rect)
+
+        var bounds = {x:rect.left, y:rect.top, width:rect.right - rect.left, height:rect.bottom - rect.top}
+        println(&quot;var bounds = {x:&quot; + bounds.x + &quot;, y:&quot; + bounds.y + &quot;, width:&quot; + bounds.width + &quot;, height:&quot; + bounds.height +&quot;}&quot;)
+        var canvas = context.canvas
+        println(&quot;var canvas = context.canvas&quot;)
+
+        var margin = 40
+        println(&quot;var margin = &quot; + margin)
+        var scale = Math.min((canvas.width - margin) / bounds.width, (canvas.height - margin) / bounds.height)
+        println(&quot;var scale = Math.min((canvas.width - margin) / bounds.width, (canvas.height - margin) / bounds.height)&quot;)
+        context.scale(scale, scale)
+        println(&quot;context.scale(scale, scale)&quot;)
+
+        var translateX = -(bounds.x + bounds.width  / 2) + canvas.width  / 2 / scale
+        println(&quot;var translateX = -(bounds.x + bounds.width  / 2) + canvas.width  / 2 / scale&quot;)
+        var translateY = -(bounds.y + bounds.height / 2) + canvas.height / 2 / scale
+        println(&quot;var translateY = -(bounds.y + bounds.height / 2) + canvas.height / 2 / scale&quot;)
+        context.translate(translateX, translateY)
+        println(&quot;context.translate(translateX, translateY)&quot;)
+
+        function getRGBAColor(color, alpha)
+        {
+            var b = (color &gt;&gt; 0 ) &amp; 0xFF
+            var g = (color &gt;&gt; 8 ) &amp; 0xFF
+            var r = (color &gt;&gt; 16) &amp; 0xFF
+            return &quot;rgba(&quot; + r + &quot;,&quot; + g + &quot;,&quot; + b + &quot;,&quot; + alpha + &quot;)&quot;
+        }
+
+        function createContextGradient(data)
+        {
+            var matrix = data.matrix
+            var angle = Math.atan2(matrix.b, matrix.a)
+            var scaleX = matrix.a / Math.cos(angle)
+            var scaleY = matrix.d / Math.cos(angle)
+
+            var width  = scaleX * 1638.4
+            var height = scaleY * 1638.4
+
+            var gradient
+            if (data.type == &quot;radial&quot;)
+            {
+                var endRadius = Math.max(width / 2, height / 2)
+                var startCenter = {
+                    x:  width / 2 * Math.cos(angle) * data.focalPointRatio + matrix.tx,
+                    y: height / 2 * Math.sin(angle) * data.focalPointRatio + matrix.ty
+                }
+
+                var endCenter = {x:matrix.tx, y:matrix.ty}
+                gradient = context.createRadialGradient(startCenter.x, startCenter.y, 0, endCenter.x, endCenter.y, endRadius)
+                println(&quot;gradient = context.createRadialGradient(&quot; + [startCenter.x, startCenter.y, 0, endCenter.x, endCenter.y, endRadius].join(&quot;, &quot;) + &quot;)&quot;)
+            }
+            else
+            {
+                var sp = {x:-819.2 * scaleX, y:0}
+                var startPoint = {
+                    x:sp.x * Math.cos(angle) - sp.y * Math.sin(angle) + matrix.tx,
+                    y:sp.x * Math.sin(angle) + sp.y * Math.cos(angle) + matrix.ty
+                }
+
+                var ep = {x: 819.2 * scaleX, y:0}
+                var endPoint = {
+                    x:ep.x * Math.cos(angle) - ep.y * Math.sin(angle) + matrix.tx,
+                    y:ep.x * Math.sin(angle) + ep.y * Math.cos(angle) + matrix.ty
+                }
+
+                gradient = context.createLinearGradient(startPoint.x, startPoint.y, endPoint.x, endPoint.y)
+                println(&quot;gradient = context.createLinearGradient(&quot; + [startPoint.x, startPoint.y, endPoint.x, endPoint.y].join(&quot;, &quot;) + &quot;)&quot;)
+            }
+
+            for (var i = 0; i &lt; data.colors.length; i++)
+            {
+                gradient.addColorStop(data.ratios[i] / 255, getRGBAColor(data.colors[i], data.alphas[i]))
+                println(&quot;gradient.addColorStop(&quot; + data.ratios[i] / 255 + &quot;, &#39;&quot; + getRGBAColor(data.colors[i], data.alphas[i]) + &quot;&#39;)&quot;)
+            }
+
+            return gradient
+        }
+
+        var styleState
+
+        var pathAvailable = false
+        function flushCurrentContext()
+        {
+            if (pathAvailable == false) return
+
+            switch(styleState)
+            {
+                case &quot;SOLID_STROKE&quot;:case &quot;GRADIENT_STROKE&quot;:
+                {
+                    context.stroke()
+                    println(&quot;context.stroke()&quot;)
+                    break
+                }
+
+                case &quot;SOLID_FILL&quot;:case &quot;GRADIENT_FILL&quot;:
+                {
+                    context.closePath()
+                    println(&quot;context.closePath()&quot;)
+                    context.fill()
+                    println(&quot;context.fill()&quot;)
+                    break
+                }
+            }
+
+            pathAvailable = false
+        }
+
+        shape.begin = function()
+        {
+            println(&quot;var gradient&quot;)
+        }
+
+        function drawStep(method, params)
+        {
+            switch(method)
+            {
+                case &quot;LINE_TO&quot;:
+                {
+                    context.lineTo(params.x, params.y)
+                    println(&quot;context.lineTo(&quot; + [params.x, params.y].join(&quot;, &quot;) + &quot;)&quot;)
+                    break
+                }
+
+                case &quot;MOVE_TO&quot;:
+                {
+                    context.moveTo(params.x, params.y)
+                    println(&quot;context.moveTo(&quot; + [params.x, params.y].join(&quot;, &quot;) + &quot;)&quot;)
+                    break
+                }
+
+                case &quot;CURVE_TO&quot;:
+                {
+                    context.quadraticCurveTo(params.controlX, params.controlY, params.anchorX, params.anchorY)
+                    println(&quot;context.quadraticCurveTo(&quot; + [params.controlX, params.controlY, params.anchorX, params.anchorY].join(&quot;, &quot;) + &quot;)&quot;)
+                    break
+                }
+
+                case &quot;LINE_STYLE&quot;:
+                {
+                    styleState = &quot;SOLID_STROKE&quot;
+                    context.lineCap = params.caps == &quot;none&quot;? &quot;butt&quot; : params.caps
+                    println(&quot;context.lineCap = &#39;&quot; + context.lineCap + &quot;&#39;&quot;)
+                    context.lineJoin = params.joints
+                    println(&quot;context.lineJoin = &#39;&quot; + context.lineJoin + &quot;&#39;&quot;)
+                    context.lineWidth = params.thickness
+                    println(&quot;context.lineWidth = &quot; + context.lineWidth)
+                    context.miterLimit = params.miterLimit
+                    println(&quot;context.miterLimit = &quot; + context.miterLimit)
+                    context.strokeStyle = getRGBAColor(params.color, params.alpha)
+                    println(&quot;context.strokeStyle = &#39;&quot; + getRGBAColor(params.color, params.alpha) + &quot;&#39;&quot;)
+                    context.beginPath()
+                    println(&quot;context.beginPath()&quot;)
+                    pathAvailable = true
+                    break
+                }
+
+                case &quot;LINE_GRADIENT_STYLE&quot;:
+                {
+                    styleState = &quot;GRADIENT_STROKE&quot;
+                    context.strokeStyle = createContextGradient(params)
+                    println(&quot;context.strokeStyle = gradient&quot;)
+                    context.beginPath()
+                    println(&quot;context.beginPath()&quot;)
+                    pathAvailable = true
+                    break
+                }
+
+                case &quot;BEGIN_FILL&quot;:
+                {
+                    styleState = &quot;SOLID_FILL&quot;
+                    context.fillStyle = getRGBAColor(params.color, params.alpha)
+                    println(&quot;context.fillStyle = &#39;&quot; + getRGBAColor(params.color, params.alpha) + &quot;&#39;&quot;)
+                    context.beginPath()
+                    println(&quot;context.beginPath()&quot;)
+                    pathAvailable = true
+                    break
+                }
+
+                case &quot;BEGIN_GRADIENT_FILL&quot;:
+                {
+                    styleState = &quot;GRADIENT_FILL&quot;
+                    context.fillStyle = createContextGradient(params)
+                    println(&quot;context.fillStyle = gradient&quot;)
+                    context.beginPath()
+                    println(&quot;context.beginPath()&quot;)
+                    pathAvailable = true
+                    break
+                }
+
+                case &quot;END_FILL&quot;:
+                {
+                    break
+                }
+            }
+        }
+
+        var currentIndex = 0
+        shape.drawNextRound = function()
+        {
+            var index = currentIndex
+            var complete = false
+
+            while (index &lt; steps.length)
+            {
+                var method = steps[index][0]
+                var params = steps[index][1]
+                switch(method)
+                {
+                    case &quot;LINE_STYLE&quot;:
+                    case &quot;LINE_GRADIENT_STYLE&quot;:
+                    case &quot;BEGIN_FILL&quot;:
+                    case &quot;BEGIN_GRADIENT_FILL&quot;:
+                    case &quot;END_FILL&quot;:
+                    {
+                        if (index &gt; currentIndex)
+                        {
+                            complete = true
+                            break
+                        }
+                    }
+                }
+
+                if (complete) break
+
+                drawStep(method, params)
+                index++
+                
+                // if (styleState == &quot;SOLID_STROKE&quot; || styleState == &quot;GRADIENT_STROKE&quot;)
+                // {
+                //  if (method == &quot;LINE_TO&quot; || method == &quot;CURVE_TO&quot;)
+                //  {
+                //      currentIndex = index
+                //      context.stroke()
+                //      println(&quot;context.stroke()&quot;)
+                //      return
+                //  }
+                // }
+            }
+
+            flushCurrentContext()
+            currentIndex = index
+        }
+        
+        shape.stepsAvailable = function()
+        {
+            return currentIndex &lt; steps.length
+        }
+        
+        return shape
+    }
+}</code></pre></noscript></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[China GPS Convertion]]></title>
+    <link href="http://larryhou.github.io/blog/2015/09/01/china-gps-convertion/"/>
+    <updated>2015-09-01T20:40:27+08:00</updated>
+    <id>http://larryhou.github.io/blog/2015/09/01/china-gps-convertion</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<div><script src='https://gist.github.com/9e3fa0a5f6fb1b0a0be7.js'></script>
+<noscript><pre><code>//
+//  ChinaGPS.swift
+//  LocationTraker
+//
+//  Created by larryhou on 28/7/2015.
+//  Copyright © 2015 larryhou. All rights reserved.
+//
+
+import Foundation
+import CoreLocation
+
+class ChinaGPS
+{
+    struct GPSLocation
+    {
+        var lon, lat:Double
+    }
+    
+    static private let pi = 3.14159265358979324
+    static private let x_pi = pi * 3000.0 / 180.0
+    
+    //
+    //  Krasovsky 1940
+    //
+    //  a = 6378245.0, 1/f = 298.3
+    //  b = a * (1 - f)
+    //  ee = (a^2 - b^2) / a^2;
+    static private let a = 6378245.0
+    static private let ee = 0.00669342162296594323
+    
+    private class func encrypt_lat(x:Double, y:Double) -&gt; Double
+    {
+        var ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y
+        ret += 0.2 * sqrt(abs(x))
+        ret += (20.0 * sin(6.0 * x * pi) + 20.0 * sin(2.0 * x * pi)) * 2.0 / 3.0
+        ret += (20.0 * sin(y * pi) + 40.0 * sin(y / 3.0 * pi)) * 2.0 / 3.0
+        ret += (160.0 * sin(y / 12.0 * pi) + 320 * sin(y * pi / 30.0)) * 2.0 / 3.0
+        return ret
+    }
+    
+    private class func encrypt_lon(x:Double, y:Double) -&gt; Double
+    {
+        var ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y
+        ret += 0.1 * sqrt(abs(x))
+        ret += (20.0 * sin(6.0 * x * pi) + 20.0 * sin(2.0 * x * pi)) * 2.0 / 3.0
+        ret += (20.0 * sin(x * pi) + 40.0 * sin(x / 3.0 * pi)) * 2.0 / 3.0
+        ret += (150.0 * sin(x / 12.0 * pi) + 300.0 * sin(x / 30.0 * pi)) * 2.0 / 3.0
+        return ret
+    }
+    
+    private class func outOfChina(lat:Double, lon:Double) -&gt; Bool
+    {
+        if lon &lt; 72.004 || lon &gt; 137.8347
+        {
+            return true
+        }
+        
+        if lat &lt; 0.8293 || lat &gt; 55.8271
+        {
+            return true
+        }
+        
+        return false
+    }
+    
+    ///
+    ///  WGS-84 到 GCJ-02 的转换
+    ///
+    class func encrypt_WGS_2_GCJ(loc:GPSLocation) -&gt; GPSLocation
+    {
+        if outOfChina(loc.lat, lon: loc.lon)
+        {
+            return loc
+        }
+        
+        var lat = encrypt_lat(loc.lon - 105.0, y: loc.lat - 35.0)
+        var lon = encrypt_lon(loc.lon - 105.0, y: loc.lat - 35.0)
+        
+        let radian = loc.lat / 180.0 * pi
+        let magic = 1 - ee * sin(radian) * sin(radian)
+        let magic_2 = sqrt(magic)
+        
+        lat = (lat * 180.0) / ((a * (1 - ee)) / (magic * magic_2) * pi)
+        lon = (lon * 180.0) / (a / magic_2 * cos(radian) * pi)
+        
+        return GPSLocation(lon: loc.lon + lon, lat: loc.lat + lat)
+    }
+    
+    class func encrypt_WGS_2_GCJ(latitude latitude:Double, longitude:Double) -&gt; CLLocation
+    {
+        let loc = GPSLocation(lon: longitude, lat: latitude)
+        let ret = encrypt_WGS_2_GCJ(loc)
+        
+        return CLLocation(latitude: ret.lat, longitude: ret.lon)
+    }
+    
+    class func encrypt_WGS_2_GCJ(latitude latitude:Double, longitude:Double) -&gt; CLLocationCoordinate2D
+    {
+        let loc = GPSLocation(lon: longitude, lat: latitude)
+        let ret = encrypt_WGS_2_GCJ(loc)
+        
+        return CLLocationCoordinate2D(latitude: ret.lat, longitude: ret.lon)
+    }
+    
+    ///
+    ///  GCJ-02 坐标转换成 BD-09 坐标
+    ///
+    class func baidu_encrypt(loc:GPSLocation) -&gt; GPSLocation
+    {
+        let x = loc.lon, y = loc.lat
+        let z = sqrt(x * x + y * y) + 0.00002 * sin(y * x_pi)
+        let theta = atan2(y, x) + 0.000003 * cos(x * x_pi)
+        return GPSLocation(lon:z * cos(theta) + 0.0065, lat:z * sin(theta) + 0.006)
+    }
+    
+    class func baidu_encrypt(latitude latitude:Double, longitude:Double) -&gt; CLLocation
+    {
+        let loc = GPSLocation(lon: longitude, lat: latitude)
+        let ret = baidu_encrypt(loc)
+        
+        return CLLocation(latitude: ret.lat, longitude: ret.lon)
+    }
+    
+    ///
+    ///  BD-09 坐标转换成 GCJ-02坐标
+    ///
+    class func baidu_decrypt(loc:GPSLocation) -&gt; GPSLocation
+    {
+        let x = loc.lon - 0.0065, y = loc.lat - 0.006
+        let z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi)
+        let theta = atan2(y, x) - 0.000003 * cos(x * x_pi)
+        return GPSLocation(lon:z * cos(theta), lat:z * sin(theta))
+    }
+    
+    class func baidu_decrypt(latitude latitude:Double, longitude:Double) -&gt; CLLocation
+    {
+        let loc = GPSLocation(lon: longitude, lat: latitude)
+        let ret = baidu_decrypt(loc)
+        
+        return CLLocation(latitude: ret.lat, longitude: ret.lon)
+    }
+
+}</code></pre></noscript></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Markdown Playground]]></title>
@@ -34,6 +506,9 @@ $ git clone git@github.com:imathis/octopress.git # fork octopress
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
 
 
 <pre><code>``` ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
@@ -60,20 +535,35 @@ end
 
 
 
-<div><script src='https://gist.github.com/4321346.js'></script>
-<noscript><pre><code>@@ -590,7 +590,7 @@ class SpritesTest &lt; Test::Unit::TestCase
-  it &quot;should generate a sprite from nested folders&quot; do
-    css = render &lt;&lt;-SCSS
--     @import &quot;nested/*.png&quot;;
-+     @import &quot;nested/**/*.png&quot;;
-      @include all-nested-sprites;
-    SCSS
-    assert_correct css, &lt;&lt;-CSS</code></pre></noscript></div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX</span><span class="p">:</span> <span class="mi">10</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">10</span> <span class="nl">width</span><span class="p">:</span> <span class="mi">20</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">20</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div><script src='https://gist.github.com/1059334.js?file=svg_bullets.rb'></script>
+<figure class='code'><figcaption><span>Javascript Array Syntax</span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">elementN</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<div><script src='https://gist.github.com/9dd0f29acfa0d4622c40.js'></script>
+<noscript><pre><code>func convertQuaternionToEuler(quat:CMQuaternion) -&gt; (pitch:Double, roll:Double, yaw:Double)
+{
+    let x = atan2(2 * (quat.w * quat.x + quat.y * quat.z), 1 - 2 * (quat.x * quat.x + quat.y * quat.y))
+    let y =  asin(2 * (quat.w * quat.y - quat.z * quat.x))
+    let z = atan2(2 * (quat.w * quat.z + quat.x * quat.y), 1 - 2 * (quat.y * quat.y + quat.z * quat.z))
+    return (x, y, z)
+}</code></pre></noscript></div>
+
+
+
+
+<!-- <div><script src='https://gist.github.com/1059334.js?file=svg_bullets.rb'></script>
 <noscript><pre><code>require &#39;sass&#39;
 
 module Sass::Script::Functions
@@ -94,9 +584,6 @@ module Sass::Script::Functions
 end
 </code></pre></noscript></div>
 
-
-
-
 <div><script src='https://gist.github.com/1059334.js?file=usage.scss'></script>
 <noscript><pre><code>// Draw a list style image in svg using the radius and color specified.
 @mixin colored-bullet($radius, $color, $type: disc) {
@@ -112,6 +599,7 @@ ul {
   }
 }
 </code></pre></noscript></div>
+ -->
 
 ]]></content>
   </entry>
@@ -945,19 +1433,6 @@ _   底线
 
 
 <p>感谢 <a href="https://twitter.com/#!/leafy7382">leafy7382</a> 协助翻译，<a href="http://iamhlb.com/">hlb</a>、<a href="http://twitter.com/randylien">Randylien</a> 帮忙润稿，<a href="https://twitter.com/#!/ethantw">ethantw</a> 的<a href="http://ethantw.net/projects/han/">汉字标準格式・CSS Reset</a>， <a href="http://kidwm.net/">WM</a> 回报文字错误。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Redraw SWF Shape Data With Canvas]]></title>
-    <link href="http://larryhou.github.io/blog/2015/08/31/redraw-swf-shape-data-with-canvas/"/>
-    <updated>2015-08-31T11:15:07+08:00</updated>
-    <id>http://larryhou.github.io/blog/2015/08/31/redraw-swf-shape-data-with-canvas</id>
-    <content type="html"><![CDATA[<div><a href='http://larryhou.github.io/assets/redraw-shape/' target='_blank'>Redraw demo with animation</a></div>
-
-
-<div><a href='http://larryhou.github.io/assets/redraw-shape/demo.html' target='_blank'>Redraw demo</a></div>
-
 ]]></content>
   </entry>
   
@@ -3488,43 +3963,6 @@ SystemCodeSnippets.codesnippets</p></blockquote>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo port install git-core +svn +doc +bash_completion +gitweb</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[BitmapData.draw() 和 DisplayObject.blendMode]]></title>
-    <link href="http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/"/>
-    <updated>2012-10-25T00:00:00+08:00</updated>
-    <id>http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode</id>
-    <content type="html"><![CDATA[<p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&hellip;oops</p>
-
-<figure class='code'><figcaption><span>simple exmaple </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='actionscript3'><span class='line'><span class="kd">var</span> <span class="n">container</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObjectContainer</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'><span class="kd">var</span> <span class="n">childA</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'><span class="kd">var</span> <span class="n">childB</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">childA</span><span class="o">.</span><span class="na">blendMode</span> <span class="o">=</span> <span class="n">BlendMode</span><span class="o">.</span><span class="na">ADD</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childA</span><span class="o">);</span>
-</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childB</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="n">data</span><span class="p">:</span><span class="kt">BitmapData</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">BitmapData</span><span class="o">(</span><span class="n">container</span><span class="o">.</span><span class="na">width</span><span class="o">,</span> <span class="n">container</span><span class="o">.</span><span class="na">height</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">container</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>如上面这段代码，看起来没有什么问题，但是如果把<code>data</code>通过<code>Bitmap</code>显示出来，就会发现效果有些诡异，这是因为<code>BitmapData</code>在<code>draw</code>的时候，会自动忽略<code>childA.blendMode</code>属性，除非把<code>childA</code>的父级容器设置为<code>container.blendMode = BlendMode.LAYER</code>。</p>
 ]]></content>
   </entry>
   

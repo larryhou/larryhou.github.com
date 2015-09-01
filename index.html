@@ -9,12 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="Syntax ``` [language] [title] [url] [link text]
-code snippet
-``` Usage ```
-$ git clone git@github.com:imathis/octopress.git # fork octopress
-``` 1
-$ &hellip;">
+  <meta name="description" content="Redraw demo with animation Redraw demo ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +64,80 @@ $ &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/09/01/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-01T21:19:39+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:19 pm</span></time>
+        
+           | <a href="/blog/2015/09/01/redraw-swf-shape-data-with-canvas/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2015/09/01/redraw-swf-shape-data-with-canvas/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4><div><a href='/assets/redraw-shape/' target='_blank'>Redraw demo with animation</a></div></h4>
+
+<h4><div><a href='/assets/redraw-shape/demo.html' target='_blank'>Redraw demo</a></div></h4>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/09/01/redraw-swf-shape-data-with-canvas/">正文&raquo;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/09/01/china-gps-convertion/">China GPS Convertion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-01T20:40:27+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>8:40 pm</span></time>
+        
+           | <a href="/blog/2015/09/01/china-gps-convertion/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2015/09/01/china-gps-convertion/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/09/01/china-gps-convertion/">正文&raquo;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/09/01/markdown-playground/">Markdown Playground</a></h1>
     
     
@@ -106,164 +175,12 @@ $ git clone git@github.com:imathis/octopress.git # fork octopress
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
 
 
-<pre><code>``` ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
-class Fixnum
-  def prime?
-    ('1' * self) !~ /^1?$|^(11+?)\1+$/
-  end
-end
-```
-</code></pre>
-
-<figure class='code'><figcaption><span>Discover if a number is prime</span><a href='http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/'>Source Article</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Fixnum</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">prime?</span>
-</span><span class='line'>    <span class="p">(</span><span class="s1">&#39;1&#39;</span> <span class="o">*</span> <span class="nb">self</span><span class="p">)</span> <span class="o">!~</span> <span class="sr">/^1?$|^(11+?)\1+$/</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<div><script src='https://gist.github.com/4321346.js'></script>
-<noscript><pre><code>@@ -590,7 +590,7 @@ class SpritesTest &lt; Test::Unit::TestCase
-  it &quot;should generate a sprite from nested folders&quot; do
-    css = render &lt;&lt;-SCSS
--     @import &quot;nested/*.png&quot;;
-+     @import &quot;nested/**/*.png&quot;;
-      @include all-nested-sprites;
-    SCSS
-    assert_correct css, &lt;&lt;-CSS</code></pre></noscript></div>
-
-
-
-
-<div><script src='https://gist.github.com/1059334.js?file=svg_bullets.rb'></script>
-<noscript><pre><code>require &#39;sass&#39;
-
-module Sass::Script::Functions
-  def svg_circle(radius, color, circle_type)
-    img = if circle_type.value == &quot;disc&quot;
-      %Q{&lt;circle cx=&quot;#{radius.value}&quot; cy=&quot;#{radius.value}&quot; r=&quot;#{radius.value}&quot;
-                          stroke-width=&quot;0&quot; fill=&quot;#{color}&quot;/&gt;}
-    else
-      %Q{&lt;circle cx=&quot;#{radius.value}&quot; cy=&quot;#{radius.value}&quot; r=&quot;#{radius.value}&quot;
-                          stroke=&quot;#{color}&quot; stroke-width=&quot;1&quot; fill=&quot;white&quot;/&gt;}
-    end
-    inline_image_string(svg_circle_envelope(img).gsub(/  +/, &#39; &#39;), &#39;image/svg+xml&#39;)
-  end
-  private
-  def svg_circle_envelope(content)
-    %Q{&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; &lt;svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;#{content}&lt;/svg&gt;}
-  end
-end
-</code></pre></noscript></div>
-
-
-
-
-<div><script src='https://gist.github.com/1059334.js?file=usage.scss'></script>
-<noscript><pre><code>// Draw a list style image in svg using the radius and color specified.
-@mixin colored-bullet($radius, $color, $type: disc) {
-  list-style-type: $type;
-  list-style-image: svg-circle($radius, $color, $type);
-}
-
-
-ul {
-  @include colored-bullet(2px, $green, disc);
-  ul {
-    @include colored-bullet(2px, $green, circle);
-  }
-}
-</code></pre></noscript></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/08/31/markdown-syntax/">Markdown Syntax</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-31T16:36:40+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>4:36 pm</span></time>
-        
-           | <a href="/blog/2015/08/31/markdown-syntax/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2015/08/31/markdown-syntax/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>Markdown 文件</h1>
-
-<p><img src="http://markdown.tw/images/208x128.png" alt="Markdown" /></p>
-
-<p><strong>NOTE:</strong> This is Traditional Chinese Edition Document of
-Markdown Syntax. If you are seeking for English Edition
-Document. Please refer to <a href="http://daringfireball.net/projects/markdown/syntax">Markdown: Syntax</a>.</p>
-
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2015/08/31/markdown-syntax/">正文&raquo;</a>
+      <a rel="full-article" href="/blog/2015/09/01/markdown-playground/">正文&raquo;</a>
     </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/08/31/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-31T11:15:07+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>11:15 am</span></time>
-        
-           | <a href="/blog/2015/08/31/redraw-swf-shape-data-with-canvas/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2015/08/31/redraw-swf-shape-data-with-canvas/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><a href='/assets/redraw-shape/' target='_blank'>Redraw demo with animation</a></div>
-
-
-<div><a href='/assets/redraw-shape/demo.html' target='_blank'>Redraw demo</a></div>
-
-</div>
-  
   
 
 
@@ -271,7 +188,7 @@ Document. Please refer to <a href="http://daringfireball.net/projects/markdown/s
   
   <div class="pagination">
     
-	<span> 1 / 7 </span>
+	<span> 1 / 8 </span>
     
       <a class="next" href="/posts/2">NEXT #2</a>
     
@@ -287,15 +204,19 @@ Document. Please refer to <a href="http://daringfireball.net/projects/markdown/s
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/01/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/01/china-gps-convertion/">China GPS Convertion</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/01/markdown-playground/">Markdown Playground</a>
       </li>
     
       <li class="post">
         <a href="/blog/2015/08/31/markdown-syntax/">Markdown Syntax</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/31/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a>
       </li>
     
       <li class="post">
@@ -320,10 +241,6 @@ Document. Please refer to <a href="http://daringfireball.net/projects/markdown/s
     
       <li class="post">
         <a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a>
       </li>
     
   </ul>

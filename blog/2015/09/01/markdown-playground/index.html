@@ -103,6 +103,9 @@ $ git clone git@github.com:imathis/octopress.git # fork octopress
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
 
 
+<!-- more -->
+
+
 <pre><code>``` ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
 class Fixnum
   def prime?
@@ -127,20 +130,35 @@ end
 
 
 
-<div><script src='https://gist.github.com/4321346.js'></script>
-<noscript><pre><code>@@ -590,7 +590,7 @@ class SpritesTest &lt; Test::Unit::TestCase
-  it &quot;should generate a sprite from nested folders&quot; do
-    css = render &lt;&lt;-SCSS
--     @import &quot;nested/*.png&quot;;
-+     @import &quot;nested/**/*.png&quot;;
-      @include all-nested-sprites;
-    SCSS
-    assert_correct css, &lt;&lt;-CSS</code></pre></noscript></div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX</span><span class="p">:</span> <span class="mi">10</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">10</span> <span class="nl">width</span><span class="p">:</span> <span class="mi">20</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">20</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div><script src='https://gist.github.com/1059334.js?file=svg_bullets.rb'></script>
+<figure class='code'><figcaption><span>Javascript Array Syntax</span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">elementN</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<div><script src='https://gist.github.com/9dd0f29acfa0d4622c40.js'></script>
+<noscript><pre><code>func convertQuaternionToEuler(quat:CMQuaternion) -&gt; (pitch:Double, roll:Double, yaw:Double)
+{
+    let x = atan2(2 * (quat.w * quat.x + quat.y * quat.z), 1 - 2 * (quat.x * quat.x + quat.y * quat.y))
+    let y =  asin(2 * (quat.w * quat.y - quat.z * quat.x))
+    let z = atan2(2 * (quat.w * quat.z + quat.x * quat.y), 1 - 2 * (quat.y * quat.y + quat.z * quat.z))
+    return (x, y, z)
+}</code></pre></noscript></div>
+
+
+
+
+<!-- <div><script src='https://gist.github.com/1059334.js?file=svg_bullets.rb'></script>
 <noscript><pre><code>require &#39;sass&#39;
 
 module Sass::Script::Functions
@@ -161,9 +179,6 @@ module Sass::Script::Functions
 end
 </code></pre></noscript></div>
 
-
-
-
 <div><script src='https://gist.github.com/1059334.js?file=usage.scss'></script>
 <noscript><pre><code>// Draw a list style image in svg using the radius and color specified.
 @mixin colored-bullet($radius, $color, $type: disc) {
@@ -179,6 +194,7 @@ ul {
   }
 }
 </code></pre></noscript></div>
+ -->
 
 </div>
 
@@ -213,6 +229,8 @@ ul {
         <a class="basic-alignment right" href="/blog/2015/08/31/markdown-syntax/" title="Previous Post: Markdown Syntax">Markdown Syntax &raquo;</a>
       
       
+        <a class="basic-alignment left" href="/blog/2015/09/01/china-gps-convertion/" title="Next Post: China GPS Convertion">&laquo; China GPS Convertion</a>
+      
     </p>
   </footer>
 </article>
@@ -232,15 +250,19 @@ ul {
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/01/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/01/china-gps-convertion/">China GPS Convertion</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/01/markdown-playground/">Markdown Playground</a>
       </li>
     
       <li class="post">
         <a href="/blog/2015/08/31/markdown-syntax/">Markdown Syntax</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/31/redraw-swf-shape-data-with-canvas/">Redraw SWF Shape Data With Canvas</a>
       </li>
     
       <li class="post">
@@ -265,10 +287,6 @@ ul {
     
       <li class="post">
         <a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a>
       </li>
     
   </ul>
