@@ -4,7 +4,7 @@
   <title><![CDATA[LARRY HOU]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2015-08-31T16:42:14+08:00</updated>
+  <updated>2015-09-01T14:22:57+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown Playground]]></title>
+    <link href="http://larryhou.github.io/blog/2015/09/01/markdown-playground/"/>
+    <updated>2015-09-01T14:22:57+08:00</updated>
+    <id>http://larryhou.github.io/blog/2015/09/01/markdown-playground</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Markdown Syntax]]></title>
@@ -3422,104 +3433,6 @@ SystemCodeSnippets.codesnippets</p></blockquote>
 
 
 <p>如上面这段代码，看起来没有什么问题，但是如果把<code>data</code>通过<code>Bitmap</code>显示出来，就会发现效果有些诡异，这是因为<code>BitmapData</code>在<code>draw</code>的时候，会自动忽略<code>childA.blendMode</code>属性，除非把<code>childA</code>的父级容器设置为<code>container.blendMode = BlendMode.LAYER</code>。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ActionScript Syntax Highlight in Octopress]]></title>
-    <link href="http://larryhou.github.io/blog/2012/10/22/ActionScript-Syntax-Highlight/"/>
-    <updated>2012-10-22T00:00:00+08:00</updated>
-    <id>http://larryhou.github.io/blog/2012/10/22/ActionScript-Syntax-Highlight</id>
-    <content type="html"><![CDATA[<p>Here is a <code>bezier</code> utils method in ActionScript.</p>
-
-<!--more-->
-
-
-
-
-<figure class='code'><figcaption><span> (bezier.as)</span> <a href='http://larryhou.github.io/downloads/code/bezier.as'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='actionscript3'><span class='line'><span class="k">package</span> <span class="nn">ifrog.math</span>
-</span><span class='line'><span class="o">{</span>
-</span><span class='line'>  <span class="k">import</span> <span class="nn">flash.geom.Point</span><span class="o">;</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="cm">/**</span>
-</span><span class='line'><span class="cm">  * 贝塞尔工具</span>
-</span><span class='line'><span class="cm">  * @author Larry H.</span>
-</span><span class='line'><span class="cm">  * @createTime 2012/8/21 16:24</span>
-</span><span class='line'><span class="cm">  * </span>
-</span><span class='line'><span class="cm">  * 绘制贝赛尔曲线点</span>
-</span><span class='line'><span class="cm">  * @param   list    控制点</span>
-</span><span class='line'><span class="cm">  * @param   ratio   贝赛尔曲线比例</span>
-</span><span class='line'><span class="cm">  * @return  返回ratio比例对应贝赛尔曲线上的点坐标</span>
-</span><span class='line'><span class="cm">  * list.length代表贝赛尔曲线的阶数，一般二阶即可满足需要，二阶需要三个点</span>
-</span><span class='line'><span class="cm">  */</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">function </span><span class="nf">bezier</span><span class="o">(</span><span class="n">list</span><span class="o">:</span><span class="kt">Array</span><span class="err">/*list.length</span> <span class="err">&gt;=</span> <span class="err">2*/,</span> <span class="n">ratio</span><span class="o">:</span><span class="kt">Number</span><span class="err">/*0</span> <span class="err">=&lt;</span> <span class="err">ratio</span> <span class="err">&lt;=</span> <span class="err">1*/</span><span class="o">):</span><span class="kt">Point</span>
-</span><span class='line'>  <span class="o">{</span>
-</span><span class='line'>      <span class="k">if</span> <span class="o">(!</span><span class="n">list</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="k">if</span> <span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span>
-</span><span class='line'>      <span class="o">{</span>
-</span><span class='line'>          <span class="kd">var</span> <span class="n">pos</span><span class="p">:</span><span class="kt">Point</span><span class="o">;</span>
-</span><span class='line'>          <span class="kd">var</span> <span class="n">length</span><span class="p">:</span><span class="kt">int</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-</span><span class='line'>          <span class="k">for</span> <span class="o">(</span><span class="kd">var</span> <span class="n">i</span><span class="p">:</span><span class="kt">int</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
-</span><span class='line'>          <span class="o">{</span>
-</span><span class='line'>              <span class="n">pos</span> <span class="o">=</span> <span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-</span><span class='line'>              
-</span><span class='line'>              <span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">Point</span><span class="o">();</span>
-</span><span class='line'>              <span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ratio</span><span class="o">)</span> <span class="o">*</span> <span class="n">pos</span><span class="o">.</span><span class="na">x</span> <span class="o">+</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">list</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">].</span><span class="n">x</span><span class="o">;</span>
-</span><span class='line'>              <span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">y</span> <span class="o">=</span> <span class="o">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ratio</span><span class="o">)</span> <span class="o">*</span> <span class="n">pos</span><span class="o">.</span><span class="na">y</span> <span class="o">+</span> <span class="n">ratio</span> <span class="o">*</span> <span class="n">list</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">].</span><span class="n">y</span><span class="o">;</span>
-</span><span class='line'>          <span class="o">}</span>
-</span><span class='line'>          
-</span><span class='line'>          <span class="n">list</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-</span><span class='line'>          <span class="k">return</span> <span class="k">arguments</span><span class="o">.</span><span class="na">callee</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="k">arguments</span><span class="o">);</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="k">return</span> <span class="n">list</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
 ]]></content>
   </entry>
   
