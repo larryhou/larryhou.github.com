@@ -9,18 +9,9 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="BitmapData.draw()如果遇到DisplayObject.blendMode有时候效果会异常，这里有个陷阱&hellip;oops simple exmaple 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-var container:Sprite = new [some &hellip;">
+  <meta name="description" content="我的MAC硬盘分了三个分区，我把其中两个删掉了，然后扩大主分区的可用空间，结果出错： Mac分区失败 (未能修改分区图，因为文件系统验证失败） Google了一下这种情况还蛮普遍的，解决方法也很简单： 重启系统，按住⌘+s进入MAC命令行模式
+输入fsck -f回车
+输入reboot回车 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,7 +66,7 @@ var container:Sprite = new [some &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">BitmapData.draw() 和 DisplayObject.blendMode</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/13/disk-partion-fail-with-mac/">MAC分区失败解决方法</a></h1>
     
     
       <p class="meta">
@@ -84,45 +75,30 @@ var container:Sprite = new [some &hellip;">
 
 
 
-<time class='entry-date' datetime='2012-10-25T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2012-11-13T21:27:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>9:27 pm</span></time>
         
-           | <a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">Comments</a>
+           | <a href="/blog/2012/11/13/disk-partion-fail-with-mac/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/13/disk-partion-fail-with-mac/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&hellip;oops</p>
+  <div class="entry-content"><p>我的MAC硬盘分了三个分区，我把其中两个删掉了，然后扩大主分区的可用空间，结果出错：</p>
 
-<figure class='code'><figcaption><span>simple exmaple </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='actionscript3'><span class='line'><span class="kd">var</span> <span class="n">container</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObjectContainer</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'><span class="kd">var</span> <span class="n">childA</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'><span class="kd">var</span> <span class="n">childB</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">childA</span><span class="o">.</span><span class="na">blendMode</span> <span class="o">=</span> <span class="n">BlendMode</span><span class="o">.</span><span class="na">ADD</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childA</span><span class="o">);</span>
-</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childB</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="n">data</span><span class="p">:</span><span class="kt">BitmapData</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">BitmapData</span><span class="o">(</span><span class="n">container</span><span class="o">.</span><span class="na">width</span><span class="o">,</span> <span class="n">container</span><span class="o">.</span><span class="na">height</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">container</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<h3><strong>Mac分区失败 (未能修改分区图，因为文件系统验证失败）</strong></h3>
 
+<p>Google了一下这种情况还蛮普遍的，解决方法也很简单：</p>
 
-<p>如上面这段代码，看起来没有什么问题，但是如果把<code>data</code>通过<code>Bitmap</code>显示出来，就会发现效果有些诡异，这是因为<code>BitmapData</code>在<code>draw</code>的时候，会自动忽略<code>childA.blendMode</code>属性，除非把<code>childA</code>的父级容器设置为<code>container.blendMode = BlendMode.LAYER</code>。</p>
+<blockquote><ul>
+<li>重启系统，按住<code>⌘+s</code>进入MAC命令行模式</li>
+<li>输入<code>fsck -f</code>回车</li>
+<li>输入<code>reboot</code>回车</li>
+</ul>
+</blockquote>
+
+<p>经过以上三步后我的问题解决了，第一次围观命令行模式还是挺欣喜的。不过话说回来，Apple一向很重视用户体验，但现在居然出现这种问题实在有点费解：我差点就想格式化重装系统了&hellip;orz</p>
 </div>
   
   
@@ -135,7 +111,7 @@ var container:Sprite = new [some &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">ActionScript Syntax Highlight in Octopress</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/11/as3proto-win/">在WIN系统使用AS3版protobuf</a></h1>
     
     
       <p class="meta">
@@ -144,23 +120,58 @@ var container:Sprite = new [some &hellip;">
 
 
 
-<time class='entry-date' datetime='2012-10-22T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2012-11-11T17:39:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>5:39 pm</span></time>
         
-           | <a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/22/ActionScript-Syntax-Highlight/">Comments</a>
+           | <a href="/blog/2012/11/11/as3proto-win/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/11/as3proto-win/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Here is a <code>bezier</code> utils method in ActionScript.</p>
+  <div class="entry-content"><p>本文介绍了在WIN系统布置AS3版protobuf运行环境的方法，在阅读本文之前需要先下载<a href="https://github.com/larryhou/as3proto-osx" title="Actionscript3.0版protobuf">AS3版protobuf源码</a>。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/11/as3proto-win/">正文&raquo;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/10/as3proto-osx/">在OSX系统使用AS3版protobuf</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-10T23:30:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:30 pm</span></time>
+        
+           | <a href="/blog/2012/11/10/as3proto-osx/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/10/as3proto-osx/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://github.com/larryhou/as3proto-osx" title="Actionscript3.0版protobuf">该项目</a>搭建了 AS3 protobuf 所需的OSX运行环境以及AS3类库，整合了Google <a href="http://code.google.com/p/protobuf/" title="[v2.3.0] http://code.google.com/p/protobuf/">protobuf</a>和<a href="http://code.google.com/p/protobuf-actionscript3/" title="http://code.google.com/p/protobuf-actionscript3/">protobuf-actionscript3</a>第三方插件资源，本文来介绍一下AS3版protobuf的使用方法。</p>
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">正文&raquo;</a>
+      <a rel="full-article" href="/blog/2012/11/10/as3proto-osx/">正文&raquo;</a>
     </footer>
   
 
@@ -171,7 +182,9 @@ var container:Sprite = new [some &hellip;">
     
     <a class="prev" href="/posts/4">PREV #4</a>
     
-	<span> 5 / 5 </span>
+	<span> 5 / 8 </span>
+    
+      <a class="next" href="/posts/6">NEXT #6</a>
     
   </div>
   <!-- <div class="pagination">

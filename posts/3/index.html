@@ -9,7 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="假如你要学习Objective-C，那么你需要搞清楚interface、protocol、category以及extension这几个概念，它们在代码的出现频率非常高，也非常有用。本文将对这几个概念一一来说明，并介绍各自的使用方法。">
+  <meta name="description" content="有时候在Terminal查看帮助实在是痛苦：只能显示几行，所以我就想在文本文件里面查看这些帮助（比如，TextMate），如果你使用类似man col > ~/downloads/col.txt，你会发现这简直是个悲剧，见下图 这完全不是我想要的结果，没有任何可读性，这是怎么回事儿呢？ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,7 +64,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a></h1>
     
     
       <p class="meta">
@@ -73,104 +73,40 @@
 
 
 
-<time class='entry-date' datetime='2012-11-21T21:12:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>9:12 pm</span></time>
+<time class='entry-date' datetime='2012-11-29T13:38:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>1:38 pm</span></time>
         
-           | <a href="/blog/2012/11/21/interface-protocol-and-category/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/21/interface-protocol-and-category/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>假如你要学习Objective-C，那么你需要搞清楚interface、protocol、category以及extension这几个概念，它们在代码的出现频率非常高，也非常有用。本文将对这几个概念一一来说明，并介绍各自的使用方法。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/11/21/interface-protocol-and-category/">正文&raquo;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-11-18T23:11:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:11 pm</span></time>
-        
-           | <a href="/blog/2012/11/18/list-folder-recursively/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/18/list-folder-recursively/">Comments</a>
+           | <a href="/blog/2012/11/29/make-man-output-readable/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/29/make-man-output-readable/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过AppleScript要比它强大很多，对系统的融合更加深入。如果结合Calendar还可以做一些定时计划任务，非常的方便。</p>
+  <div class="entry-content"><p>有时候在Terminal查看帮助实在是痛苦：只能显示几行，所以我就想在文本文件里面查看这些帮助（比如，TextMate），如果你使用类似<code>man col > ~/downloads/col.txt</code>，你会发现这简直是个悲剧，见下图</p>
 
-<p>现在我写了一个监视共享目录的脚本，它会把最近30天、大于500MB的影片输出一个列表，虽然写了很久，不过也熟悉好多命令以及编写脚本的流程，收获还是蛮大的。在写这个脚本的时候，走了很多弯路，因为我觉得文件夹操作只需要<code>Finder.app</code>就可以，结果出现各种问题，一度想到放弃，不过最后研究AppleScript自带的脚本示例发现要用<code>System Events</code>，可是到现在我也不知道为什么要这样写，因为AppleScript <code>Dictionary</code> 帮助文档已经写得很清楚了&hellip;oops</p>
+<p><img src="/images/make-man-output-readable/fig01.png"></p>
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/11/18/list-folder-recursively/">正文&raquo;</a>
-    </footer>
-  
+<p>这完全不是我想要的结果，没有任何可读性，这是怎么回事儿呢？我Google到了一段文字可以解释这个问题：</p>
+
+<blockquote><p>Ever try to open a man page in TextEdit using <code>man | open -f</code>? <br/>You end up with the kind of unreadable repeated characters shown here. This all dates back to the days of dot matrix and daisy wheel printing when the only way you could produce bold type was to repeatedly print characters. <br/>Fortunately, there's an easy way to convert man pages into simple, non-redundant text. Use the command-line utility <code>col</code> with the <code>-b</code> flag enabled. For example, <code>man col | col -b | open -f</code> will open the col man page in TextEdit without repeated characters. The <code>-b</code> flag tells col to exclude all but the last character written to any column, ignoring any backspaces and repeats.</p></blockquote>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/13/disk-partion-fail-with-mac/">MAC分区失败解决方法</a></h1>
-    
-    
-      <p class="meta">
-        
+<p>这是一个历史遗留问题，可以追溯到使用点阵和菊花轮印刷的旧时代，那个时候为了得到粗体字体样式采用的是反复重复印刷的手段。幸运的是，有个简单的方法可以让man帮助变得简单可读、没有冗余字符，可以在man后面使用管道添加<code>col -b</code>来实现，其中<code>-b</code>标记位意思是忽略退格键以及去掉所有重复字符。比如，得到<code>col</code>的帮助可以使用<code>man col | col -b | open -f</code>，这里<code>open -f</code> 意思是使用默认文本编辑器打开，如下图</p>
 
+<p><img src="/images/make-man-output-readable/fig02.png"></p>
 
+<p>最后总结一下：</p>
 
+<ul>
+<li><p>man帮助输出到文本文件</p>
 
-<time class='entry-date' datetime='2012-11-13T21:27:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>9:27 pm</span></time>
-        
-           | <a href="/blog/2012/11/13/disk-partion-fail-with-mac/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/13/disk-partion-fail-with-mac/">Comments</a>
-        
-      </p>
-    
-  </header>
+<blockquote><p>man [command] | col -b > [file saving path]</p></blockquote></li>
+<li><p>man帮助直接用文本编辑器打开</p>
 
-
-  <div class="entry-content"><p>我的MAC硬盘分了三个分区，我把其中两个删掉了，然后扩大主分区的可用空间，结果出错：</p>
-
-<h3><strong>Mac分区失败 (未能修改分区图，因为文件系统验证失败）</strong></h3>
-
-<p>Google了一下这种情况还蛮普遍的，解决方法也很简单：</p>
-
-<blockquote><ul>
-<li>重启系统，按住<code>⌘+s</code>进入MAC命令行模式</li>
-<li>输入<code>fsck -f</code>回车</li>
-<li>输入<code>reboot</code>回车</li>
+<blockquote><p>man [command] | col -b | open -f</p></blockquote></li>
 </ul>
-</blockquote>
 
-<p>经过以上三步后我的问题解决了，第一次围观命令行模式还是挺欣喜的。不过话说回来，Apple一向很重视用户体验，但现在居然出现这种问题实在有点费解：我差点就想格式化重装系统了&hellip;orz</p>
 </div>
   
   
@@ -183,7 +119,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/11/as3proto-win/">在WIN系统使用AS3版protobuf</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/26/nested-variable/">脚本中的嵌套变量</a></h1>
     
     
       <p class="meta">
@@ -192,21 +128,70 @@
 
 
 
-<time class='entry-date' datetime='2012-11-11T17:39:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>5:39 pm</span></time>
+<time class='entry-date' datetime='2012-11-26T20:38:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>8:38 pm</span></time>
         
-           | <a href="/blog/2012/11/11/as3proto-win/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/11/as3proto-win/">Comments</a>
+           | <a href="/blog/2012/11/26/nested-variable/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/26/nested-variable/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>本文介绍了在WIN系统布置AS3版protobuf运行环境的方法，在阅读本文之前需要先下载<a href="https://github.com/larryhou/as3proto-osx" title="Actionscript3.0版protobuf">AS3版protobuf源码</a>。</div>
+  <div class="entry-content"><h2>OSX系统</h2>
+
+<p>这里有一段简单脚本，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">name1</span><span class="o">=</span>larry01
+</span><span class='line'><span class="nv">name2</span><span class="o">=</span>larry02
+</span><span class='line'><span class="nv">name3</span><span class="o">=</span>larry03
+</span><span class='line'><span class="nv">name4</span><span class="o">=</span>larry04
+</span><span class='line'><span class="nv">name5</span><span class="o">=</span>larry05
+</span><span class='line'><span class="nv">name6</span><span class="o">=</span>larry06
+</span><span class='line'><span class="nv">name7</span><span class="o">=</span>larry07
+</span><span class='line'><span class="nv">name8</span><span class="o">=</span>larry08
+</span><span class='line'><span class="nv">name9</span><span class="o">=</span>larry09
+</span><span class='line'>
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name1</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name2</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name3</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name4</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name5</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name6</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name7</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name8</span> wants to sleep.
+</span><span class='line'><span class="nb">echo</span> <span class="nv">$name9</span> wants to sleep.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在脚本中，我把每一个name都按照一定的规律做了一些操作，现在看来好像没什么问题。但是如果name有很多很多，这么写就很苦逼了，并且很容易出错。</div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/11/11/as3proto-win/">正文&raquo;</a>
+      <a rel="full-article" href="/blog/2012/11/26/nested-variable/">正文&raquo;</a>
     </footer>
   
 
@@ -218,7 +203,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/10/as3proto-osx/">在OSX系统使用AS3版protobuf</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/26/customize-xcode-snippet/">自定义Xcode代码模板：Code Snippet</a></h1>
     
     
       <p class="meta">
@@ -227,23 +212,21 @@
 
 
 
-<time class='entry-date' datetime='2012-11-10T23:30:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:30 pm</span></time>
+<time class='entry-date' datetime='2012-11-26T09:40:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>9:40 am</span></time>
         
-           | <a href="/blog/2012/11/10/as3proto-osx/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/10/as3proto-osx/">Comments</a>
+           | <a href="/blog/2012/11/26/customize-xcode-snippet/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/26/customize-xcode-snippet/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="https://github.com/larryhou/as3proto-osx" title="Actionscript3.0版protobuf">该项目</a>搭建了 AS3 protobuf 所需的OSX运行环境以及AS3类库，整合了Google <a href="http://code.google.com/p/protobuf/" title="[v2.3.0] http://code.google.com/p/protobuf/">protobuf</a>和<a href="http://code.google.com/p/protobuf-actionscript3/" title="http://code.google.com/p/protobuf-actionscript3/">protobuf-actionscript3</a>第三方插件资源，本文来介绍一下AS3版protobuf的使用方法。</p>
-
-</div>
+  <div class="entry-content"><p>Xcode强大的代码提示功能是有目共睹的，用过都知道，可是你是否想过添加一些自定义的代码提示模板？你是否想让if默认的左括号挪到下一行？还有for、while、switch等等……如果你有这方面的需求的话，这篇文章刚好可以帮到你！ </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/11/10/as3proto-osx/">正文&raquo;</a>
+      <a rel="full-article" href="/blog/2012/11/26/customize-xcode-snippet/">正文&raquo;</a>
     </footer>
   
 
@@ -254,7 +237,7 @@
     
     <a class="prev" href="/posts/2">PREV #2</a>
     
-	<span> 3 / 5 </span>
+	<span> 3 / 8 </span>
     
       <a class="next" href="/posts/4">NEXT #4</a>
     
