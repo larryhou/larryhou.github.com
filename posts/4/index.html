@@ -9,7 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="今天使用git push命令，结果出现一堆以前没见过的东西 warning: push.default 未设置，它的默认值将会在 Git 2.0 由 'matching'修改为 'simple'。若要不再显示本信息并在其默认值改变后维持当前使用习惯，进行如下设置： git config -- &hellip;">
+  <meta name="description" content="如果需要动态引用Excel单元格的时候，INDIRECT函数可以帮上大忙，为什么这么说？它的传参是一个字符串，比如引用第一列第二行的数据可以用=INDIRECT(&ldquo;A2&rdquo;)，这样有什么好处呢？作比较复杂的数据操作的时候行列可能都是动态计算出来的，这个时候结合ADDRESS( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,7 +64,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">使用INDIRECT函数引用Excel单元格</a></h1>
     
     
       <p class="meta">
@@ -73,26 +73,19 @@
 
 
 
-<time class='entry-date' datetime='2012-11-22T14:50:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>2:50 pm</span></time>
+<time class='entry-date' datetime='2012-11-09T23:58:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:58 pm</span></time>
         
-           | <a href="/blog/2012/11/22/git-push-dot-default/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/22/git-push-dot-default/">Comments</a>
+           | <a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>今天使用<code>git push</code>命令，结果出现一堆以前没见过的东西</p>
+  <div class="entry-content"><p>如果需要动态引用Excel单元格的时候，INDIRECT函数可以帮上大忙，为什么这么说？它的传参是一个字符串，比如引用第一列第二行的数据可以用<code>=INDIRECT(&ldquo;A2&rdquo;)</code>，这样有什么好处呢？作比较复杂的数据操作的时候行列可能都是动态计算出来的，这个时候结合<code>ADDRESS(row, column)</code>方法算出行列对应的地址名称传参到INDIRECT（也即<code>=INDIRECT(ADDRESS(row, column))</code>）就可以很方便地引用任意单元格。</p>
 
-<blockquote><p>warning: push.default 未设置，它的默认值将会在 Git 2.0 由 'matching'<br/>修改为 'simple'。若要不再显示本信息并在其默认值改变后维持当前使用习惯，<br/>进行如下设置：</p><p>  git config --global push.default matching</p><p>若要不再显示本信息并从现在开始采用新的使用习惯，设置：</p><p>  git config --global push.default simple</p><p>参见 'git help config' 并查找 'push.default' 以获取更多信息。<br/>（'simple' 模式由 Git 1.7.11 版本引入。如果您有时要使用老版本的 Git，<br/>为保持兼容，请用 'current' 代替 'simple' 模式）</p><footer><strong>Terminal.app</strong> <cite>GIT With Version 1.8.0</cite></footer></blockquote>
-
-
-<p>尼玛，乍一看吓一跳还以为代码出错了，解决这个问题很简单，按照上面的提示在Terminal.app里面运行一下脚本</p>
-
-<blockquote><p>git config &ndash;global push.default matching</p></blockquote>
-
-<p>我在纳闷，GIT版本更新后为毛不自动设置一下.gitconfig配置呢？还要我手动操作一下，难道是想介绍GIT的这新功能？</p>
+<p>有时候为了方便可能会引用其他表单的数值，假设另外一个表单的名称叫<strong>sheet</strong>，那么引用另外一个表单的单元格可以使用<code>=INDIRECT(&ldquo;sheet!A2&rdquo;)</code>来引用<strong>sheet</strong>表单的第二行第一列的单元格。</p>
 </div>
   
   
@@ -105,7 +98,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/08/export-xml-from-excel/">使用Excel导出XML格式文件</a></h1>
     
     
       <p class="meta">
@@ -114,21 +107,21 @@
 
 
 
-<time class='entry-date' datetime='2012-11-21T21:12:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>9:12 pm</span></time>
+<time class='entry-date' datetime='2012-11-08T10:08:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:08 am</span></time>
         
-           | <a href="/blog/2012/11/21/interface-protocol-and-category/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/21/interface-protocol-and-category/">Comments</a>
+           | <a href="/blog/2012/11/08/export-xml-from-excel/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/08/export-xml-from-excel/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>假如你要学习Objective-C，那么你需要搞清楚interface、protocol、category以及extension这几个概念，它们在代码的出现频率非常高，也非常有用。本文将对这几个概念一一来说明，并介绍各自的使用方法。</div>
+  <div class="entry-content"><p>生成XML的方式有很多：如果你是程序员，那么你可以通过变成快速生成你想要的XML格式；如果你是其他用户，你可能会使用记事本等文本编辑工具来手动写XML。这些都不是问题，但是数据量很大的时候，如果你不是程序猿会不会郁闷？</div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/11/21/interface-protocol-and-category/">正文&raquo;</a>
+      <a rel="full-article" href="/blog/2012/11/08/export-xml-from-excel/">正文&raquo;</a>
     </footer>
   
 
@@ -140,7 +133,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/05/remote-debug-with-charles-proxy/">使用charles远程调试iOS移动应用</a></h1>
     
     
       <p class="meta">
@@ -149,26 +142,105 @@
 
 
 
-<time class='entry-date' datetime='2012-11-18T23:11:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:11 pm</span></time>
+<time class='entry-date' datetime='2012-11-05T16:38:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>4:38 pm</span></time>
         
-           | <a href="/blog/2012/11/18/list-folder-recursively/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/18/list-folder-recursively/">Comments</a>
+           | <a href="/blog/2012/11/05/remote-debug-with-charles-proxy/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/05/remote-debug-with-charles-proxy/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过AppleScript要比它强大很多，对系统的融合更加深入。如果结合Calendar还可以做一些定时计划任务，非常的方便。</p>
+  <div class="entry-content"><p>做iOS移动应用很多开发者会喜欢抓网络发包、回包来联调服务端借口以及定位其他网络问题。如果在Windows系统可以使用fiddler来做iOS的远程代理，只要fiddler所在系统与iOS设备同时连上同一个局域网即可。但是在OSX系统上没有fiddler，相信做iOS开发用windows系统的不多，其实不要纠结：其实跨平台http抓包工具charles也可以做远程代理，也就是说iOS也可以通过charles来调试，charles调试的相关技术都可以对iOS适用。</p>
 
-<p>现在我写了一个监视共享目录的脚本，它会把最近30天、大于500MB的影片输出一个列表，虽然写了很久，不过也熟悉好多命令以及编写脚本的流程，收获还是蛮大的。在写这个脚本的时候，走了很多弯路，因为我觉得文件夹操作只需要<code>Finder.app</code>就可以，结果出现各种问题，一度想到放弃，不过最后研究AppleScript自带的脚本示例发现要用<code>System Events</code>，可是到现在我也不知道为什么要这样写，因为AppleScript <code>Dictionary</code> 帮助文档已经写得很清楚了&hellip;oops</p>
+<p>那怎么才能实现charles做iOS的远程代理呢？先看charles官网的文档。</p>
+
+<blockquote><p>USING CHARLES FROM AN IPHONE</p><p>To use Charles as your HTTP proxy on your iPhone you must manually configure the HTTP Proxy settings on your WiFi network in your iPhone's Settings.</p><p>Go to the Settings app, tap Wi-Fi, find the network you are connected to and then tap the blue disclosure arrow to configure the network. Scroll down to the HTTP Proxy setting, tap Manual. Enter the IP address of your computer running Charles in the Server field, and the port Charles is running on in the Port field (usually 8888). Leave Authentication set to Off.</p><p>All of your web traffic from your iPhone will now be sent via Charles. You should see a prompt in Charles when you first make a connection from the iPhone, asking you to allow the traffic.</p><p>Remember to disable the HTTP Proxy in your Settings when you stop using Charles, otherwise you'll get confusing network failures in your applications!</p><footer><strong>charlesproxy.com</strong> <cite><a href='http://www.charlesproxy.com/documentation/faqs/using-charles-from-an-iphone/'>Remote Debug iOS APP With Charles</a></cite></footer></blockquote>
+
+
+
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/11/18/list-folder-recursively/">正文&raquo;</a>
+      <a rel="full-article" href="/blog/2012/11/05/remote-debug-with-charles-proxy/">正文&raquo;</a>
     </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/05/applescript-xun-huan/">AppleScript：循环</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-05T01:07:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>1:07 am</span></time>
+        
+           | <a href="/blog/2012/11/05/applescript-xun-huan/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/05/applescript-xun-huan/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>AppleScript是一个比较接近自然语言脚本语言，习惯了传统编程的程序猿一时还真难以适应这种表达和思考方式，不过了解其中的规律后，你就会发现AppleScript其实是一种非常容易、非常生活化的编程语言。在这篇文章里面着重介绍循环控制指令。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/05/applescript-xun-huan/">正文&raquo;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/26/install-git-with-macport/">Install Git With Macport</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-26T16:27:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>4:27 pm</span></time>
+        
+           | <a href="/blog/2012/10/26/install-git-with-macport/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/26/install-git-with-macport/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的<code>git-svn</code>不见了，这里是用<code>macport</code>安装的脚本，以备下次重装又要google半天&hellip;</p>
+
+<figure class='code'><figcaption><span>install git with svn</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port install git-core +svn +doc +bash_completion +gitweb</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
   
 
 
@@ -178,7 +250,7 @@
     
     <a class="prev" href="/posts/3">PREV #3</a>
     
-	<span> 4 / 8 </span>
+	<span> 4 / 5 </span>
     
       <a class="next" href="/posts/5">NEXT #5</a>
     
