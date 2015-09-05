@@ -4,7 +4,7 @@
   <title><![CDATA[LARRY HOU]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2015-09-05T11:01:43+08:00</updated>
+  <updated>2015-09-05T11:23:22+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -331,9 +331,13 @@
     <link href="http://larryhou.github.io/blog/2015/09/01/redraw-swf-shape-data-with-canvas/"/>
     <updated>2015-09-01T21:19:39+08:00</updated>
     <id>http://larryhou.github.io/blog/2015/09/01/redraw-swf-shape-data-with-canvas</id>
-    <content type="html"><![CDATA[<h4><div><a href='http://larryhou.github.io/assets/redraw-shape/' target='_blank'>Redraw demo with animation</a></div></h4>
+    <content type="html"><![CDATA[<div class="blog-link">
+    <div><a href='http://larryhou.github.io/assets/redraw-shape/' target='_blank'>Redraw demo with animation</a></div>
+    <div><a href='http://larryhou.github.io/assets/redraw-shape/demo.html' target='_blank'>Redraw demo</a></div>
+</div>
 
-<h4><div><a href='http://larryhou.github.io/assets/redraw-shape/demo.html' target='_blank'>Redraw demo</a></div></h4>
+
+
 
 <!-- more -->
 
