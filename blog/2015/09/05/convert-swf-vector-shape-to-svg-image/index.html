@@ -9,7 +9,10 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content=" ">
+  <meta name="description" content="Display SVG in HTML: #11
+&lt;img src=&quot;/assets/swf-svg/graph-01.svg&quot;&gt;&lt;/img&gt; Display SVG in HTML: #21
+2
+&lt;embed src=&quot;/assets &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +89,305 @@
 
 
 <p><a href="/assets/swf-svg/graph-02.svg" target="_blank"><img src="/assets/swf-svg/graph-02.svg"></img></a></p>
+
+<figure class='code'><figcaption><span>Display SVG in HTML: #1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/assets/swf-svg/graph-01.svg&quot;</span><span class="nt">&gt;&lt;/img&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Display SVG in HTML: #2</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;embed</span> <span class="na">src=</span><span class="s">&quot;/assets/swf-svg/graph-01.svg&quot;</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span> <span class="na">type=</span><span class="s">&quot;image/svg+xml&quot;</span>
+</span><span class='line'>  <span class="na">pluginspage=</span><span class="s">&quot;http://www.adobe.com/svg/viewer/install/&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Display SVG in HTML: #3</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;object</span> <span class="na">data=</span><span class="s">&quot;/assets/swf-svg/graph-01.svg&quot;</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span> <span class="na">type=</span><span class="s">&quot;image/svg+xml&quot;</span>
+</span><span class='line'>  <span class="na">codebase=</span><span class="s">&quot;http://www.adobe.com/svg/viewer/install/&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Display SVG in HTML: #4</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">&quot;/assets/swf-svg/graph-01.svg&quot;</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Not Yet Today</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns:svg=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;p&gt;</span>This is an HTML paragraph<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;svg:svg</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span> <span class="na">version=</span><span class="s">&quot;1.1&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;svg:circle</span> <span class="na">cx=</span><span class="s">&quot;100&quot;</span> <span class="na">cy=</span><span class="s">&quot;50&quot;</span> <span class="na">r=</span><span class="s">&quot;40&quot;</span> <span class="na">stroke=</span><span class="s">&quot;black&quot;</span> <span class="na">stroke-width=</span><span class="s">&quot;2&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/svg:svg&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<div><script src='https://gist.github.com/e0131d953ef1d407d72a.js'></script>
+<noscript><pre><code>package com.larrio.dump.flash.display.shape.canvas
+{
+    import com.larrio.dump.utils.padding;
+    
+    import flash.display.BitmapData;
+    import flash.display.InterpolationMethod;
+    import flash.display.LineScaleMode;
+    import flash.display.SpreadMethod;
+    import flash.geom.Matrix;
+    import flash.geom.Point;
+    import flash.geom.Rectangle;
+    
+    /**
+     * 
+     * @author larryhou
+     * @createTime Sep 4, 2015 10:48:57 PM
+     */
+    public class SVGImageCanvas implements ICanvas
+    {        
+        private var _data:Vector.&lt;String&gt;;
+        private var _gradIndex:uint;
+        
+        private var _image:XML;
+        private var _path:XML;
+        
+        private var _bounds:Rectangle;
+        private var _frame:Rectangle;
+        
+        /**
+         * 构造函数
+         * create a [SVGImageCanvas] object
+         */
+        public function SVGImageCanvas(imageWidth:int = 1024, imageHeight:int = 768)
+        {
+            _frame = new Rectangle(0, 0, imageWidth, imageHeight);
+            
+            _image = new XML(&quot;&lt;svg/&gt;&quot;);
+            _image.@version = &quot;1.1&quot;;
+            _image.@xmlns = &quot;http://www.w3.org/2000/svg&quot;;
+            
+            _bounds = new Rectangle();
+        }
+        
+        private function getRGBColor(color:uint):String
+        {
+            var b:String = padding((color &gt;&gt; 0  &amp; 0xFF).toString(16), 2, &quot;0&quot;, false);
+            var g:String = padding((color &gt;&gt; 8  &amp; 0xFF).toString(16), 2, &quot;0&quot;, false);
+            var r:String = padding((color &gt;&gt; 16 &amp; 0xFF).toString(16), 2, &quot;0&quot;, false);
+            return &quot;#&quot; + r.toUpperCase() + g.toUpperCase() + b.toUpperCase();
+        }
+        
+        public function export():String
+        {
+            flushContext();
+            
+            var rect:Rectangle = new Rectangle(_bounds.left, _bounds.top, _bounds.right - _bounds.left, _bounds.bottom - _bounds.top);
+            
+            _image.@[&quot;width&quot;]  = _frame.width;
+            _image.@[&quot;height&quot;] = _frame.height;
+            
+            const MARGIN:Number = 20.0;
+            var scale:Number = Math.min((_frame.width - MARGIN)/rect.width, (_frame.height - MARGIN) / rect.height);
+            var translateX:Number = -(rect.x + rect.width  / 2) + _frame.width  / 2 / scale;
+            var translateY:Number = -(rect.y + rect.height / 2) + _frame.height / 2 / scale;
+            _image.g.@[&quot;transform&quot;] = 
+                &quot;scale(&quot; + scale.toFixed(2) + &quot;,&quot; + scale.toFixed(2) + &quot;) &quot; +
+                &quot;translate(&quot; + translateX.toFixed(2) + &quot;,&quot; + translateY.toFixed(2) + &quot;)&quot;;
+            
+            XML.prettyPrinting = true;
+            XML.prettyIndent = 4;
+            
+            return _image.toXMLString();
+        }
+        
+        private function flushContext():void
+        {
+            if (_path &amp;&amp; _data)
+            {
+                if (_data.length)
+                {
+                    _path.@[&quot;d&quot;] = _data.join(&quot; &quot;);
+                    if (_image.g.length() == 0)
+                    {
+                        _image.appendChild(new XML(&quot;&lt;g/&gt;&quot;));
+                    }
+                    
+                    _image.g.appendChild(_path);
+                }
+                _data = null;
+            }
+        }
+        
+        public function lineStyle(thickness:Number = NaN, color:uint = 0, alpha:Number = 1.0, pixelHinting:Boolean = false, scaleMode:String = LineScaleMode.NORMAL, caps:String = null, joints:String = null, miterLimit:Number = 3):void
+        {
+            flushContext();
+            
+            _data = new Vector.&lt;String&gt;();
+            
+            _path = new XML(&quot;&lt;path/&gt;&quot;);
+            _path.@[&quot;stroke&quot;] = getRGBColor(color);
+            _path.@[&quot;stroke-width&quot;] = (thickness || 0).toFixed(2);
+            _path.@[&quot;stroke-opacity&quot;] = alpha.toFixed(2);
+            _path.@[&quot;stroke-linecap&quot;] = (!caps || caps == &quot;none&quot;)? &quot;butt&quot; : caps;
+            _path.@[&quot;stroke-linejoin&quot;] = joints || &quot;round&quot;;
+            _path.@[&quot;stroke-miterlimit&quot;] = miterLimit.toFixed(2);
+            _path.@[&quot;fill&quot;] = &quot;transparent&quot;;
+        }
+        
+        private function unitBoundsWithPoint(x:Number, y:Number):void
+        {
+            _bounds.left   = Math.min(x, _bounds.left);
+            _bounds.right  = Math.max(x, _bounds.right);
+            _bounds.top    = Math.min(y, _bounds.top);
+            _bounds.bottom = Math.max(y, _bounds.bottom);
+        }
+        
+        public function moveTo(x:Number, y:Number):void
+        {
+            _data.push(&quot;M&quot; + x.toFixed(2) + &quot;,&quot; + y.toFixed(2));
+            unitBoundsWithPoint(x, y);
+        }
+        
+        public function lineTo(x:Number, y:Number):void
+        {
+            _data.push(&quot;L&quot; + x.toFixed(2) + &quot;,&quot; + y.toFixed(2));
+            unitBoundsWithPoint(x, y);
+        }
+        
+        public function curveTo(controlX:Number, controlY:Number, anchorX:Number, anchorY:Number):void
+        {
+            _data.push(&quot;Q&quot; + controlX.toFixed(2) + &quot;,&quot; + controlY.toFixed(2) + &quot; &quot; + anchorX.toFixed(2) + &quot;,&quot; + anchorY.toFixed(2));
+            unitBoundsWithPoint(controlX, controlY);
+            unitBoundsWithPoint(anchorX, anchorY);
+        }
+        
+        public function beginFill(color:uint, alpha:Number = 1.0):void
+        {
+            flushContext();
+            
+            _data = new Vector.&lt;String&gt;();
+            _path = new XML(&quot;&lt;path/&gt;&quot;);
+            _path.@[&quot;fill&quot;] = getRGBColor(color);
+            _path.@[&quot;fill-opacity&quot;] = alpha.toFixed(2);
+        }
+        
+        public function beginBitmapFill(bitmap:BitmapData, matrix:Matrix = null, repeat:Boolean = true, smooth:Boolean = false):void
+        {
+            beginFill(0xFF0000, 1.0);
+        }
+        
+        private function createGradientStyle(type:String, colors:Array, alphas:Array, ratios:Array, matrix:Matrix, spreadMethod:String, interpolationMethod:String, focalPointRatio:Number):String
+        {
+            matrix ||= new Matrix();
+            
+            var angle:Number = Math.atan2(matrix.b, matrix.a);
+            var scaleX:Number = matrix.a / Math.cos(angle);
+            var scaleY:Number = matrix.d / Math.cos(angle);
+            var width:Number = scaleX * 1638.4, height:Number = scaleY * 1638.4;
+            
+            var gradient:XML;
+            if (type == &quot;radial&quot;)
+            {
+                gradient = new XML(&quot;&lt;radialGradient/&gt;&quot;);
+                var radius:Number = Math.max(width / 2, height / 2);
+                var focalPoint:Point = new Point(
+                    width  / 2 * Math.cos(angle) * focalPointRatio + matrix.tx,
+                    height / 2 * Math.sin(angle) * focalPointRatio + matrix.ty);
+                var center:Point = new Point(matrix.tx, matrix.ty);
+                gradient.@[&quot;cx&quot;] = center.x.toFixed(2);
+                gradient.@[&quot;cy&quot;] = center.y.toFixed(2);
+                gradient.@[&quot;fx&quot;] = focalPoint.x.toFixed(2);
+                gradient.@[&quot;fy&quot;] = focalPoint.y.toFixed(2);
+                gradient.@[&quot;r&quot;] = radius.toFixed(2);
+            }
+            else
+            {
+                gradient = new XML(&quot;&lt;linearGradient/&gt;&quot;);
+                var sp:Point = new Point(-819.2 * scaleX, 0);
+                var startPoint:Point = new Point(
+                    sp.x * Math.cos(angle) - sp.y * Math.sin(angle) + matrix.tx,
+                    sp.x * Math.sin(angle) + sp.y * Math.cos(angle) + matrix.ty);
+                var ep:Point = new Point( 819.2 * scaleX, 0);
+                var endPoint:Point = new Point(
+                    ep.x * Math.cos(angle) - ep.y * Math.sin(angle) + matrix.tx,
+                    ep.x * Math.sin(angle) + ep.y * Math.cos(angle) + matrix.ty);
+                gradient.@[&quot;x1&quot;] = startPoint.x.toFixed(2);
+                gradient.@[&quot;y1&quot;] = startPoint.y.toFixed(2);
+                gradient.@[&quot;x2&quot;] = endPoint.x.toFixed(2);
+                gradient.@[&quot;y2&quot;] = endPoint.y.toFixed(2);
+            }
+            
+            gradient.@[&quot;gradientUnits&quot;] = &quot;userSpaceOnUse&quot;;
+            gradient.@[&quot;spreadMethod&quot;] = spreadMethod || &quot;pad&quot;;
+            gradient.@[&quot;id&quot;] = &quot;G&quot; + (++_gradIndex);
+            for (var i:int = 0; i &lt; colors.length; i++)
+            {
+                var stop:XML = new XML(&quot;&lt;stop/&gt;&quot;);
+                stop.@[&quot;offset&quot;] = (ratios[i] / 0xFF).toFixed(2);
+                stop.@[&quot;stop-color&quot;] = getRGBColor(colors[i]);
+                stop.@[&quot;stop-opacity&quot;] = alphas[i].toFixed(2);
+                gradient.appendChild(stop);
+            }
+            if (_image.defs.length() == 0)
+            {
+                _image.prependChild(new XML(&quot;&lt;defs/&gt;&quot;));
+            }
+            _image.defs.appendChild(gradient);
+            return &quot;url(#&quot; + gradient.@id + &quot;)&quot;;
+        }
+        
+        public function beginGradientFill(type:String, colors:Array, alphas:Array, ratios:Array, matrix:Matrix = null, spreadMethod:String = SpreadMethod.PAD, interpolationMethod:String = InterpolationMethod.RGB, focalPointRatio:Number = 0):void
+        {
+            flushContext();
+            
+            _data = new Vector.&lt;String&gt;();
+            _path = new XML(&quot;&lt;path/&gt;&quot;);
+            _path.@[&quot;fill&quot;] = createGradientStyle.apply(null, arguments);
+        }
+        
+        public function lineGradientStyle(type:String, colors:Array, alphas:Array, ratios:Array, matrix:Matrix = null, spreadMethod:String = SpreadMethod.PAD, interpolationMethod:String = InterpolationMethod.RGB, focalPointRatio:Number = 0):void
+        {
+            flushContext();
+            
+            _data = new Vector.&lt;String&gt;();
+            _path = new XML(&quot;&lt;path/&gt;&quot;);
+            _path.@[&quot;stroke&quot;] = createGradientStyle.apply(null, arguments);
+            _path.@[&quot;fill&quot;] = &quot;transparent&quot;;
+        }
+        
+        public function endFill():void
+        {
+            _data.push(&quot;Z&quot;);
+            
+            flushContext();
+        }
+    }
+}</code></pre></noscript></div>
+
 </div>
 
 
