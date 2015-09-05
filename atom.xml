@@ -4,7 +4,7 @@
   <title><![CDATA[LARRY HOU]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2015-09-05T10:33:49+08:00</updated>
+  <updated>2015-09-05T10:35:44+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -35,7 +35,7 @@
 <figure class='code'><figcaption><span>Display SVG in HTML: #2</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;embed</span> <span class="na">src=</span><span class="s">&quot;/assets/swf-svg/graph-01.svg&quot;</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span> <span class="na">type=</span><span class="s">&quot;image/svg+xml&quot;</span>
-</span><span class='line'>  <span class="na">pluginspage=</span><span class="s">&quot;http://www.adobe.com/svg/viewer/install/&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="na">pluginspage=</span><span class="s">&quot;http://www.adobe.com/svg/viewer/install/&quot;</span> <span class="nt">/&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -44,7 +44,7 @@
 <figure class='code'><figcaption><span>Display SVG in HTML: #3</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;object</span> <span class="na">data=</span><span class="s">&quot;/assets/swf-svg/graph-01.svg&quot;</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span> <span class="na">type=</span><span class="s">&quot;image/svg+xml&quot;</span>
-</span><span class='line'>  <span class="na">codebase=</span><span class="s">&quot;http://www.adobe.com/svg/viewer/install/&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="na">codebase=</span><span class="s">&quot;http://www.adobe.com/svg/viewer/install/&quot;</span> <span class="nt">/&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -69,15 +69,15 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns:svg=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;body&gt;</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="nt">&lt;p&gt;</span>This is an HTML paragraph<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p&gt;</span>This is an HTML paragraph<span class="nt">&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="nt">&lt;svg:svg</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span> <span class="na">version=</span><span class="s">&quot;1.1&quot;</span> <span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;svg:circle</span> <span class="na">cx=</span><span class="s">&quot;100&quot;</span> <span class="na">cy=</span><span class="s">&quot;50&quot;</span> <span class="na">r=</span><span class="s">&quot;40&quot;</span> <span class="na">stroke=</span><span class="s">&quot;black&quot;</span> <span class="na">stroke-width=</span><span class="s">&quot;2&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/svg:svg&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;svg:svg</span> <span class="na">width=</span><span class="s">&quot;300&quot;</span> <span class="na">height=</span><span class="s">&quot;100&quot;</span> <span class="na">version=</span><span class="s">&quot;1.1&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;svg:circle</span> <span class="na">cx=</span><span class="s">&quot;100&quot;</span> <span class="na">cy=</span><span class="s">&quot;50&quot;</span> <span class="na">r=</span><span class="s">&quot;40&quot;</span> <span class="na">stroke=</span><span class="s">&quot;black&quot;</span> <span class="na">stroke-width=</span><span class="s">&quot;2&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/svg:svg&gt;</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/body&gt;</span>
 </span><span class='line'><span class="nt">&lt;/html&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
