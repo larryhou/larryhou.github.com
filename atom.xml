@@ -4,7 +4,7 @@
   <title><![CDATA[LARRY HOU]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2015-09-19T17:56:20+08:00</updated>
+  <updated>2015-09-19T22:16:28+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[fillStyle0 &amp; fillStyle1 in SWFTag]]></title>
+    <link href="http://larryhou.github.io/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/"/>
+    <updated>2015-09-19T22:10:55+08:00</updated>
+    <id>http://larryhou.github.io/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag</id>
+    <content type="html"><![CDATA[<p><img src="http://larryhou.github.io/assets/shape-fillstyle/shape-1.svg" style="background-color:black;"/></p>
+
+<!-- more -->
+
+
+<p><img src="http://larryhou.github.io/assets/shape-fillstyle/shape-2.svg" style="background-color:black;"/></p>
+
+<!-- <img src="http://larryhou.github.io/assets/shape-fillstyle/shape-3.svg" style="background-color:black;"/> -->
+
+
+<p><img src="http://larryhou.github.io/assets/shape-fillstyle/fillstyle.svg" style="background-color:black;"/></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Convert SWF Vector Shape to SVG Image]]></title>
@@ -4142,136 +4161,6 @@ SystemCodeSnippets.codesnippets</p></blockquote>
 <p>经过这样设置后，所有iOS上的http请求都可以被charles抓到包，看到“<strong>sequence</strong>”视图疯狂滚屏，你也会有瞬间高潮了一样的感觉！</p>
 
 <p><img src="http://larryhou.github.io/images/remote-debug-with-charles-proxy/package.png"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[AppleScript：循环]]></title>
-    <link href="http://larryhou.github.io/blog/2012/11/05/applescript-xun-huan/"/>
-    <updated>2012-11-05T01:07:00+08:00</updated>
-    <id>http://larryhou.github.io/blog/2012/11/05/applescript-xun-huan</id>
-    <content type="html"><![CDATA[<p>AppleScript是一个比较接近自然语言脚本语言，习惯了传统编程的程序猿一时还真难以适应这种表达和思考方式，不过了解其中的规律后，你就会发现AppleScript其实是一种非常容易、非常生活化的编程语言。在这篇文章里面着重介绍循环控制指令。</p>
-
-<!--more-->
-
-
-<p>在Applescript里面实现循环效果就要使用<code>repeat</code>命令，结合不同的关键字又有不同的循环控制效果。尽管如此，在任何时候想结束循环的地方使用<code>exit</code>命令则可随时退出。</p>
-
-<h3>repeat</h3>
-
-<p>该命令执行无限循环，直至执行遇到<code>exit [repeat]</code>命令</p>
-
-<figure class='code'><figcaption><span>repeat </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">set</span> <span class="nv">var</span> <span class="k">to</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">repeat</span>
-</span><span class='line'>  <span class="k">if</span> <span class="nv">var</span> <span class="o">≥</span> <span class="mi">100</span> <span class="k">then</span>
-</span><span class='line'>      <span class="k">exit</span> <span class="k">repeat</span>
-</span><span class='line'>  <span class="k">end</span> <span class="k">if</span>
-</span><span class='line'><span class="k">end</span> <span class="k">repeat</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>repeat <em>n</em> [times]</h3>
-
-<p>该命令执行<strong><em>n</em></strong>次循环，除非遇到<code>exit [repeat]</code>命令</p>
-
-<figure class='code'><figcaption><span>repeat ... times </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">set</span> <span class="nv">var</span> <span class="k">to</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">repeat</span> <span class="mi">5</span> <span class="k">times</span>
-</span><span class='line'>  <span class="k">set</span> <span class="nv">var</span> <span class="k">to</span> <span class="nv">var</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="nb">log</span> <span class="nv">var</span>
-</span><span class='line'><span class="k">end</span> <span class="k">repeat</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>repeat until <em>condition</em></h3>
-
-<p>该命令执行循环直至<strong><em>until</em></strong>条件成立，除非遇到<code>exit [repeat]</code>命令</p>
-
-<figure class='code'><figcaption><span>repeat until ... </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">set</span> <span class="nv">var</span> <span class="k">to</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">repeat</span> <span class="k">until</span> <span class="nv">var</span> <span class="o">≥</span> <span class="mi">100</span>
-</span><span class='line'>  <span class="k">set</span> <span class="nv">var</span> <span class="k">to</span> <span class="nv">var</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="nb">log</span> <span class="nv">var</span>
-</span><span class='line'><span class="k">end</span> <span class="k">repeat</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>repeat while <em>condition</em></h3>
-
-<p>该命令执行循环只要<strong><em>while</em></strong>条件成立，除非遇到<code>exit [repeat]</code>命令</p>
-
-<figure class='code'><figcaption><span>repeat while ... </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">set</span> <span class="nv">var</span> <span class="k">to</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">repeat</span> <span class="k">while</span> <span class="nv">var</span> <span class="o">&lt;</span> <span class="mi">100</span>
-</span><span class='line'>  <span class="k">set</span> <span class="nv">var</span> <span class="k">to</span> <span class="nv">var</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="nb">log</span> <span class="nv">var</span>
-</span><span class='line'><span class="k">end</span> <span class="k">repeat</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>repeat with <em>var</em> from <em>start</em> to <em>end</em> [by <em>step</em>]</h3>
-
-<p>该命令执行循环只要<strong><em>while</em></strong>条件成立，除非遇到<code>exit [repeat]</code>命令</p>
-
-<figure class='code'><figcaption><span>repeat with var from ... to ... by ... </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">repeat</span> <span class="nv">with</span> <span class="nv">var</span> <span class="k">from</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">100</span> <span class="k">by</span> <span class="mi">5</span>
-</span><span class='line'>  <span class="nb">log</span> <span class="nv">var</span>
-</span><span class='line'><span class="k">end</span> <span class="k">repeat</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>如果<strong><em>by</em></strong>参数没有，则默认<code>var</code>每个循环+1</p>
-
-<figure class='code'><figcaption><span>repeat with var from ... to ... </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">repeat</span> <span class="nv">with</span> <span class="nv">var</span> <span class="k">from</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">100</span>
-</span><span class='line'>  <span class="nb">log</span> <span class="nv">var</span>
-</span><span class='line'><span class="k">end</span> <span class="k">repeat</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>repeat with <em>var</em> in <em>list</em></h3>
-
-<p>该命令可以实现列表遍历的效果，除非遇到<code>exit [repeat]</code>命令</p>
-
-<figure class='code'><figcaption><span>repeat with var in ... </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="k">set</span> <span class="err">_list</span> <span class="k">to</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
-</span><span class='line'><span class="k">repeat</span> <span class="nv">with</span> <span class="nv">var</span> <span class="k">in</span> <span class="err">_list</span>
-</span><span class='line'>  <span class="nb">log</span> <span class="nv">var</span>
-</span><span class='line'><span class="k">end</span> <span class="k">repeat</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

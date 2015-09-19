@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://larryhou.github.io/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/</loc>
+    <lastmod>2015-09-19T22:10:55+08:00</lastmod>
+  </url>
+  <url>
     <loc>http://larryhou.github.io/blog/2015/09/05/convert-swf-vector-shape-to-svg-image/</loc>
     <lastmod>2015-09-05T02:06:44+08:00</lastmod>
   </url>
@@ -108,5 +112,9 @@
   <url>
     <loc>http://larryhou.github.io/assets/redraw-shape/index.html</loc>
     <lastmod>2015-09-16T20:50:03+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://larryhou.github.io/assets/shape-fillstyle/index.html</loc>
+    <lastmod>2015-09-19T22:09:27+08:00</lastmod>
   </url>
 </urlset>

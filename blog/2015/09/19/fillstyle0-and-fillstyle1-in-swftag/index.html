@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>在Mac系统安装佳能软件 - LARRY HOU</title>
+  <title>fillStyle0 &amp; fillStyle1 in SWFTag - LARRY HOU</title>
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="如果你的安装光盘丢失了，怎么才能在Mac系统安装佳能工具软件呢？你可能已经在官网搜查过了，但是你会发现找不到对应的安装软件！是这样的，官网只有升级软件下载，那这岂不是很尴尬：升级软件安装的前提是先安装原版软件，但是现在又没有安装盘，死循环了！！其实这些升级软件另有玄机，里面都有安装包的， &hellip;">
+  <meta name="description" content=" ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://larryhou.github.io/blog/2013/03/18/install-canon-tools-on-mac/">
+  <link rel="canonical" href="http://larryhou.github.io/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <!-- <link href="" rel="alternate" title="LARRY HOU" type="application/atom+xml"> -->
@@ -61,7 +61,7 @@
   
   <header>
     
-      <h1 class="entry-title">在Mac系统安装佳能软件</h1>
+      <h1 class="entry-title">fillStyle0 &amp; fillStyle1 in SWFTag</h1>
     
     
       <p class="meta">
@@ -70,7 +70,7 @@
 
 
 
-<time class='entry-date' datetime='2013-03-18T11:40:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:40 am</span></time>
+<time class='entry-date' datetime='2015-09-19T22:10:55+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:10 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://larryhou.github.io">Comments</a>
@@ -80,35 +80,17 @@
   </header>
 
 
-<div class="entry-content"><p>如果你的安装光盘丢失了，怎么才能在Mac系统安装佳能工具软件呢？你可能已经在<a href="http://support-cn.canon-asia.com" title="佳能驱动与软件官网">官网</a>搜查过了，但是你会发现找不到对应的安装软件！是这样的，官网只有升级软件下载，那这岂不是很尴尬：升级软件安装的前提是先安装原版软件，但是现在又没有安装盘，死循环了！！其实这些升级软件另有玄机，里面都有安装包的，但是如果要直接运行，你可能要麻烦一下。<!--more--></p>
+<div class="entry-content"><p><img src="/assets/shape-fillstyle/shape-1.svg" style="background-color:black;"/></p>
 
-<p>首先，去<a href="http://support-cn.canon-asia.com" title="佳能驱动与软件官网">官网</a>下载系统版本对应的最新升级包，然后逐个测试一下三种方法，直至安装成功为止；如果，尝试了三种方式还是不能安装，那么表示本博客太旧了你需要另外google一下，或者联系作者（<em>larryhou@foxmail.com</em>）更新博客！</p>
-
-<h2>DPP 3.12.52</h2>
-
-<ul>
-<li>从官网下载dpp3.12.52x.dmg</li>
-<li>双击装载镜像，复制dpp3.12.52x_updater.app到任意其他目录（比如：下载）</li>
-<li>在dpp3.12.52x_updater.app上鼠标右键，点击“显示包内容/Show Package Contents”</li>
-<li>进入Contents/Resources/目录，删除Info.datx文件</li>
-<li>返回上一级目录Contents，进入MacOS目录，双击运行OFICore</li>
-</ul>
+<!-- more -->
 
 
-<h2>方法（一）</h2>
+<p><img src="/assets/shape-fillstyle/shape-2.svg" style="background-color:black;"/></p>
 
-<blockquote><p>* Files you downloaded are compressed as “.zip” or “.gz” files<br/>* Double click on the file and it will expand to the disk image file extension “.dmg”<br/>* Click on image file EU211.4x-updater.dmg, it will mount it as disk mount<br/>* Transfer (copy) content where you want (exmp: desktop)<br/>* After copying unmount dmg image<br/>* Click on desktop copy: ‘Show Package Contents’<br/>* Navigate to ./Contents/Ressources/ and delete the Info.datx file<br/>* Close window<br/>* Run Installation</p></blockquote>
-
-
-<h2>方法（二）</h2>
-
-<blockquote><p>* Files you downloaded are compressed as “.zip” or “.gz” files<br/>* Double click on the file and it will expand to the disk image file extension “.dmg”<br/>* Click on that image file, it will mount it as disk<br/>* We should copy (extract) UpdateInstaller to our disk<br/>* Eject disk image<br/>* We will modify UpdateInstaller<br/>* Click on UpdateInstaller and go to “Show Package Contents”<br/>* It will open new window with Contents<br/>* Navigate to Contents/Resources and find the SDI.bundle file.<br/>* Click on the SDI.bundle and ‘Show Package Contents’ again<br/>* Now navigate to Contents/Resources and locate a file called update.plist<br/>* Delete update.plist file<br/>* Close opened windows and run UpdateInstaller it should install now!</p></blockquote>
+<!-- <img src="/assets/shape-fillstyle/shape-3.svg" style="background-color:black;"/> -->
 
 
-<h2>方法（三）</h2>
-
-<blockquote><p>* Files you downloaded are compressed as “.zip” or “.gz” files<br/>* Double click on the file and it will expand to the disk image file extension “.dmg”<br/>* Click on that image file, it will mount it as disk<br/>* We should copy (extract) UpdateInstaller to our disk<br/>* Eject disk image<br/>* We will modify UpdateInstaller<br/>* Click on UpdateInstaller and go to “Show Package Contents”<br/>* It will open new window with Contents<br/>* Now navigate to Resources and locate a file called update.plist<br/>* Delete update.plist file<br/>* Close opened windows and run UpdateInstaller it should install now!</p></blockquote>
-
+<p><img src="/assets/shape-fillstyle/fillstyle.svg" style="background-color:black;"/></p>
 </div>
 
 
@@ -124,7 +106,7 @@
 
 
 
-<time class='entry-date' datetime='2013-03-18T11:40:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:40 am</span></time>
+<time class='entry-date' datetime='2015-09-19T22:10:55+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:10 pm</span></time>
       
 
 
@@ -139,10 +121,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment right" href="/blog/2012/11/29/make-man-output-readable/" title="Previous Post: MAN输出文本可读性增强技巧">MAN输出文本可读性增强技巧 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/09/05/convert-swf-vector-shape-to-svg-image/" title="Previous Post: Convert SWF vector shape to SVG image">Convert SWF vector shape to SVG image &raquo;</a>
       
-      
-        <a class="basic-alignment left" href="/blog/2013/08/21/flashdevelop-cannot-show-up/" title="Next Post: flashdevelop cannot show up">&laquo; flashdevelop cannot show up</a>
       
     </p>
   </footer>
@@ -257,8 +237,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://larryhou.github.io/blog/2013/03/18/install-canon-tools-on-mac/';
-        var disqus_url = 'http://larryhou.github.io/blog/2013/03/18/install-canon-tools-on-mac/';
+        var disqus_identifier = 'http://larryhou.github.io/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/';
+        var disqus_url = 'http://larryhou.github.io/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/';
         var disqus_script = 'embed.js';
       
     (function () {
