@@ -4,7 +4,7 @@
   <title><![CDATA[LARRY HOU]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2015-11-23T17:45:19+08:00</updated>
+  <updated>2015-11-23T17:47:52+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -18,7 +18,7 @@
     <link href="http://larryhou.github.io/blog/2015/11/23/hawaii-at-and-t-apn-settings-for-ios9-dot-0-and-above/"/>
     <updated>2015-11-23T17:15:56+08:00</updated>
     <id>http://larryhou.github.io/blog/2015/11/23/hawaii-at-and-t-apn-settings-for-ios9-dot-0-and-above</id>
-    <content type="html"><![CDATA[<p><a href='http://larryhou.github.io/downloads/code/AT%26T.mobileconfig'>Hawaii AT&amp;T</a></p>
+    <content type="html"><![CDATA[<p><a href='http://larryhou.github.io/downloads/code/AT%26T.mobileconfig' class="blog-link">Hawaii AT&amp;T</a></p>
 
 <figure class='code'><figcaption><span>Hawaii (AT&T.mobileconfig)</span> <a href='http://larryhou.github.io/downloads/code/AT&T.mobileconfig'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -126,7 +126,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><a href='http://larryhou.github.io/downloads/code/AT%26T-2.mobileconfig'>Hawaii AT&amp;T v2</a></p>
+<p><a href='http://larryhou.github.io/downloads/code/AT%26T-2.mobileconfig' class="blog-link">Hawaii AT&amp;T v2</a></p>
 ]]></content>
   </entry>
   
