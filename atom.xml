@@ -4,7 +4,7 @@
   <title><![CDATA[LARRY HOU]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2015-10-08T11:39:52+08:00</updated>
+  <updated>2015-11-23T17:34:18+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -12,6 +12,123 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hawaii AT&amp;T APN Settings for iOS9.0 and Above]]></title>
+    <link href="http://larryhou.github.io/blog/2015/11/23/hawaii-at-and-t-apn-settings-for-ios9-dot-0-and-above/"/>
+    <updated>2015-11-23T17:15:56+08:00</updated>
+    <id>http://larryhou.github.io/blog/2015/11/23/hawaii-at-and-t-apn-settings-for-ios9-dot-0-and-above</id>
+    <content type="html"><![CDATA[<p><a href='http://larryhou.github.io/downloads/code/AT%26T.mobileconfig'>Hawaii AT&amp;T</a></p>
+
+<figure class='code'><figcaption><span>Hawaii (AT&T.mobileconfig)</span> <a href='http://larryhou.github.io/downloads/code/AT&T.mobileconfig'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>ConsentText<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;key&gt;</span>default<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;string&gt;</span>由于iOS9.0以上版本操作系统不支持淘宝提供APN配置，已升级新系统的手机请安装此APN配置 BY:LARRYHOU<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/dict&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadContent<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;key&gt;</span>AttachAPN<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;key&gt;</span>AuthenticationType<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;string&gt;</span>CHAP<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;key&gt;</span>Name<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;string&gt;</span>phone<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/dict&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;key&gt;</span>PayloadDescription<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;string&gt;</span>Configures a custom APN.<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;key&gt;</span>PayloadDisplayName<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;string&gt;</span>Cellular<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;key&gt;</span>PayloadIdentifier<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;string&gt;</span>com.apple.cellular.A50A0FC3-77F6-4BCA-B387-E3F561DD7511<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;key&gt;</span>PayloadType<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;string&gt;</span>com.apple.cellular<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;key&gt;</span>PayloadUUID<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;string&gt;</span>4F7961F1-FF50-492E-B9FE-202D40EEF4A7<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;key&gt;</span>PayloadVersion<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;real&gt;</span>1<span class="nt">&lt;/real&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/dict&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/array&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadDescription<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>CHAP vs PAP
+</span><span class='line'>http://www.tldp.org/LDP/nag/node120.html<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadDisplayName<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>Hawaii AT<span class="ni">&amp;amp;</span>T<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadIdentifier<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>larryhou-rmbp.local.AB6EADAA-144C-467E-A032-98560538DA78<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadOrganization<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>larryhou<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadRemovalDisallowed<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;false/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadType<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>Configuration<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadUUID<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>FF71D0CA-AEF4-4553-AD38-1162B7132066<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;key&gt;</span>PayloadVersion<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
+</span><span class='line'><span class="nt">&lt;/dict&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plist&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[fillStyle0 &amp; fillStyle1 in SWFTag]]></title>
@@ -4133,34 +4250,6 @@ SystemCodeSnippets.codesnippets</p></blockquote>
 <li>使用XML做规则时，一定不能只使用一条数据来描述，否则生成的结果只有Excel标题栏文本，而不是数据本身</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用charles远程调试iOS移动应用]]></title>
-    <link href="http://larryhou.github.io/blog/2012/11/05/remote-debug-with-charles-proxy/"/>
-    <updated>2012-11-05T16:38:00+08:00</updated>
-    <id>http://larryhou.github.io/blog/2012/11/05/remote-debug-with-charles-proxy</id>
-    <content type="html"><![CDATA[<p>做iOS移动应用很多开发者会喜欢抓网络发包、回包来联调服务端借口以及定位其他网络问题。如果在Windows系统可以使用fiddler来做iOS的远程代理，只要fiddler所在系统与iOS设备同时连上同一个局域网即可。但是在OSX系统上没有fiddler，相信做iOS开发用windows系统的不多，其实不要纠结：其实跨平台http抓包工具charles也可以做远程代理，也就是说iOS也可以通过charles来调试，charles调试的相关技术都可以对iOS适用。</p>
-
-<p>那怎么才能实现charles做iOS的远程代理呢？先看charles官网的文档。</p>
-
-<blockquote><p>USING CHARLES FROM AN IPHONE</p><p>To use Charles as your HTTP proxy on your iPhone you must manually configure the HTTP Proxy settings on your WiFi network in your iPhone's Settings.</p><p>Go to the Settings app, tap Wi-Fi, find the network you are connected to and then tap the blue disclosure arrow to configure the network. Scroll down to the HTTP Proxy setting, tap Manual. Enter the IP address of your computer running Charles in the Server field, and the port Charles is running on in the Port field (usually 8888). Leave Authentication set to Off.</p><p>All of your web traffic from your iPhone will now be sent via Charles. You should see a prompt in Charles when you first make a connection from the iPhone, asking you to allow the traffic.</p><p>Remember to disable the HTTP Proxy in your Settings when you stop using Charles, otherwise you'll get confusing network failures in your applications!</p><footer><strong>charlesproxy.com</strong> <cite><a href='http://www.charlesproxy.com/documentation/faqs/using-charles-from-an-iphone/'>Remote Debug iOS APP With Charles</a></cite></footer></blockquote>
-
-
-
-
-<!--more-->
-
-
-<p><img class="right" src="http://larryhou.github.io/images/remote-debug-with-charles-proxy/settings.png" width="430">
-从这段文档可以知道只需要打开iOS的WiFi设置，滚屏到底部的代理设置部分，点击“手动”页签, 在“<strong>服务器</strong>”栏输入charles所在系统的网络IP地址，在"<strong>端口</strong>&ldquo;栏输入“<strong>8888</strong>”，然后随便打开一个需要网络的APP，这个时候OSX系统上的charles会出现一个弹窗，这是一个授权远程代理的确认框，点击”<strong>allow</strong>”允许iOS连接本机的charles。</p>
-
-<p><img class="left" src="http://larryhou.github.io/images/remote-debug-with-charles-proxy/allow.png"></p>
-
-<p>经过这样设置后，所有iOS上的http请求都可以被charles抓到包，看到“<strong>sequence</strong>”视图疯狂滚屏，你也会有瞬间高潮了一样的感觉！</p>
-
-<p><img src="http://larryhou.github.io/images/remote-debug-with-charles-proxy/package.png"></p>
 ]]></content>
   </entry>
   
