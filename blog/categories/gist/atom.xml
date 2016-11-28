@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gist | 沐风白桦]]></title>
+  <link href="http://larryhou.github.io/blog/categories/gist/atom.xml" rel="self"/>
+  <link href="http://larryhou.github.io/"/>
+  <updated>2016-11-28T13:10:33+08:00</updated>
+  <id>http://larryhou.github.io/</id>
+  <author>
+    <name><![CDATA[larryhou]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Convert Movie to GIF]]></title>
+    <link href="http://larryhou.github.io/blog/2016/11/28/generate-gif-from-movies/"/>
+    <updated>2016-11-28T13:06:19+08:00</updated>
+    <id>http://larryhou.github.io/blog/2016/11/28/generate-gif-from-movies</id>
+    <content type="html"><![CDATA[<p><div><script src='https://gist.github.com/084b0d3a494eae1b3117ace70d05bd0f.js'></script>
+<noscript><pre><code>#!/bin/bash
+
+palette=&quot;palette.png&quot;
+filters=&quot;fps=30,scale=320:-1:flags=lanczos&quot;
+
+ffmpeg -v warning -i $1 -vf &quot;$filters,palettegen&quot; -y $palette
+ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteuse&quot; -y $2</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

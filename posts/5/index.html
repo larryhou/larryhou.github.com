@@ -9,7 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="做iOS移动应用很多开发者会喜欢抓网络发包、回包来联调服务端借口以及定位其他网络问题。如果在Windows系统可以使用fiddler来做iOS的远程代理，只要fiddler所在系统与iOS设备同时连上同一个局域网即可。但是在OSX系统上没有fiddler，相信做iOS开发用windows系统的不多 &hellip;">
+  <meta name="description" content="该项目搭建了 AS3 protobuf 所需的OSX运行环境以及AS3类库，整合了Google protobuf和protobuf-actionscript3第三方插件资源，本文来介绍一下AS3版protobuf的使用方法。 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -58,6 +58,112 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/10/as3proto-osx/">在OSX系统使用AS3版protobuf</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-10T23:30:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:30 pm</span></time>
+        
+           | <a href="/blog/2012/11/10/as3proto-osx/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/10/as3proto-osx/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://github.com/larryhou/as3proto-osx" title="Actionscript3.0版protobuf">该项目</a>搭建了 AS3 protobuf 所需的OSX运行环境以及AS3类库，整合了Google <a href="http://code.google.com/p/protobuf/" title="[v2.3.0] http://code.google.com/p/protobuf/">protobuf</a>和<a href="http://code.google.com/p/protobuf-actionscript3/" title="http://code.google.com/p/protobuf-actionscript3/">protobuf-actionscript3</a>第三方插件资源，本文来介绍一下AS3版protobuf的使用方法。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/10/as3proto-osx/">正文&raquo;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">使用INDIRECT函数引用Excel单元格</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-09T23:58:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:58 pm</span></time>
+        
+           | <a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>如果需要动态引用Excel单元格的时候，INDIRECT函数可以帮上大忙，为什么这么说？它的传参是一个字符串，比如引用第一列第二行的数据可以用<code>=INDIRECT(&ldquo;A2&rdquo;)</code>，这样有什么好处呢？作比较复杂的数据操作的时候行列可能都是动态计算出来的，这个时候结合<code>ADDRESS(row, column)</code>方法算出行列对应的地址名称传参到INDIRECT（也即<code>=INDIRECT(ADDRESS(row, column))</code>）就可以很方便地引用任意单元格。</p>
+
+<p>有时候为了方便可能会引用其他表单的数值，假设另外一个表单的名称叫<strong>sheet</strong>，那么引用另外一个表单的单元格可以使用<code>=INDIRECT(&ldquo;sheet!A2&rdquo;)</code>来引用<strong>sheet</strong>表单的第二行第一列的单元格。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/08/export-xml-from-excel/">使用Excel导出XML格式文件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-08T10:08:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:08 am</span></time>
+        
+           | <a href="/blog/2012/11/08/export-xml-from-excel/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/08/export-xml-from-excel/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>生成XML的方式有很多：如果你是程序员，那么你可以通过变成快速生成你想要的XML格式；如果你是其他用户，你可能会使用记事本等文本编辑工具来手动写XML。这些都不是问题，但是数据量很大的时候，如果你不是程序猿会不会郁闷？</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/08/export-xml-from-excel/">正文&raquo;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -140,145 +246,13 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/26/install-git-with-macport/">Install Git With Macport</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-10-26T16:27:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>4:27 pm</span></time>
-        
-           | <a href="/blog/2012/10/26/install-git-with-macport/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/26/install-git-with-macport/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的<code>git-svn</code>不见了，这里是用<code>macport</code>安装的脚本，以备下次重装又要google半天&hellip;</p>
-
-<figure class='code'><figcaption><span>install git with svn</span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port install git-core +svn +doc +bash_completion +gitweb</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">BitmapData.draw() 和 DisplayObject.blendMode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-10-25T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&hellip;oops</p>
-
-<figure class='code'><figcaption><span>simple exmaple </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='actionscript3'><span class='line'><span class="kd">var</span> <span class="n">container</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObjectContainer</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'><span class="kd">var</span> <span class="n">childA</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'><span class="kd">var</span> <span class="n">childB</span><span class="p">:</span><span class="kt">Sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="o">[</span><span class="n">some</span> <span class="n">DisplayObject</span> <span class="kd">class</span><span class="o">]();</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">childA</span><span class="o">.</span><span class="na">blendMode</span> <span class="o">=</span> <span class="n">BlendMode</span><span class="o">.</span><span class="na">ADD</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childA</span><span class="o">);</span>
-</span><span class='line'><span class="n">container</span><span class="o">.</span><span class="na">addChild</span><span class="o">(</span><span class="n">childB</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="n">data</span><span class="p">:</span><span class="kt">BitmapData</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">BitmapData</span><span class="o">(</span><span class="n">container</span><span class="o">.</span><span class="na">width</span><span class="o">,</span> <span class="n">container</span><span class="o">.</span><span class="na">height</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">container</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>如上面这段代码，看起来没有什么问题，但是如果把<code>data</code>通过<code>Bitmap</code>显示出来，就会发现效果有些诡异，这是因为<code>BitmapData</code>在<code>draw</code>的时候，会自动忽略<code>childA.blendMode</code>属性，除非把<code>childA</code>的父级容器设置为<code>container.blendMode = BlendMode.LAYER</code>。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">ActionScript Syntax Highlight in Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-10-22T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/22/ActionScript-Syntax-Highlight/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Here is a <code>bezier</code> utils method in ActionScript.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">正文&raquo;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a class="prev" href="/posts/4">PREV #4</a>
     
-	<span> 5 / 5 </span>
+	<span> 5 / 6 </span>
+    
+      <a class="next" href="/posts/6">NEXT #6</a>
     
   </div>
   <!-- <div class="pagination">
@@ -290,6 +264,18 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/11/28/install-ffmpeg-with-full-functions/">Install Ffmpeg With Full Functions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/28/generate-gif-from-movies/">Convert Movie to GIF</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/28/tinyproxy-install/">Tinyproxy Install</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/11/23/hawaii-at-and-t-apn-settings-for-ios9-dot-0-and-above/">Hawaii AT&amp;T APN Settings for iOS9.0 and Above</a>
@@ -317,18 +303,6 @@
     
       <li class="post">
         <a href="/blog/2015/08/31/markdown-syntax/">Markdown Syntax</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/21/flashdevelop-cannot-show-up/">Flashdevelop Cannot Show Up</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/18/install-canon-tools-on-mac/">在Mac系统安装佳能软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a>
       </li>
     
   </ul>

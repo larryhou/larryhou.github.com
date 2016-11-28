@@ -9,9 +9,7 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="我的MAC硬盘分了三个分区，我把其中两个删掉了，然后扩大主分区的可用空间，结果出错： Mac分区失败 (未能修改分区图，因为文件系统验证失败） Google了一下这种情况还蛮普遍的，解决方法也很简单： 重启系统，按住⌘+s进入MAC命令行模式
-输入fsck -f回车
-输入reboot回车 &hellip;">
+  <meta name="description" content="今天使用git push命令，结果出现一堆以前没见过的东西 warning: push.default 未设置，它的默认值将会在 Git 2.0 由 'matching'修改为 'simple'。若要不再显示本信息并在其默认值改变后维持当前使用习惯，进行如下设置： git config -- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -60,6 +58,121 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/22/git-push-dot-default/">GIT设置push.default</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-22T14:50:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>2:50 pm</span></time>
+        
+           | <a href="/blog/2012/11/22/git-push-dot-default/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/22/git-push-dot-default/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天使用<code>git push</code>命令，结果出现一堆以前没见过的东西</p>
+
+<blockquote><p>warning: push.default 未设置，它的默认值将会在 Git 2.0 由 'matching'<br/>修改为 'simple'。若要不再显示本信息并在其默认值改变后维持当前使用习惯，<br/>进行如下设置：</p><p>  git config --global push.default matching</p><p>若要不再显示本信息并从现在开始采用新的使用习惯，设置：</p><p>  git config --global push.default simple</p><p>参见 'git help config' 并查找 'push.default' 以获取更多信息。<br/>（'simple' 模式由 Git 1.7.11 版本引入。如果您有时要使用老版本的 Git，<br/>为保持兼容，请用 'current' 代替 'simple' 模式）</p><footer><strong>Terminal.app</strong> <cite>GIT With Version 1.8.0</cite></footer></blockquote>
+
+
+<p>尼玛，乍一看吓一跳还以为代码出错了，解决这个问题很简单，按照上面的提示在Terminal.app里面运行一下脚本</p>
+
+<blockquote><p>git config &ndash;global push.default matching</p></blockquote>
+
+<p>我在纳闷，GIT版本更新后为毛不自动设置一下.gitconfig配置呢？还要我手动操作一下，难道是想介绍GIT的这新功能？</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/21/interface-protocol-and-category/">Interface, Protocol, Category and Extension in Objective-C</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-21T21:12:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>9:12 pm</span></time>
+        
+           | <a href="/blog/2012/11/21/interface-protocol-and-category/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/21/interface-protocol-and-category/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>假如你要学习Objective-C，那么你需要搞清楚interface、protocol、category以及extension这几个概念，它们在代码的出现频率非常高，也非常有用。本文将对这几个概念一一来说明，并介绍各自的使用方法。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/21/interface-protocol-and-category/">正文&raquo;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/18/list-folder-recursively/">使用AppleScript递归遍历文件夹</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-18T23:11:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:11 pm</span></time>
+        
+           | <a href="/blog/2012/11/18/list-folder-recursively/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/18/list-folder-recursively/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近对AppleScript很感兴趣，使用它可以做一些自动化处理，类似WIN系统的*.bat脚本，不过AppleScript要比它强大很多，对系统的融合更加深入。如果结合Calendar还可以做一些定时计划任务，非常的方便。</p>
+
+<p>现在我写了一个监视共享目录的脚本，它会把最近30天、大于500MB的影片输出一个列表，虽然写了很久，不过也熟悉好多命令以及编写脚本的流程，收获还是蛮大的。在写这个脚本的时候，走了很多弯路，因为我觉得文件夹操作只需要<code>Finder.app</code>就可以，结果出现各种问题，一度想到放弃，不过最后研究AppleScript自带的脚本示例发现要用<code>System Events</code>，可是到现在我也不知道为什么要这样写，因为AppleScript <code>Dictionary</code> 帮助文档已经写得很清楚了&hellip;oops</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/18/list-folder-recursively/">正文&raquo;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -141,117 +254,11 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/10/as3proto-osx/">在OSX系统使用AS3版protobuf</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-11-10T23:30:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:30 pm</span></time>
-        
-           | <a href="/blog/2012/11/10/as3proto-osx/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/10/as3proto-osx/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://github.com/larryhou/as3proto-osx" title="Actionscript3.0版protobuf">该项目</a>搭建了 AS3 protobuf 所需的OSX运行环境以及AS3类库，整合了Google <a href="http://code.google.com/p/protobuf/" title="[v2.3.0] http://code.google.com/p/protobuf/">protobuf</a>和<a href="http://code.google.com/p/protobuf-actionscript3/" title="http://code.google.com/p/protobuf-actionscript3/">protobuf-actionscript3</a>第三方插件资源，本文来介绍一下AS3版protobuf的使用方法。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/11/10/as3proto-osx/">正文&raquo;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">使用INDIRECT函数引用Excel单元格</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-11-09T23:58:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:58 pm</span></time>
-        
-           | <a href="/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>如果需要动态引用Excel单元格的时候，INDIRECT函数可以帮上大忙，为什么这么说？它的传参是一个字符串，比如引用第一列第二行的数据可以用<code>=INDIRECT(&ldquo;A2&rdquo;)</code>，这样有什么好处呢？作比较复杂的数据操作的时候行列可能都是动态计算出来的，这个时候结合<code>ADDRESS(row, column)</code>方法算出行列对应的地址名称传参到INDIRECT（也即<code>=INDIRECT(ADDRESS(row, column))</code>）就可以很方便地引用任意单元格。</p>
-
-<p>有时候为了方便可能会引用其他表单的数值，假设另外一个表单的名称叫<strong>sheet</strong>，那么引用另外一个表单的单元格可以使用<code>=INDIRECT(&ldquo;sheet!A2&rdquo;)</code>来引用<strong>sheet</strong>表单的第二行第一列的单元格。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/08/export-xml-from-excel/">使用Excel导出XML格式文件</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-11-08T10:08:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:08 am</span></time>
-        
-           | <a href="/blog/2012/11/08/export-xml-from-excel/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2012/11/08/export-xml-from-excel/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>生成XML的方式有很多：如果你是程序员，那么你可以通过变成快速生成你想要的XML格式；如果你是其他用户，你可能会使用记事本等文本编辑工具来手动写XML。这些都不是问题，但是数据量很大的时候，如果你不是程序猿会不会郁闷？</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/11/08/export-xml-from-excel/">正文&raquo;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a class="prev" href="/posts/3">PREV #3</a>
     
-	<span> 4 / 5 </span>
+	<span> 4 / 6 </span>
     
       <a class="next" href="/posts/5">NEXT #5</a>
     
@@ -265,6 +272,18 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/11/28/install-ffmpeg-with-full-functions/">Install Ffmpeg With Full Functions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/28/generate-gif-from-movies/">Convert Movie to GIF</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/28/tinyproxy-install/">Tinyproxy Install</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/11/23/hawaii-at-and-t-apn-settings-for-ios9-dot-0-and-above/">Hawaii AT&amp;T APN Settings for iOS9.0 and Above</a>
@@ -292,18 +311,6 @@
     
       <li class="post">
         <a href="/blog/2015/08/31/markdown-syntax/">Markdown Syntax</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/21/flashdevelop-cannot-show-up/">Flashdevelop Cannot Show Up</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/18/install-canon-tools-on-mac/">在Mac系统安装佳能软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/29/make-man-output-readable/">MAN输出文本可读性增强技巧</a>
       </li>
     
   </ul>

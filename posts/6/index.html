@@ -5,22 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>BitmapData.draw() 和 DisplayObject.blendMode - 沐风白桦</title>
+  <title>沐风白桦</title>
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="BitmapData.draw()如果遇到DisplayObject.blendMode有时候效果会异常，这里有个陷阱&hellip;oops simple exmaple 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-var container:Sprite = new [some &hellip;">
+  <meta name="description" content="不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的git-svn不见了，这里是用macport安装的脚本，以备下次重装又要google半天&hellip; install git with svn
+1
+sudo port install git-core +svn +doc + &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,7 +20,7 @@ var container:Sprite = new [some &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">
+  <link rel="canonical" href="http://larryhou.github.io/posts/6/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <!-- <link href="" rel="alternate" title="沐风白桦" type="application/atom+xml"> -->
@@ -67,12 +58,52 @@ var container:Sprite = new [some &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">BitmapData.draw() 和 DisplayObject.blendMode</h1>
+      <h1 class="entry-title"><a href="/blog/2012/10/26/install-git-with-macport/">Install Git With Macport</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-26T16:27:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>4:27 pm</span></time>
+        
+           | <a href="/blog/2012/10/26/install-git-with-macport/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/26/install-git-with-macport/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>不知道怎么回事儿，我的git有时候会抽风，现在又抽风了：我的<code>git-svn</code>不见了，这里是用<code>macport</code>安装的脚本，以备下次重装又要google半天&hellip;</p>
+
+<figure class='code'><figcaption><span>install git with svn</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo port install git-core +svn +doc +bash_completion +gitweb</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">BitmapData.draw() 和 DisplayObject.blendMode</a></h1>
     
     
       <p class="meta">
@@ -83,15 +114,15 @@ var container:Sprite = new [some &hellip;">
 
 <time class='entry-date' datetime='2012-10-25T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
-           | <a href="#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io">Comments</a>
+           | <a href="/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&hellip;oops</p>
+  <div class="entry-content"><p><code>BitmapData.draw()</code>如果遇到<code>DisplayObject.blendMode</code>有时候效果会异常，这里有个陷阱&hellip;oops</p>
 
 <figure class='code'><figcaption><span>simple exmaple </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -121,52 +152,60 @@ var container:Sprite = new [some &hellip;">
 
 <p>如上面这段代码，看起来没有什么问题，但是如果把<code>data</code>通过<code>Bitmap</code>显示出来，就会发现效果有些诡异，这是因为<code>BitmapData</code>在<code>draw</code>的时候，会自动忽略<code>childA.blendMode</code>属性，除非把<code>childA</code>的父级容器设置为<code>container.blendMode = BlendMode.LAYER</code>。</p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
+  
   
 
-<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
 
+    </article>
+  
+  
+    <article>
       
-
-
-
-
-<time class='entry-date' datetime='2012-10-25T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-      
-
-
-    </p>
+  <header>
     
-      <div class="sharing">
-  
-  
-  
-</div>
-
+      <h1 class="entry-title"><a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">ActionScript Syntax Highlight in Octopress</a></h1>
     
-    <p class="meta">
-      
-        <a class="basic-alignment right" href="/blog/2012/10/22/ActionScript-Syntax-Highlight/" title="Previous Post: ActionScript Syntax Highlight in Octopress">ActionScript Syntax Highlight in Octopress &raquo;</a>
-      
-      
-        <a class="basic-alignment left" href="/blog/2012/10/26/install-git-with-macport/" title="Next Post: Install git with macport">&laquo; Install git with macport</a>
-      
-    </p>
-  </footer>
-</article>
+    
+      <p class="meta">
+        
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+<time class='entry-date' datetime='2012-10-22T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2012/10/22/ActionScript-Syntax-Highlight/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2012/10/22/ActionScript-Syntax-Highlight/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here is a <code>bezier</code> utils method in ActionScript.</p>
+
 </div>
-  </section>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/22/ActionScript-Syntax-Highlight/">正文&raquo;</a>
+    </footer>
+  
 
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a class="prev" href="/posts/5">PREV #5</a>
+    
+	<span> 6 / 6 </span>
+    
+  </div>
+  <!-- <div class="pagination">
+	  <a href="/blog/archives">Blog Archives</a>
+  </div> -->
 </div>
-
 <aside class="sidebar">
   
     <section>
@@ -252,7 +291,6 @@ var container:Sprite = new [some &hellip;">
   
 </aside>
 
-
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -267,10 +305,7 @@ var container:Sprite = new [some &hellip;">
       var disqus_shortname = 'larryhou';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/';
-        var disqus_url = 'http://larryhou.github.io/blog/2012/10/25/BitmapData.draw-and-DisplayObject.blendMode/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
