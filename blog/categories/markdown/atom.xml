@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Markdown | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/markdown/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-11-30T17:23:07+08:00</updated>
+  <updated>2016-12-01T00:10:35+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -80,6 +80,356 @@ rdr pass on bridge100 inet proto tcp to port {443,80} -&gt; 127.0.0.1 port 8888"
 
 export MITMPROXY_SSLKEYLOGFILE=~/Documents/master-secret.log
 mitmproxy -T -p 8888
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown示例集锦]]></title>
+    <link href="http://larryhou.github.io/blog/2015/09/01/markdown-playground/"/>
+    <updated>2015-09-01T14:22:57+08:00</updated>
+    <id>http://larryhou.github.io/blog/2015/09/01/markdown-playground</id>
+    <content type="html"><![CDATA[<h3>代码块语法</h3>
+
+<pre><code>``` [language] [title] [url] [link text]
+code snippet
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;不使用语法高亮&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;```
+</span><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
+</code></pre>
+
+<pre><code>$ git clone git@github.com:imathis/octopress.git # fork octopress
+</code></pre>
+
+<!-- more -->
+
+
+<p>使用语法高亮功能，并添加链接文字</p>
+
+<pre><code>``` ruby 查找素数 http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ 源码链接
+class Fixnum
+  def prime?
+    ('1' * self) !~ /^1?$|^(11+?)\1+$/
+  end
+end
+```
+</code></pre>
+
+<pre><code class="ruby 查找素数 http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ 源码链接">class Fixnum
+  def prime?
+    ('1' * self) !~ /^1?$|^(11+?)\1+$/
+  end
+end
+</code></pre>
+
+<p>通过<code>&#123;% codeblock %&#125;</code>&hellip;<code>&#123;% endcodeblock %&#125;</code>同样可以显示代码高亮</p>
+
+<pre>
+&#123;% codeblock [lang:language] [title] [url] [link text] %&#125;
+code snippet
+&#123;% endcodeblock %&#125;
+</pre>
+
+
+<pre>&#123;% codeblock lang:objc %&#125;
+[rectangle setX: 10 y: 10 width: 20 height: 20];
+&#123;% endcodeblock %&#125;</pre>
+
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX</span><span class="p">:</span> <span class="mi">10</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">10</span> <span class="nl">width</span><span class="p">:</span> <span class="mi">20</span> <span class="nl">height</span><span class="p">:</span> <span class="mi">20</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<pre>
+&#123;% codeblock C#泛型 lang:csharp https://github.com/larryhou/XUPorter/blob/master/XCMod.cs 源码链接 %&#125;
+private T fetch&lt;T&gt;(string key) where T:new()
+&#123;
+    if(_datastore != null &amp;&amp; _datastore.Contains(key))
+    &#123;
+        return (T)_datastore[key];
+    &#125;
+    return new T();
+&#125;
+&#123;% endcodeblock %&#125;
+</pre>
+
+
+<p><figure class='code'><figcaption><span>C#泛型 <a href="https://github.com/larryhou/XUPorter/blob/master/XCMod.cs">https://github.com/larryhou/XUPorter/blob/master/XCMod.cs</a> 源码链接 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">private</span> <span class="n">T</span> <span class="n">fetch</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span><span class="p">:</span><span class="k">new</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(&lt;</span><span class="n">em</span><span class="p">&gt;</span><span class="n">datastore</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;</span><span class="n">amp</span><span class="p">;&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">&lt;/</span><span class="n">em</span><span class="p">&gt;</span><span class="n">datastore</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">_datastore</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="nf">T</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3>引用级别样式</h3>
+
+<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt;
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&gt; id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+<blockquote><p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p></blockquote>
+
+<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+<blockquote><p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p></blockquote>
+
+<pre><code>&gt; ## This is a header.
+&gt; 
+&gt; 1.   This is the first list item.
+&gt; 2.   This is the second list item.
+&gt; 
+&gt; Here's some example code:
+&gt; 
+&gt;     return shell_exec("echo $input | $markdown_script");
+</code></pre>
+
+<blockquote><h2>This is a header.</h2>
+
+<ol>
+<li>This is the first list item.</li>
+<li>This is the second list item.</li>
+</ol>
+
+
+<p>Here&rsquo;s some example code:</p>
+
+<pre><code>return shell_exec("echo $input | $markdown_script");
+</code></pre></blockquote>
+
+<h3>清单</h3>
+
+<pre>
+*   Red
+*   Green
+*   Blue
+</pre>
+
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<pre>
++   Red
++   Green
++   Blue
+</pre>
+
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<pre>
+-   Red
+-   Green
+-   Blue
+</pre>
+
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<pre>
+1.  Bird
+2.  McHale
+3.  Parish
+</pre>
+
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<pre>
+&lt;ol&gt;
+&lt;li&gt;Bird&lt;/li&gt;
+&lt;li&gt;McHale&lt;/li&gt;
+&lt;li&gt;Parish&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+
+
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+
+
+<pre>
+1.  Bird
+1.  McHale
+1.  Parish
+</pre>
+
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<pre>
+3. Bird
+1. McHale
+8. Parish
+</pre>
+
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<pre>
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+</pre>
+
+
+<ul>
+<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.</li>
+<li>Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.</li>
+</ul>
+
+
+<pre>
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+</pre>
+
+
+<ul>
+<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.</li>
+<li>Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.</li>
+</ul>
+
+
+<pre>
+*   This is a list item with two paragraphs.
+
+    This is the second paragraph in the list item. You're
+only required to indent the first line. Lorem ipsum dolor
+sit amet, consectetuer adipiscing elit.
+
+*   Another item in the same list.
+</pre>
+
+
+<ul>
+<li><p>This is a list item with two paragraphs.</p>
+
+<p>This is the second paragraph in the list item. You&rsquo;re
+only required to indent the first line. Lorem ipsum dolor
+sit amet, consectetuer adipiscing elit.</p></li>
+<li><p>Another item in the same list.</p></li>
+</ul>
+
+
+<pre>
+*   A list item with a blockquote:
+
+    > This is a blockquote
+    > inside a list item.
+</pre>
+
+
+<ul>
+<li><p>A list item with a blockquote:</p>
+
+<blockquote><p>This is a blockquote
+inside a list item.</p></blockquote></li>
+</ul>
+
+
+<pre>
+Here is an example of AppleScript:
+
+    tell application "Foo"
+        beep
+    end tell
+</pre>
+
+
+<p>Here is an example of AppleScript:</p>
+
+<pre><code>tell application "Foo"
+    beep
+end tell
 </code></pre>
 ]]></content>
   </entry>

@@ -5,16 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Markdown Playground - 沐风白桦</title>
+  <title>Markdown示例集锦 - 沐风白桦</title>
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="Syntax ``` [language] [title] [url] [link text]
+  <meta name="description" content="代码块语法 ``` [language] [title] [url] [link text]
 code snippet
-``` Usage ```
+``` 不使用语法高亮 ```
 $ git clone git@github.com:imathis/octopress.git # fork octopress
-``` 1
-$ &hellip;">
+``` 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,7 +65,7 @@ $ &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Markdown Playground</h1>
+      <h1 class="entry-title">Markdown示例集锦</h1>
     
     
       <p class="meta">
@@ -85,14 +84,14 @@ $ &hellip;">
   </header>
 
 
-<div class="entry-content"><h3>Syntax</h3>
+<div class="entry-content"><h3>代码块语法</h3>
 
 <pre><code>``` [language] [title] [url] [link text]
 code snippet
 ```
 </code></pre>
 
-<h3>Usage</h3>
+<p>不使用语法高亮</p>
 
 <pre><code>```
 $ git clone git@github.com:imathis/octopress.git # fork octopress
@@ -106,7 +105,9 @@ $ git clone git@github.com:imathis/octopress.git # fork octopress
 <!-- more -->
 
 
-<pre><code>``` ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
+<p>使用语法高亮功能，并添加链接文字</p>
+
+<pre><code>``` ruby 查找素数 http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ 源码链接
 class Fixnum
   def prime?
     ('1' * self) !~ /^1?$|^(11+?)\1+$/
@@ -115,7 +116,7 @@ end
 ```
 </code></pre>
 
-<figure class='code'><figcaption><span>Discover if a number is prime</span><a href='http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/'>Source Article</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>查找素数</span><a href='http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/'>源码链接</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -128,6 +129,20 @@ end
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>通过<code>&#123;% codeblock %&#125;</code>&hellip;<code>&#123;% endcodeblock %&#125;</code>同样可以显示代码高亮</p>
+
+<pre>
+&#123;% codeblock [lang:language] [title] [url] [link text] %&#125;
+code snippet
+&#123;% endcodeblock %&#125;
+</pre>
+
+
+<pre>&#123;% codeblock lang:objc %&#125;
+[rectangle setX: 10 y: 10 width: 20 height: 20];
+&#123;% endcodeblock %&#125;</pre>
+
+
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -137,65 +152,288 @@ end
 
 
 
-<figure class='code'><figcaption><span>Javascript Array Syntax</span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<pre>
+&#123;% codeblock C#泛型 lang:csharp https://github.com/larryhou/XUPorter/blob/master/XCMod.cs 源码链接 %&#125;
+private T fetch&lt;T&gt;(string key) where T:new()
+&#123;
+    if(_datastore != null &amp;&amp; _datastore.Contains(key))
+    &#123;
+        return (T)_datastore[key];
+    &#125;
+    return new T();
+&#125;
+&#123;% endcodeblock %&#125;
+</pre>
+
+
+<figure class='code'><figcaption><span>C#泛型</span><a href='https://github.com/larryhou/XUPorter/blob/master/XCMod.cs'>源码链接 </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">elementN</span><span class="p">);</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">private</span> <span class="n">T</span> <span class="n">fetch</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span><span class="p">:</span><span class="k">new</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="n">_datastore</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;</span><span class="n">amp</span><span class="p">;&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">_datastore</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">_datastore</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nf">T</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h3>引用级别样式</h3>
+
+<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt;
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&gt; id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+<blockquote><p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p></blockquote>
+
+<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+<blockquote><p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p></blockquote>
+
+<pre><code>&gt; ## This is a header.
+&gt; 
+&gt; 1.   This is the first list item.
+&gt; 2.   This is the second list item.
+&gt; 
+&gt; Here's some example code:
+&gt; 
+&gt;     return shell_exec("echo $input | $markdown_script");
+</code></pre>
+
+<blockquote><h2>This is a header.</h2>
+
+<ol>
+<li>This is the first list item.</li>
+<li>This is the second list item.</li>
+</ol>
 
 
-<div><script src='https://gist.github.com/9dd0f29acfa0d4622c40.js'></script>
-<noscript><pre><code>func convertQuaternionToEuler(quat:CMQuaternion) -&gt; (pitch:Double, roll:Double, yaw:Double)
-{
-    let x = atan2(2 * (quat.w * quat.x + quat.y * quat.z), 1 - 2 * (quat.x * quat.x + quat.y * quat.y))
-    let y =  asin(2 * (quat.w * quat.y - quat.z * quat.x))
-    let z = atan2(2 * (quat.w * quat.z + quat.x * quat.y), 1 - 2 * (quat.y * quat.y + quat.z * quat.z))
-    return (x, y, z)
-}</code></pre></noscript></div>
+<p>Here&rsquo;s some example code:</p>
+
+<pre><code>return shell_exec("echo $input | $markdown_script");
+</code></pre></blockquote>
+
+<h3>清单</h3>
+
+<pre>
+*   Red
+*   Green
+*   Blue
+</pre>
+
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<pre>
++   Red
++   Green
++   Blue
+</pre>
+
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<pre>
+-   Red
+-   Green
+-   Blue
+</pre>
+
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<pre>
+1.  Bird
+2.  McHale
+3.  Parish
+</pre>
+
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<pre>
+&lt;ol&gt;
+&lt;li&gt;Bird&lt;/li&gt;
+&lt;li&gt;McHale&lt;/li&gt;
+&lt;li&gt;Parish&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
 
 
 
 
-<!-- <div><script src='https://gist.github.com/1059334.js?file=svg_bullets.rb'></script>
-<noscript><pre><code>require &#39;sass&#39;
-
-module Sass::Script::Functions
-  def svg_circle(radius, color, circle_type)
-    img = if circle_type.value == &quot;disc&quot;
-      %Q{&lt;circle cx=&quot;#{radius.value}&quot; cy=&quot;#{radius.value}&quot; r=&quot;#{radius.value}&quot;
-                          stroke-width=&quot;0&quot; fill=&quot;#{color}&quot;/&gt;}
-    else
-      %Q{&lt;circle cx=&quot;#{radius.value}&quot; cy=&quot;#{radius.value}&quot; r=&quot;#{radius.value}&quot;
-                          stroke=&quot;#{color}&quot; stroke-width=&quot;1&quot; fill=&quot;white&quot;/&gt;}
-    end
-    inline_image_string(svg_circle_envelope(img).gsub(/  +/, &#39; &#39;), &#39;image/svg+xml&#39;)
-  end
-  private
-  def svg_circle_envelope(content)
-    %Q{&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt; &lt;svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;#{content}&lt;/svg&gt;}
-  end
-end
-</code></pre></noscript></div>
-
-<div><script src='https://gist.github.com/1059334.js?file=usage.scss'></script>
-<noscript><pre><code>// Draw a list style image in svg using the radius and color specified.
-@mixin colored-bullet($radius, $color, $type: disc) {
-  list-style-type: $type;
-  list-style-image: svg-circle($radius, $color, $type);
-}
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
 
 
-ul {
-  @include colored-bullet(2px, $green, disc);
-  ul {
-    @include colored-bullet(2px, $green, circle);
-  }
-}
-</code></pre></noscript></div>
- -->
 
+
+<pre>
+1.  Bird
+1.  McHale
+1.  Parish
+</pre>
+
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<pre>
+3. Bird
+1. McHale
+8. Parish
+</pre>
+
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<pre>
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+</pre>
+
+
+<ul>
+<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.</li>
+<li>Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.</li>
+</ul>
+
+
+<pre>
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+</pre>
+
+
+<ul>
+<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.</li>
+<li>Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.</li>
+</ul>
+
+
+<pre>
+*   This is a list item with two paragraphs.
+
+    This is the second paragraph in the list item. You're
+only required to indent the first line. Lorem ipsum dolor
+sit amet, consectetuer adipiscing elit.
+
+*   Another item in the same list.
+</pre>
+
+
+<ul>
+<li><p>This is a list item with two paragraphs.</p>
+
+<p>This is the second paragraph in the list item. You&rsquo;re
+only required to indent the first line. Lorem ipsum dolor
+sit amet, consectetuer adipiscing elit.</p></li>
+<li><p>Another item in the same list.</p></li>
+</ul>
+
+
+<pre>
+*   A list item with a blockquote:
+
+    > This is a blockquote
+    > inside a list item.
+</pre>
+
+
+<ul>
+<li><p>A list item with a blockquote:</p>
+
+<blockquote><p>This is a blockquote
+inside a list item.</p></blockquote></li>
+</ul>
+
+
+<pre>
+Here is an example of AppleScript:
+
+    tell application "Foo"
+        beep
+    end tell
+</pre>
+
+
+<p>Here is an example of AppleScript:</p>
+
+<pre><code>tell application "Foo"
+    beep
+end tell
+</code></pre>
 </div>
 
 
@@ -213,6 +451,12 @@ ul {
 
 <time class='entry-date' datetime='2015-09-01T14:22:57+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>2:22 pm</span></time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/markdown/'>markdown</a>
+  
+</span>
 
 
     </p>
@@ -286,7 +530,7 @@ ul {
       </li>
     
       <li class="post">
-        <a href="/blog/2015/09/01/markdown-playground/">Markdown Playground</a>
+        <a href="/blog/2015/09/01/markdown-playground/">Markdown示例集锦</a>
       </li>
     
   </ul>
