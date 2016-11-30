@@ -9,8 +9,23 @@
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="
-brew reinstall ffmpeg $(brew info ffmpeg | grep &#39;^--with-&#39; | xargs) ">
+  <meta name="description" content="行首添加TAB符号，如下脚本 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17 #!/bin/bash sudo sysctl net.inet.ip.forwarding=1 sudo sysctl net.inet.ip.redirect=1 sudo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -59,6 +74,96 @@ brew reinstall ffmpeg $(brew info ffmpeg | grep &#39;^--with-&#39; | xargs) ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/11/30/test-indent/">Markdown缩进语法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-11-30T17:01:54+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:01 pm</span></time>
+        
+           | <a href="/blog/2016/11/30/test-indent/#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io/blog/2016/11/30/test-indent/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>行首添加TAB符号，如下脚本</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>   <span class="c">#!/bin/bash</span>
+</span><span class='line'>  sudo sysctl net.inet.ip.forwarding<span class="o">=</span>1
+</span><span class='line'>  sudo sysctl net.inet.ip.redirect<span class="o">=</span>1
+</span><span class='line'>  sudo sysctl net.inet6.ip6.forwarding<span class="o">=</span>1
+</span><span class='line'>  sudo sysctl net.inet6.ip6.redirect<span class="o">=</span>1
+</span><span class='line'>  sudo pfctl -d
+</span><span class='line'>  sleep 1
+</span><span class='line'>
+</span><span class='line'>  sudo pfctl -F all -f /etc/pf.conf
+</span><span class='line'>  sleep 1
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">echo</span> <span class="s2">&quot;</span>
+</span><span class='line'><span class="s2">  nat on en4 from bridge100:network to any -&gt; (en4)</span>
+</span><span class='line'><span class="s2">  rdr pass on bridge100 inet proto tcp to port {443,80} -&gt; 127.0.0.1 port 8888&quot;</span> <span class="p">|</span> sudo pfctl -evf -
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">export </span><span class="nv">MITMPROXY_SSLKEYLOGFILE</span><span class="o">=</span>~/Documents/master-secret.log
+</span><span class='line'>  mitmproxy -T -p 8888
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以转换成如下样式</p>
+
+<pre><code>#!/bin/bash 
+sudo sysctl net.inet.ip.forwarding=1
+sudo sysctl net.inet.ip.redirect=1
+sudo sysctl net.inet6.ip6.forwarding=1
+sudo sysctl net.inet6.ip6.redirect=1
+sudo pfctl -d
+sleep 1
+
+sudo pfctl -F all -f /etc/pf.conf
+sleep 1
+
+echo "
+nat on en4 from bridge100:network to any -&gt; (en4)
+rdr pass on bridge100 inet proto tcp to port {443,80} -&gt; 127.0.0.1 port 8888" | sudo pfctl -evf -
+
+export MITMPROXY_SSLKEYLOGFILE=~/Documents/master-secret.log
+mitmproxy -T -p 8888
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -325,43 +430,6 @@ ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteu
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/">fillStyle0 &amp; fillStyle1 in SWFTag</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-19T22:10:55+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:10 pm</span></time>
-        
-           | <a href="/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/assets/shape-fillstyle/shape-1.svg" style="background-color:black;"/></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/09/19/fillstyle0-and-fillstyle1-in-swftag/">正文&raquo;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
 	<span> 1 / 6 </span>
@@ -378,6 +446,10 @@ ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteu
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/11/30/test-indent/">Markdown缩进语法</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/11/28/install-ffmpeg-with-full-functions/">Install Ffmpeg With Full Functions</a>
@@ -413,10 +485,6 @@ ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteu
     
       <li class="post">
         <a href="/blog/2015/09/01/markdown-playground/">Markdown Playground</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/31/markdown-syntax/">Markdown Syntax</a>
       </li>
     
   </ul>
