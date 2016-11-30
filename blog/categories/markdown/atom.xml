@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Markdown | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/markdown/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-11-30T17:22:58+08:00</updated>
+  <updated>2016-11-30T17:23:07+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -39,7 +39,7 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>   <span class="c">#!/bin/bash</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>  <span class="c">#!/bin/bash</span>
 </span><span class='line'>    sudo sysctl net.inet.ip.forwarding<span class="o">=</span>1
 </span><span class='line'>    sudo sysctl net.inet.ip.redirect<span class="o">=</span>1
 </span><span class='line'>    sudo sysctl net.inet6.ip6.forwarding<span class="o">=</span>1
