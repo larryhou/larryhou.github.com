@@ -4,7 +4,7 @@
   <title><![CDATA[Category: awk | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/awk/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T01:02:10+08:00</updated>
+  <updated>2016-12-06T01:03:18+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -37,6 +37,9 @@
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="p">&amp;</span>lsquo<span class="p">;</span>this seems like a pretty nice example<span class="p">&amp;</span>rsquo<span class="p">;</span> <span class="p">|</span> awk -F<span class="err">&#39;</span> like <span class="p">&amp;</span>lsquo<span class="p">;</span> <span class="p">&amp;</span>rsquo<span class="p">;</span><span class="o">{</span>print <span class="nv">$1</span><span class="o">}</span><span class="p">&amp;</span>lsquo<span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure></p>
+
+<!--more-->
+
 
 <p>除了<code>NF</code>，<code>awk</code>还有一些其他内置变量，见下表</p>
 
