@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>沐风白桦</title>
+  <title>awk使用教程 - 沐风白桦</title>
   <meta name="author" content="larryhou">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://larryhou.github.io/">
+  <link rel="canonical" href="http://larryhou.github.io/blog/2016/12/05/awk-tutorials/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <!-- <link href="" rel="alternate" title="沐风白桦" type="application/atom+xml"> -->
@@ -56,15 +56,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/12/05/awk-tutorials/">awk使用教程</a></h1>
+      <h1 class="entry-title">awk使用教程</h1>
     
     
       <p class="meta">
@@ -75,15 +72,15 @@
 
 <time class='entry-date' datetime='2016-12-05T19:13:55+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:13 pm</span></time>
         
-           | <a href="/blog/2016/12/05/awk-tutorials/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2016/12/05/awk-tutorials/">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://larryhou.github.io">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h3>入门</h3>
+<div class="entry-content"><h3>入门</h3>
 
 <p><code>awk</code>在文本处理脚本<code>shell</code>里很常用，它从管道<code>|</code>或文件中读取每一行，然后按照一定规则把每行自动分成多列，默认使用<strong>空格</strong>自动分列。在<code>awk</code>里面，<strong>空格</strong>可以是<code>空白字符</code>、<code>TAB制表符</code>。分列可以让<code>awk</code>脚本很方便地引用这些分隔开的值，<code>$1</code>表示第一列，<code>$2</code>表示第二列，等等以此类推，当然<code>$</code>后面的数字可以是个很大的值，比如<code>$1024</code>。另外，在<code>awk</code>中使用<code>$0</code>表示整行,<code>$NF</code>表示最后一列。</p>
 
@@ -532,238 +529,56 @@ Int16[]
 </table>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/11/30/test-indent/">markdown缩进语法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-11-30T17:01:54+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:01 pm</span></time>
-        
-           | <a href="/blog/2016/11/30/test-indent/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2016/11/30/test-indent/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>行首添加TAB符号，如下脚本</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>  <span class="c">#!/bin/bash</span>
-</span><span class='line'>  sudo sysctl net.inet.ip.forwarding<span class="o">=</span>1
-</span><span class='line'>  sudo sysctl net.inet.ip.redirect<span class="o">=</span>1
-</span><span class='line'>  sudo sysctl net.inet6.ip6.forwarding<span class="o">=</span>1
-</span><span class='line'>  sudo sysctl net.inet6.ip6.redirect<span class="o">=</span>1
-</span><span class='line'>  sudo pfctl -d
-</span><span class='line'>  sleep 1
-</span><span class='line'>
-</span><span class='line'>  sudo pfctl -F all -f /etc/pf.conf
-</span><span class='line'>  sleep 1
-</span><span class='line'>
-</span><span class='line'>  <span class="nb">echo</span> <span class="s2">&quot;</span>
-</span><span class='line'><span class="s2">  nat on en4 from bridge100:network to any -&gt; (en4)</span>
-</span><span class='line'><span class="s2">  rdr pass on bridge100 inet proto tcp to port {443,80} -&gt; 127.0.0.1 port 8888&quot;</span> <span class="p">|</span> sudo pfctl -evf -
-</span><span class='line'>
-</span><span class='line'>  <span class="nb">export </span><span class="nv">MITMPROXY_SSLKEYLOGFILE</span><span class="o">=</span>~/Documents/master-secret.log
-</span><span class='line'>  mitmproxy -T -p 8888
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>可以转换成如下样式</p>
-
-<pre><code>#!/bin/bash 
-sudo sysctl net.inet.ip.forwarding=1
-sudo sysctl net.inet.ip.redirect=1
-sudo sysctl net.inet6.ip6.forwarding=1
-sudo sysctl net.inet6.ip6.redirect=1
-sudo pfctl -d
-sleep 1
-
-sudo pfctl -F all -f /etc/pf.conf
-sleep 1
-
-echo "
-nat on en4 from bridge100:network to any -&gt; (en4)
-rdr pass on bridge100 inet proto tcp to port {443,80} -&gt; 127.0.0.1 port 8888" | sudo pfctl -evf -
-
-export MITMPROXY_SSLKEYLOGFILE=~/Documents/master-secret.log
-mitmproxy -T -p 8888
-</code></pre>
-</div>
-  
   
 
+<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/11/28/install-ffmpeg-with-full-functions/">install ffmpeg with full functions</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
 
-<time class='entry-date' datetime='2016-11-28T13:09:22+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:09 pm</span></time>
-        
-           | <a href="/blog/2016/11/28/install-ffmpeg-with-full-functions/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2016/11/28/install-ffmpeg-with-full-functions/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><script src='https://gist.github.com/3adbec0cc57880120249.js'></script>
-<noscript><pre><code>brew reinstall ffmpeg $(brew info ffmpeg | grep &#39;^--with-&#39; | xargs)</code></pre></noscript></div>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time class='entry-date' datetime='2016-12-05T19:13:55+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:13 pm</span></time>
       
-  <header>
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/awk/'>awk</a>, <a class='category' href='/blog/categories/mac/'>mac</a>, <a class='category' href='/blog/categories/shell/'>shell</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2016/11/28/generate-gif-from-movies/">convert movie to GIF</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-11-28T13:06:19+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:06 pm</span></time>
-        
-           | <a href="/blog/2016/11/28/generate-gif-from-movies/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2016/11/28/generate-gif-from-movies/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><script src='https://gist.github.com/084b0d3a494eae1b3117ace70d05bd0f.js'></script>
-<noscript><pre><code>#!/bin/bash
-
-palette=&quot;palette.png&quot;
-filters=&quot;fps=30,scale=320:-1:flags=lanczos&quot;
-
-ffmpeg -v warning -i $1 -vf &quot;$filters,palettegen&quot; -y $palette
-ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteuse&quot; -y $2</code></pre></noscript></div>
-
-
-
+      <div class="sharing">
+  
+  
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/11/28/tinyproxy-install/">tinyproxy install</a></h1>
-    
-    
-      <p class="meta">
-        
+        <a class="basic-alignment right" href="/blog/2016/11/30/test-indent/" title="Previous Post: markdown缩进语法">markdown缩进语法 &raquo;</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-<time class='entry-date' datetime='2016-11-28T13:02:49+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:02 pm</span></time>
-        
-           | <a href="/blog/2016/11/28/tinyproxy-install/#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io/blog/2016/11/28/tinyproxy-install/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div><script src='https://gist.github.com/800d44b384d88dc7e81083b36edfcbf0.js'></script>
-<noscript><pre><code>* `brew install tinyproxy`
-* Comment out `Allow 127.0.0.1` in `/usr/local/etc/tinyproxy.conf`.
-* Start tinyproxy with `tinyproxy -d`.
-* Follow the log file with
-
-  ```bash
-  tail -f /usr/local/var/log/tinyproxy/tinyproxy.log
-  ```
-
-* On the iOS device, in Wi-Fi settings, set HTTP Proxy to Manual and set
-  * Server to the IP address of the Mac
-  * Port as specified in `tinyproxy.conf`</code></pre></noscript></div>
-
-
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-	<span> 1 / 6 </span>
-    
-      <a class="next" href="/posts/2">NEXT #2</a>
-    
-  </div>
-  <!-- <div class="pagination">
-	  <a href="/blog/archives">Blog Archives</a>
-  </div> -->
-</div>
 <aside class="sidebar">
   
     <section>
@@ -849,6 +664,7 @@ ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteu
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -863,7 +679,10 @@ ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteu
       var disqus_shortname = 'larryhou';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://larryhou.github.io/blog/2016/12/05/awk-tutorials/';
+        var disqus_url = 'http://larryhou.github.io/blog/2016/12/05/awk-tutorials/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

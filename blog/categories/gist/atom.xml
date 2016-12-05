@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Gist | 沐风白桦]]></title>
+  <title><![CDATA[Category: gist | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/gist/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-01T00:10:35+08:00</updated>
+  <updated>2016-12-06T01:02:10+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Install Ffmpeg With Full Functions]]></title>
+    <title type="html"><![CDATA[install ffmpeg with full functions]]></title>
     <link href="http://larryhou.github.io/blog/2016/11/28/install-ffmpeg-with-full-functions/"/>
     <updated>2016-11-28T13:09:22+08:00</updated>
     <id>http://larryhou.github.io/blog/2016/11/28/install-ffmpeg-with-full-functions</id>
@@ -25,7 +25,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Convert Movie to GIF]]></title>
+    <title type="html"><![CDATA[convert movie to GIF]]></title>
     <link href="http://larryhou.github.io/blog/2016/11/28/generate-gif-from-movies/"/>
     <updated>2016-11-28T13:06:19+08:00</updated>
     <id>http://larryhou.github.io/blog/2016/11/28/generate-gif-from-movies</id>
@@ -42,7 +42,7 @@ ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteu
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Tinyproxy Install]]></title>
+    <title type="html"><![CDATA[tinyproxy install]]></title>
     <link href="http://larryhou.github.io/blog/2016/11/28/tinyproxy-install/"/>
     <updated>2016-11-28T13:02:49+08:00</updated>
     <id>http://larryhou.github.io/blog/2016/11/28/tinyproxy-install</id>
@@ -64,7 +64,7 @@ ffmpeg -v warning -i $1 -i $palette -lavfi &quot;$filters [x]; [x][1:v] paletteu
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[China GPS Convertion in iOS Development]]></title>
+    <title type="html"><![CDATA[China GPS Convertion In iOS Development]]></title>
     <link href="http://larryhou.github.io/blog/2015/09/01/china-gps-convertion/"/>
     <updated>2015-09-01T20:40:27+08:00</updated>
     <id>http://larryhou.github.io/blog/2015/09/01/china-gps-convertion</id>

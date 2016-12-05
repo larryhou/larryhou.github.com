@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Markdown | 沐风白桦]]></title>
+  <title><![CDATA[Category: markdown | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/markdown/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-01T00:10:35+08:00</updated>
+  <updated>2016-12-06T01:02:10+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Markdown缩进语法]]></title>
+    <title type="html"><![CDATA[markdown缩进语法]]></title>
     <link href="http://larryhou.github.io/blog/2016/11/30/test-indent/"/>
     <updated>2016-11-30T17:01:54+08:00</updated>
     <id>http://larryhou.github.io/blog/2016/11/30/test-indent</id>

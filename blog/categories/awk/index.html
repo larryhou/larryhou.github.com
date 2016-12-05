@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>使用INDIRECT函数引用Excel单元格 - 沐风白桦</title>
+  <title>Category: awk - 沐风白桦</title>
   <meta name="author" content="larryhou">
 
   
-  <meta name="description" content="如果需要动态引用Excel单元格的时候，INDIRECT函数可以帮上大忙，为什么这么说？它的传参是一个字符串，比如引用第一列第二行的数据可以用=INDIRECT(&ldquo;A2&rdquo;)，这样有什么好处呢？作比较复杂的数据操作的时候行列可能都是动态计算出来的，这个时候结合ADDRESS( &hellip;">
+  <meta name="description" content="Category: awk">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://larryhou.github.io/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/">
+  <link rel="canonical" href="http://larryhou.github.io/blog/categories/awk/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <!-- <link href="" rel="alternate" title="沐风白桦" type="application/atom+xml"> -->
@@ -33,7 +33,7 @@
 
 </head>
 
-<body    class="collapse-sidebar sidebar-footer" >
+<body   >
   <header role="banner"><hgroup>
   <h1>沐风白桦</h1>
   
@@ -57,76 +57,36 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">使用INDIRECT函数引用Excel单元格</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-11-09T23:58:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:58 pm</span></time>
-        
-           | <a href="#disqus_thread"
-             data-disqus-identifier="http://larryhou.github.io">Comments</a>
-        
-      </p>
+    <h1 class="entry-title">Category: awk</h1>
     
   </header>
-
-
-<div class="entry-content"><p>如果需要动态引用Excel单元格的时候，INDIRECT函数可以帮上大忙，为什么这么说？它的传参是一个字符串，比如引用第一列第二行的数据可以用<code>=INDIRECT(&ldquo;A2&rdquo;)</code>，这样有什么好处呢？作比较复杂的数据操作的时候行列可能都是动态计算出来的，这个时候结合<code>ADDRESS(row, column)</code>方法算出行列对应的地址名称传参到INDIRECT（也即<code>=INDIRECT(ADDRESS(row, column))</code>）就可以很方便地引用任意单元格。</p>
-
-<p>有时候为了方便可能会引用其他表单的数值，假设另外一个表单的名称叫<strong>sheet</strong>，那么引用另外一个表单的单元格可以使用<code>=INDIRECT(&ldquo;sheet!A2&rdquo;)</code>来引用<strong>sheet</strong>表单的第二行第一列的单元格。</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">larryhou</span></span>
-
-      
+  <div id="blog-archives" class="category">
 
 
 
-
-<time class='entry-date' datetime='2012-11-09T23:58:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:58 pm</span></time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
   
-  
-  
-</div>
+  <h2>2016</h2>
 
-    
-    <p class="meta">
-      
-        <a class="basic-alignment right" href="/blog/2012/11/08/export-xml-from-excel/" title="Previous Post: 使用Excel导出XML格式文件">使用Excel导出XML格式文件 &raquo;</a>
-      
-      
-        <a class="basic-alignment left" href="/blog/2012/11/10/as3proto-osx/" title="Next Post: 在OSX系统使用AS3版protobuf">&laquo; 在OSX系统使用AS3版protobuf</a>
-      
-    </p>
-  </footer>
+<article>
+  
+<h1><a href="/blog/2016/12/05/awk-tutorials/">awk使用教程</a></h1>
+<time datetime="2016-12-05T19:13:55+08:00" pubdate><span class='month'>Dec</span> <span class='day'>05</span> <span class='year'>2016</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/awk/'>awk</a>, <a class='category' href='/blog/categories/mac/'>mac</a>, <a class='category' href='/blog/categories/shell/'>shell</a></span>
+</footer>
+
+
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  </section>
+
+  
+</article>
 
 </div>
 
@@ -230,10 +190,7 @@
       var disqus_shortname = 'larryhou';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://larryhou.github.io/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/';
-        var disqus_url = 'http://larryhou.github.io/blog/2012/11/09/make-reference-to-excel-cell-with-indirect/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
