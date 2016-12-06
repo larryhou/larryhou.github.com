@@ -480,6 +480,71 @@ Int16[]
 </table>
 
 
+<h3>综合示例</h3>
+
+<p>下面这个示例使用<code>awk</code>做了一个相对比较复杂的事情：把第二列相同的行归为一类，并把相同类的第一列数值相加求和，并输出汇总结果</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">export </span><span class="nv">LC_NUMERIC</span><span class="o">=</span><span class="s2">&quot;en_US.UTF-8&quot;</span>
+</span><span class='line'>cat data.txt <span class="p">|</span> awk <span class="s1">&#39;BEGIN{sum=0;type=&quot;&quot;;prev=&quot;&quot;}{</span>
+</span><span class='line'><span class="s1"> if(type==&quot;&quot; || type!=$2)</span>
+</span><span class='line'><span class="s1"> {</span>
+</span><span class='line'><span class="s1">     if(type!=&quot;&quot;)</span>
+</span><span class='line'><span class="s1">     {</span>
+</span><span class='line'><span class="s1">         printf &quot;%10&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;.d %s %s\n&quot;, sum, prev,&quot;#&quot; NR</span>
+</span><span class='line'><span class="s1">     }</span>
+</span><span class='line'><span class="s1">     </span>
+</span><span class='line'><span class="s1">     type=$2</span>
+</span><span class='line'><span class="s1">     prev=sprintf(&quot;%9&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;.d %s %s&quot;,$1,$2,$3)</span>
+</span><span class='line'><span class="s1">     sum=0</span>
+</span><span class='line'><span class="s1"> }</span>
+</span><span class='line'><span class="s1"> </span>
+</span><span class='line'><span class="s1"> sum+=$1</span>
+</span><span class='line'><span class="s1"> </span>
+</span><span class='line'><span class="s1"> # if(NR&gt;10000) exit</span>
+</span><span class='line'><span class="s1">}&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<pre>
+   656,632        96 System.Collections.Generic.List`1<int>:.ctor(System.Collections.Generic.IEnumerable`1<int>) Int32[] #315133
+   859,648        64 System.Collections.Generic.Dictionary`2<object,object>:InitArrays(int) WeakObjectWrapper[] #347584
+   964,608       976 System.Collections.Generic.List`1<UnityEngine.UIVertex>:.ctor(int) UIVertex[] #333434
+ 1,048,592 1,048,592 FowTexture:Init() Color[] #687192
+ 1,065,568       464 System.Collections.Generic.Dictionary`2<int16,Morefun.LockStep.LList`1<System.Delegate>>:InitArrays(int) Link[] #351569
+ 1,132,052       274 System.MonoType:get_AssemblyQualifiedName() String #243980
+ 1,181,198        48 UnityEngine.Object:Internal_InstantiateSingle(UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion) VisualsTowerAnim #124684
+ 1,187,060        64 System.Reflection.MonoCMethod:Invoke(object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo) WaypointFollower #239548
+ 1,790,736        98 string:Concat(string,string) String #62269
+ 2,219,368        16 HutongGames.PlayMaker.ActionData:Copy() MonoType #671794
+</pre>
+
+
+<p>在<code>awk</code>操作里面如果要转移单引号<code>'</code>，则需要通过<code>'\''</code>来实现，上面这个示例中使用了两次单引号<code>'</code>，可以通过<a class='.blog-link' href='assets/awk-tutorials/data.txt'>链接</a>下载脚本使用的数据源文件。</p>
+
 <p>延伸阅读：<br/>
 <a href="https://www.gnu.org/software/gawk/manual/html_node/Very-Simple.html" title="Awk User's Guide:Very Simple">Awk User&rsquo;s Guide:Very Simple</a><br/>
 <a href="https://www.gnu.org/software/gawk/manual/html_node/Fields.html" title="Awk User's Guide:Fields">Awk User&rsquo;s Guide:Fields</a><br/>
