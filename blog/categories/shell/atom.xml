@@ -4,7 +4,7 @@
   <title><![CDATA[Category: shell | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T18:08:40+08:00</updated>
+  <updated>2016-12-06T18:10:28+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -105,7 +105,7 @@
 </tr>
 <tr>
 <td style="text-align:left;">ENVIRON </td>
-<td style="text-align:center;">环境变量列表，通过下标变量名(ENVIRON[变量名])来访问</td>
+<td style="text-align:center;">环境变量列表，通过下标变量名(ENVIRON[变量名])来访问，环境变量var=value，通过ENVIRON[var]=value方式存储</td>
 </tr>
 </tbody>
 </table>
