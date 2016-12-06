@@ -4,7 +4,7 @@
   <title><![CDATA[Category: awk | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/awk/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T14:32:59+08:00</updated>
+  <updated>2016-12-06T14:35:45+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -444,7 +444,7 @@ exit [ expression ]     # exit immediately; status is expression
 </pre>
 
 
-<p>在<code>awk</code>操作里面如果要<a href="http://stackoverflow.com/questions/9899001/how-to-escape-single-quote-in-awk-inside-printf" title="awk单引号转义">转义</a>单引号<code>'</code>，则需要通过<code>'\''</code>来实现，上面这个示例中使用了两次单引号<code>'</code>，可以通过<a class='.blog-link' href='assets/awk-tutorials/data.txt.7z'>链接</a>下载脚本使用的数据源文件。</p>
+<p>在<code>awk</code>操作里面如果要<a href="http://stackoverflow.com/questions/9899001/how-to-escape-single-quote-in-awk-inside-printf" title="awk单引号转义">转义</a>单引号<code>'</code>，则需要通过<code>'\''</code>来实现，上面这个示例中使用了两次单引号<code>'</code>。另外，使用了<code>printf</code>对数值进行<a href="http://stackoverflow.com/questions/14668094/add-commas-to-numeric-strings-in-unix" title="printf输出千分位格式数值">千分位格式化</a>，可以通过<a class='.blog-link' href='assets/awk-tutorials/data.txt.7z'>链接</a>下载脚本使用的数据源文件。</p>
 
 <p>延伸阅读：<br/>
 <a href="https://www.gnu.org/software/gawk/manual/html_node/Very-Simple.html" title="Awk User's Guide:Very Simple">Awk User&rsquo;s Guide:Very Simple</a><br/>
