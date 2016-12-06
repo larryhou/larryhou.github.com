@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mac | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T18:15:06+08:00</updated>
+  <updated>2016-12-06T18:17:52+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -112,6 +112,49 @@
 
 
 <p><code>&amp;#034;</code>=&#034;</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>awk <span class="p">&amp;</span>lsquo<span class="p">;</span>BEGIN<span class="o">{</span><span class="k">for</span><span class="o">(</span><span class="nv">i</span><span class="o">=</span>0<span class="p">;</span>i<span class="p">&amp;</span>lt<span class="p">;</span>ARGC-1<span class="p">;</span>i++<span class="o">)</span>print i,ARGV<span class="o">[</span>i<span class="o">]}</span><span class="p">&amp;</span>rsquo<span class="p">;</span> *.cs
+</span></code></pre></td></tr></table></div></figure></p>
+
+<pre>
+0 awk
+1 ArenaServer.cs
+2 LogicServer.cs
+3 Server.cs
+</pre>
+
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>awk <span class="p">&amp;</span>lsquo<span class="p">;</span>BEGIN<span class="o">{</span><span class="k">for</span><span class="o">(</span>i in ENVIRON<span class="o">)</span>print i,ARGV<span class="o">[</span>i<span class="o">]}</span><span class="p">&amp;</span>rsquo<span class="p">;</span> *.cs
+</span></code></pre></td></tr></table></div></figure></p>
+
+<pre>
+DISPLAY /private/tmp/com.apple.launchd.eKuWVlBt3M/org.macosforge.xquartz:0
+Apple_PubSub_Socket_Render /private/tmp/com.apple.launchd.grOg8OMLVo/Render
+OLDPWD /Users/larryhou/Documents/next/trunk
+LOGNAME larryhou
+XPC_SERVICE_NAME 0
+JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
+USER larryhou
+PATH /usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Applications/Server.app/Contents/ServerRoot/usr/bin:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Wireshark.app/Contents/MacOS
+__CF_USER_TEXT_ENCODING 0x1F5:0x0:0x0
+TERM_SESSION_ID A39F566B-15B3-4423-9716-491208377960
+TERM_PROGRAM_VERSION 388
+TERM xterm-256color
+SHLVL 1
+TMPDIR /var/folders/gb/2wdjrlq53fbdf0xbs145cv2m0000gn/T/
+SECURITYSESSIONID 186a6
+HOME /Users/larryhou
+SHELL /bin/bash
+TERM_PROGRAM Apple_Terminal
+LC_CTYPE UTF-8
+_ /usr/bin/awk
+PWD /Users/larryhou/Documents/next/trunk/TheNextMOBA/Assets/Scripts/Service/Network
+SSH_AUTH_SOCK /private/tmp/com.apple.launchd.eDbmxn43sK/Listeners
+XPC_FLAGS 0x0
+</pre>
+
 
 <h3>正则表达式</h3>
 
