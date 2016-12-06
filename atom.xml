@@ -4,7 +4,7 @@
   <title><![CDATA[沐风白桦]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T14:38:39+08:00</updated>
+  <updated>2016-12-06T14:41:08+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -310,7 +310,7 @@ Int16[]
 </tr>
 <tr>
 <td style="text-align:left;">index(s,t)</td>
-<td style="text-align:center;">如果字符串s中包含t则返回1，否则返回0</td>
+<td style="text-align:center;">如果字符串s中包含t，则返回t在字符串中出现的位置(从1开始)，否则返回0</td>
 </tr>
 <tr>
 <td style="text-align:left;">match(s,r)</td>
