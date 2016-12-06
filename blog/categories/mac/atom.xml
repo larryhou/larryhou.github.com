@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mac | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T14:41:08+08:00</updated>
+  <updated>2016-12-06T18:04:26+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -53,63 +53,65 @@
 <tbody>
 <tr>
 <td style="text-align:left;">CONVFMT</td>
-<td style="text-align:center;">conversion format used when converting numbers (default %.6g)</td>
+<td style="text-align:center;">转换数字使用的格式，默认为：%.6g</td>
 </tr>
 <tr>
 <td style="text-align:left;">FS     </td>
-<td style="text-align:center;">regular expression used to separate  fields;  also  settable  by option -Ffs.</td>
+<td style="text-align:center;">分列使用的正则表达式，可以通过-Ffs来设置</td>
 </tr>
 <tr>
 <td style="text-align:left;">NF     </td>
-<td style="text-align:center;">number of fields in the current record</td>
+<td style="text-align:center;">当前行分隔后的列数</td>
 </tr>
 <tr>
 <td style="text-align:left;">NR     </td>
-<td style="text-align:center;">ordinal number of the current record</td>
+<td style="text-align:center;">当前行的序号</td>
 </tr>
 <tr>
 <td style="text-align:left;">FNR    </td>
-<td style="text-align:center;">ordinal number of the current record in the current file</td>
+<td style="text-align:center;">o当前文件中当前行的序号</td>
 </tr>
 <tr>
 <td style="text-align:left;">FILENAME </td>
-<td style="text-align:center;">the name of the current input file</td>
+<td style="text-align:center;">当前输入文件名</td>
 </tr>
 <tr>
 <td style="text-align:left;">RS     </td>
-<td style="text-align:center;">input record separator (default newline)</td>
+<td style="text-align:center;">行分隔符，默认为换行符\n</td>
 </tr>
 <tr>
 <td style="text-align:left;">OFS    </td>
-<td style="text-align:center;">output field separator (default blank)</td>
+<td style="text-align:center;">输出列间隔符，默认为空格</td>
 </tr>
 <tr>
 <td style="text-align:left;">ORS    </td>
-<td style="text-align:center;">output record separator (default newline)</td>
+<td style="text-align:center;">输出行分隔符，默认为换行符\n</td>
 </tr>
 <tr>
 <td style="text-align:left;">OFMT   </td>
-<td style="text-align:center;">output format for numbers (default %.6g)</td>
+<td style="text-align:center;">数字的输出格式，默认为：%.6g</td>
 </tr>
 <tr>
 <td style="text-align:left;">SUBSEP </td>
-<td style="text-align:center;">separates multiple subscripts (default 034)</td>
+<td style="text-align:center;">下标分隔符，默认为：\034(双引号)，比如foo[&ldquo;A&rdquo;,&ldquo;B&rdquo;]，实际通过foo[&ldquo;A\034B&rdquo;]来访问</td>
 </tr>
 <tr>
 <td style="text-align:left;">ARGC   </td>
-<td style="text-align:center;">argument count, assignable</td>
+<td style="text-align:center;">awk参数数量，可赋值</td>
 </tr>
 <tr>
 <td style="text-align:left;">ARGV   </td>
-<td style="text-align:center;">argument array, assignable; non-null members are taken as file-names</td>
+<td style="text-align:center;">awk参数列表，可赋值； non-null members are taken as file-names</td>
 </tr>
 <tr>
 <td style="text-align:left;">ENVIRON </td>
-<td style="text-align:center;">array of environment variables; subscripts are names.</td>
+<td style="text-align:center;">环境变量列表，通过下标变量名(ENVIRON[变量名])来访问</td>
 </tr>
 </tbody>
 </table>
 
+
+<p><code>&amp;#034;</code>=&#034;</p>
 
 <h3>正则表达式</h3>
 
