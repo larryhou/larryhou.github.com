@@ -4,7 +4,7 @@
   <title><![CDATA[Category: awk | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/awk/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T18:19:59+08:00</updated>
+  <updated>2016-12-06T20:14:05+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -157,22 +157,22 @@ XPC_FLAGS 0x0
 
 
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>awk <span class="p">&amp;</span>lsquo<span class="p">;</span><span class="o">{</span>print FILENAME,<span class="nv">$0</span><span class="o">}</span><span class="p">&amp;</span>rsquo<span class="p">;</span> Server.cs.meta
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>awk <span class="p">&amp;</span>lsquo<span class="p">;</span><span class="o">{</span>print FILENAME <span class="p">&amp;</span>ldquo<span class="p">;</span>:<span class="p">&amp;</span>rdquo<span class="p">;</span> sprintf<span class="o">(</span><span class="p">&amp;</span>ldquo<span class="p">;</span>%02d<span class="p">&amp;</span>rdquo<span class="p">;</span>,NR<span class="o">)</span>,<span class="nv">$0</span><span class="o">}</span><span class="p">&amp;</span>rsquo<span class="p">;</span> Server.cs.meta&lt;br/&gt;
 </span></code></pre></td></tr></table></div></figure></p>
 
 <pre>
-Server.cs.meta fileFormatVersion: 2
-Server.cs.meta guid: c265c6b6a7a784f3bb1417ce67e9df3e
-Server.cs.meta timeCreated: 1456236560
-Server.cs.meta licenseType: Free
-Server.cs.meta MonoImporter:
-Server.cs.meta   serializedVersion: 2
-Server.cs.meta   defaultReferences: []
-Server.cs.meta   executionOrder: 0
-Server.cs.meta   icon: {instanceID: 0}
-Server.cs.meta   userData: 
-Server.cs.meta   assetBundleName: 
-Server.cs.meta   assetBundleVariant: 
+Server.cs.meta:01 fileFormatVersion: 2
+Server.cs.meta:02 guid: c265c6b6a7a784f3bb1417ce67e9df3e
+Server.cs.meta:03 timeCreated: 1456236560
+Server.cs.meta:04 licenseType: Free
+Server.cs.meta:05 MonoImporter:
+Server.cs.meta:06   serializedVersion: 2
+Server.cs.meta:07   defaultReferences: []
+Server.cs.meta:08   executionOrder: 0
+Server.cs.meta:09   icon: {instanceID: 0}
+Server.cs.meta:10   userData: 
+Server.cs.meta:11   assetBundleName: 
+Server.cs.meta:12   assetBundleVariant: 
 </pre>
 
 
