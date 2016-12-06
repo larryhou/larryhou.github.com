@@ -4,7 +4,7 @@
   <title><![CDATA[Category: shell | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T22:40:42+08:00</updated>
+  <updated>2016-12-06T23:08:21+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -389,7 +389,7 @@ exit [ expression ]     # exit immediately; status is expression
 </tr>
 <tr>
 <td style="text-align:right;">?:</td>
-<td style="text-align:left;">C条件表达式</td>
+<td style="text-align:left;">C条件表达式，三元表达式</td>
 </tr>
 <tr>
 <td style="text-align:right;">||</td>
