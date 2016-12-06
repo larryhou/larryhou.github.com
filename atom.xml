@@ -4,7 +4,7 @@
   <title><![CDATA[沐风白桦]]></title>
   <link href="http://larryhou.github.io/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T20:14:05+08:00</updated>
+  <updated>2016-12-06T20:22:39+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -119,7 +119,7 @@
 <p><code>&amp;#034;</code>=&#034;</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>awk <span class="s1">&#39;BEGIN{for(i=0;i&lt;ARGC-1;i++)print i,ARGV[i]}&#39;</span> *.cs
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>awk <span class="s1">&#39;BEGIN{for(i=0;i&lt;ARGC;i++)print i,ARGV[i]}&#39;</span> *.cs
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -128,6 +128,7 @@
 1 ArenaServer.cs
 2 LogicServer.cs
 3 Server.cs
+4 Utils.cs
 </pre>
 
 
