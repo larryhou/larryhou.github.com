@@ -4,7 +4,7 @@
   <title><![CDATA[Category: shell | 沐风白桦]]></title>
   <link href="http://larryhou.github.io/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://larryhou.github.io/"/>
-  <updated>2016-12-06T20:25:28+08:00</updated>
+  <updated>2016-12-06T22:38:20+08:00</updated>
   <id>http://larryhou.github.io/</id>
   <author>
     <name><![CDATA[larryhou]]></name>
@@ -47,65 +47,65 @@
 <thead>
 <tr>
 <th style="text-align:left;">内置变量</th>
-<th style="text-align:center;">变量描述</th>
+<th style="text-align:left;">变量描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">CONVFMT</td>
-<td style="text-align:center;">转换数字使用的格式，默认为：%.6g</td>
+<td style="text-align:left;">转换数字使用的格式，默认为：%.6g</td>
 </tr>
 <tr>
 <td style="text-align:left;">FS     </td>
-<td style="text-align:center;">分列使用的正则表达式，可以通过-Ffs来设置</td>
+<td style="text-align:left;">分列使用的正则表达式，可以通过-Ffs来设置</td>
 </tr>
 <tr>
 <td style="text-align:left;">NF     </td>
-<td style="text-align:center;">当前行分隔后的列数</td>
+<td style="text-align:left;">当前行分隔后的列数</td>
 </tr>
 <tr>
 <td style="text-align:left;">NR     </td>
-<td style="text-align:center;">当前行的序号</td>
+<td style="text-align:left;">当前行的序号</td>
 </tr>
 <tr>
 <td style="text-align:left;">FNR    </td>
-<td style="text-align:center;">当前文件中当前行的序号</td>
+<td style="text-align:left;">当前文件中当前行的序号</td>
 </tr>
 <tr>
 <td style="text-align:left;">FILENAME </td>
-<td style="text-align:center;">当前输入文件名</td>
+<td style="text-align:left;">当前输入文件名</td>
 </tr>
 <tr>
 <td style="text-align:left;">RS     </td>
-<td style="text-align:center;">行分隔符，默认为换行符\n</td>
+<td style="text-align:left;">行分隔符，默认为换行符\n</td>
 </tr>
 <tr>
 <td style="text-align:left;">OFS    </td>
-<td style="text-align:center;">输出列间隔符，默认为空格</td>
+<td style="text-align:left;">输出列间隔符，默认为空格</td>
 </tr>
 <tr>
 <td style="text-align:left;">ORS    </td>
-<td style="text-align:center;">输出行分隔符，默认为换行符\n</td>
+<td style="text-align:left;">输出行分隔符，默认为换行符\n</td>
 </tr>
 <tr>
 <td style="text-align:left;">OFMT   </td>
-<td style="text-align:center;">数字的输出格式，默认为：%.6g</td>
+<td style="text-align:left;">数字的输出格式，默认为：%.6g</td>
 </tr>
 <tr>
 <td style="text-align:left;">SUBSEP </td>
-<td style="text-align:center;">下标分隔符，默认为：\034(双引号)，比如foo[&ldquo;A&rdquo;,&ldquo;B&rdquo;]，实际通过foo[&ldquo;A\034B&rdquo;]来访问</td>
+<td style="text-align:left;">下标分隔符，默认为：\034(双引号)，比如foo[&ldquo;A&rdquo;,&ldquo;B&rdquo;]，实际通过foo[&ldquo;A\034B&rdquo;]来访问</td>
 </tr>
 <tr>
 <td style="text-align:left;">ARGC   </td>
-<td style="text-align:center;">awk参数数量，可赋值</td>
+<td style="text-align:left;">awk参数数量，可赋值</td>
 </tr>
 <tr>
 <td style="text-align:left;">ARGV   </td>
-<td style="text-align:center;">awk参数列表，可赋值，0..ARGC-1，非0索引表示输入文件名</td>
+<td style="text-align:left;">awk参数列表，可赋值，0..ARGC-1，非0索引表示输入文件名</td>
 </tr>
 <tr>
 <td style="text-align:left;">ENVIRON </td>
-<td style="text-align:center;">环境变量列表，通过下标变量名(ENVIRON[变量名])来访问，环境变量var=value，通过ENVIRON[var]=value方式存储</td>
+<td style="text-align:left;">环境变量列表，通过下标变量名(ENVIRON[变量名])来访问，环境变量var=value，通过ENVIRON[var]=value方式存储</td>
 </tr>
 </tbody>
 </table>
@@ -309,65 +309,65 @@ exit [ expression ]     # exit immediately; status is expression
 <thead>
 <tr>
 <th style="text-align:left;">函数名</th>
-<th style="text-align:center;">函数描述</th>
+<th style="text-align:left;">函数描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">length</td>
-<td style="text-align:center;">字符串长度</td>
+<td style="text-align:left;">字符串长度</td>
 </tr>
 <tr>
 <td style="text-align:left;">rand</td>
-<td style="text-align:center;">(0&lt;=x&lt;1)的随机数</td>
+<td style="text-align:left;">(0&lt;=x&lt;1)的随机数</td>
 </tr>
 <tr>
 <td style="text-align:left;">srand</td>
-<td style="text-align:center;">设置随机种子并返回之前的随机种子</td>
+<td style="text-align:left;">设置随机种子并返回之前的随机种子</td>
 </tr>
 <tr>
 <td style="text-align:left;">int</td>
-<td style="text-align:center;">截尾转换成整数</td>
+<td style="text-align:left;">截尾转换成整数</td>
 </tr>
 <tr>
 <td style="text-align:left;">substr(s,m,n)</td>
-<td style="text-align:center;">返回字符串s自m位置(索引从1开始)开始的n个字符</td>
+<td style="text-align:left;">返回字符串s自m位置(索引从1开始)开始的n个字符</td>
 </tr>
 <tr>
 <td style="text-align:left;">index(s,t)</td>
-<td style="text-align:center;">如果字符串s中包含t，则返回t在字符串中出现的位置(从1开始)，否则返回0</td>
+<td style="text-align:left;">如果字符串s中包含t，则返回t在字符串中出现的位置(从1开始)，否则返回0</td>
 </tr>
 <tr>
 <td style="text-align:left;">match(s,r)</td>
-<td style="text-align:center;">返回字符串s匹配正则表达式r的位置(从1开始)</td>
+<td style="text-align:left;">返回字符串s匹配正则表达式r的位置(从1开始)</td>
 </tr>
 <tr>
 <td style="text-align:left;">split(s,a,fs)</td>
-<td style="text-align:center;">把字符串s通过正则fs分隔成数组a，并返回数组a长度n，如果fs未设置，则使用FS分隔符</td>
+<td style="text-align:left;">把字符串s通过正则fs分隔成数组a，并返回数组a长度n，如果fs未设置，则使用FS分隔符</td>
 </tr>
 <tr>
 <td style="text-align:left;">sub(r,t,s)</td>
-<td style="text-align:center;">在字符串s中，使用正则表达式r首次匹配的位置替换成t，如果s未设置，则使用$0</td>
+<td style="text-align:left;">在字符串s中，使用正则表达式r首次匹配的位置替换成t，如果s未设置，则使用$0</td>
 </tr>
 <tr>
 <td style="text-align:left;">gsub(r,t,s)</td>
-<td style="text-align:center;">与sub(r,t,s)参数相同，不过会把匹配的字符串全部替换，并返回替换的次数</td>
+<td style="text-align:left;">与sub(r,t,s)参数相同，不过会把匹配的字符串全部替换，并返回替换的次数</td>
 </tr>
 <tr>
 <td style="text-align:left;">sprintf(fmt,expr,&hellip;)</td>
-<td style="text-align:center;">依据printf相同的样式fmt格式表达式列表</td>
+<td style="text-align:left;">依据printf相同的样式fmt格式表达式列表</td>
 </tr>
 <tr>
 <td style="text-align:left;">system(cmd)</td>
-<td style="text-align:center;">执行cmd并返回退出状态码</td>
+<td style="text-align:left;">执行cmd并返回退出状态码</td>
 </tr>
 <tr>
 <td style="text-align:left;">tolower(str)</td>
-<td style="text-align:center;">把字符串str转换成小写</td>
+<td style="text-align:left;">把字符串str转换成小写</td>
 </tr>
 <tr>
 <td style="text-align:left;">toupper(str)</td>
-<td style="text-align:center;">把字符串str转换成大写</td>
+<td style="text-align:left;">把字符串str转换成大写</td>
 </tr>
 </tbody>
 </table>
@@ -379,65 +379,65 @@ exit [ expression ]     # exit immediately; status is expression
 <thead>
 <tr>
 <th style="text-align:left;">运算符</th>
-<th style="text-align:center;">描述</th>
+<th style="text-align:left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">=,+=,-=,*=,/=,%=,^=,**=</td>
-<td style="text-align:center;">赋值</td>
+<td style="text-align:left;">赋值</td>
 </tr>
 <tr>
 <td style="text-align:left;">?:</td>
-<td style="text-align:center;">C条件表达式</td>
+<td style="text-align:left;">C条件表达式</td>
 </tr>
 <tr>
 <td style="text-align:left;">||</td>
-<td style="text-align:center;">逻辑或</td>
+<td style="text-align:left;">逻辑或</td>
 </tr>
 <tr>
 <td style="text-align:left;">&amp;&amp;</td>
-<td style="text-align:center;">逻辑与</td>
+<td style="text-align:left;">逻辑与</td>
 </tr>
 <tr>
 <td style="text-align:left;">~,~!</td>
-<td style="text-align:center;">匹配正则表达式和不匹配正则表达式</td>
+<td style="text-align:left;">匹配正则表达式和不匹配正则表达式</td>
 </tr>
 <tr>
 <td style="text-align:left;">&lt;,&lt;=,>,>=,!=,==</td>
-<td style="text-align:center;">关系运算符</td>
+<td style="text-align:left;">关系运算符</td>
 </tr>
 <tr>
 <td style="text-align:left;">空格</td>
-<td style="text-align:center;">连接</td>
+<td style="text-align:left;">连接</td>
 </tr>
 <tr>
 <td style="text-align:left;">+,-</td>
-<td style="text-align:center;">加，减</td>
+<td style="text-align:left;">加，减</td>
 </tr>
 <tr>
 <td style="text-align:left;">*,/,%</td>
-<td style="text-align:center;">乘，除与求余</td>
+<td style="text-align:left;">乘，除与求余</td>
 </tr>
 <tr>
 <td style="text-align:left;">+,-,!</td>
-<td style="text-align:center;">一元加，减和逻辑非</td>
+<td style="text-align:left;">一元加，减和逻辑非</td>
 </tr>
 <tr>
 <td style="text-align:left;">^,***</td>
-<td style="text-align:center;">求幂</td>
+<td style="text-align:left;">求幂</td>
 </tr>
 <tr>
-<td style="text-align:left;">++,&ndash;</td>
-<td style="text-align:center;">增加或减少，作为前缀或后缀</td>
+<td style="text-align:left;">++,--</td>
+<td style="text-align:left;">增加或减少，作为前缀或后缀</td>
 </tr>
 <tr>
 <td style="text-align:left;">$</td>
-<td style="text-align:center;">字段引用</td>
+<td style="text-align:left;">字段引用</td>
 </tr>
 <tr>
 <td style="text-align:left;">in</td>
-<td style="text-align:center;">数组成员</td>
+<td style="text-align:left;">数组成员</td>
 </tr>
 </tbody>
 </table>
